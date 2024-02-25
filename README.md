@@ -18,6 +18,7 @@
     </div>
     <div class="product">
         <h2>Produto: BabysitEase</h2>
+        <h3>Descrição:<h3>
         <p>  BabysitEase é uma plataforma inovadora que visa tornar o serviço de cuidar dos filhos mais seguro, confiável e acessível. Com BabysitEase, os pais podem encontrar facilmente babás qualificadas e confiáveis para cuidar de seus filhos, enquanto os babás têm acesso a um mercado mais amplo e oportunidades de emprego. Nosso objetivo é proporcionar tranquilidade aos pais, garantindo que seus filhos estejam em boas mãos, enquanto oferecemos suporte e oportunidades aos cuidadores. Com recursos de avaliação e qualificação, BabysitEase garante a excelência no cuidado infantil</p>
     </div>
 </body>
