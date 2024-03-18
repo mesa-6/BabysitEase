@@ -16,9 +16,17 @@
             <li>Gheyson Melo</li>
         </ul>
     </div>
-        <h2> 
-       <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Video explicativo</a>
-        </h2>
+    <div>
+        <h2>Links : </h2>
+        <ul>
+        <li><a href = "https://projeto-fds.atlassian.net/jira/software/projects/EW/boards/2">Link do jira</a></li>
+        <li><a href = "https://www.figma.com/file/KL098ypwC8jrrPUnRASYJm?type=design">Link do Figma</a> </li>
+        </ul>
+    </div>
+        <h2> 1- Entrega </h2> 
+        <h3>Assista nosso: </h3>
+       <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Screencast</a>
+        
     <div class="product">
         <h2>Produto: BabysitEase</h2>
         <h3>Descrição:<h3>
