@@ -23,17 +23,20 @@
             <li><a href = "https://www.figma.com/file/KL098ypwC8jrrPUnRASYJm?type=design">Link do Figma</a> </li>
         </ul>
     </div>
-    <div>  
-        <h2> 1- Entrega </h2>
+    <div><h2> 1- Entrega </h2>
         <ul>  
-            <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Screencast</a>    
+            <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Screencast</a></li>
+            <p> </p>
+            <h3>Quadro do Jira :</h3> 
+            <img src = "Backlog_Primeira-Entrega.jpeg"/>
+            <img src = "Quadro_Primeira_Entrega.png"/>
         </ul>
-        <img src = "blob:https://web.whatsapp.com/c526d457-2c96-472a-a070-777cb211c36d" />
-    </div>
-    <div class="product">
-        <h2>Produto: BabysitEase</h2>
+    </div> 
+    <div>
+    <h2>Produto: BabysitEase</h2>
         <h3>Descrição:<h3>
 <p>  BabysitEase é uma plataforma inovadora que visa tornar o serviço de cuidar dos filhos mais seguro, confiável e acessível. Com BabysitEase, os pais podem encontrar facilmente babás qualificadas e confiáveis para cuidar de seus filhos, enquanto os babás têm acesso a um mercado mais amplo e oportunidades de emprego. Nosso objetivo é proporcionar tranquilidade aos pais, garantindo que seus filhos estejam em boas mãos, enquanto oferecemos suporte e oportunidades aos cuidadores. Com recursos de avaliação e qualificação, BabysitEase garante a excelência no cuidado infantil</p>
     </div>
+       
 </body>
 </html>
