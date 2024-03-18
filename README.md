@@ -16,8 +16,9 @@
             <li>Gheyson Melo</li>
         </ul>
     </div>
-        <h2> Video explicativo :</h2>
-       <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc"></a>
+        <h2> 
+       <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Video explicativo</a>
+        </h2>
     <div class="product">
         <h2>Produto: BabysitEase</h2>
         <h3>Descrição:<h3>
