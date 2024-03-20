@@ -9,11 +9,11 @@
         <h2>Equipe: Mesa 6</h2>
         <ul>
             <li>Arthur Silva Capistrano</li>
-            <li>Rafael Danzi</li>
-            <li>João Antônio</li>
-            <li>Thiago Manguinho</li>
             <li>Gabriel Tabosa</li>
             <li>Gheyson Melo</li>
+            <li>João Antônio</li>
+            <li>Rafael Danzi</li>
+            <li>Thiago Manguinho</li>
         </ul>
     </div>
     <div>
@@ -33,8 +33,8 @@
             <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Screencast</a></li>
             <p> </p>
             <h3>Quadro do Jira :</h3> 
-            <img src = "Backlog_Primeira-Entrega.jpeg"/>
-            <img src = "Quadro_Primeira_Entrega.png"/>
+            <img src = "prints/Backlog_Primeira-Entrega.jpeg"/>
+            <img src = "prints/Quadro_Primeira_Entrega.png"/>
         </ul>
     </div> 
     
