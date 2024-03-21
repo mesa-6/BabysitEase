@@ -30,7 +30,6 @@
     </div>
     <div><h2> 1- Entrega </h2>
         <ul>  
-            <a href="https://projeto-fds.atlassian.net/jira/software/projects/EW/boards/2">Jira</a>
             <p> </p>
             <a href="https://www.youtube.com/watch?v=0sU1ZieJ0rc">Screencast</a></li>
             <p> </p>
