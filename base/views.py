@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .models import baba
+
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    babas = baba.objects.all()
+    context = {'babas': babas}
+    return render(request, 'base/home.html', context)
 
 def room(request):
-    return render(request, 'room.html')
+    return render(request, 'base/room.html')
