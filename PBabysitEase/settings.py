@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'BabysitEase.urls'
+ROOT_URLCONF = 'PBabysitEase.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BabysitEase.wsgi.application'
+WSGI_APPLICATION = 'PBabysitEase.wsgi.application'
 
 
 # Database
