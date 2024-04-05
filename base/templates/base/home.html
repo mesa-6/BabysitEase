@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+
+    .home-container {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+
+    }
+
+</style>
+
+<div class="home-container">
+<!--
+    <div>
+
+        <h2>Filtros</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae delectus porro rem placeat laudantium modi sapiente odio minima sit possimus sequi atque numquam dicta saepe accusamus illum, perspiciatis unde ex!
+        </p>
+
+    </div>
+-->
+{% include 'filter.html' %}
+
+    <div>
+        <h1>Home template
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolores, eaque porro tempora laudantium incidunt dicta ab ratione voluptates accusamus optio deserunt culpa facilis debitis! Laboriosam modi laborum ea sunt.
+
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis maxime eaque eius ea suscipit sunt quas. Hic ea, excepturi eaque delectus animi, minus sint natus nesciunt tempore modi cumque quisquam!
+        </p>
+    </div>
+
+</div>
+
+{% endblock content %}
