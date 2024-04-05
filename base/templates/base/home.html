@@ -1,39 +1,25 @@
-{% extends 'main.html' %}
+{% extends 'main.html' %} 
 
-{% block content %}
-<style>
+{% block content %} 
+    <style>
+        /* Estilo para o corpo da página */
+        body {
+            background-color: #fdf9f1; 
+        }
 
-    .home-container {
-        display: grid;
-        grid-template-columns: 1fr 4fr;
+        /* Estilo para o contêiner principal da página inicial */
+        .home-container {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            gap: 20px; 
+            border-radius: 7px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 
-    }
-
-</style>
-
-<div class="home-container">
-<!--
-    <div>
-
-        <h2>Filtros</h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae delectus porro rem placeat laudantium modi sapiente odio minima sit possimus sequi atque numquam dicta saepe accusamus illum, perspiciatis unde ex!
-        </p>
-
-    </div>
--->
-{% include 'filter.html' %}
-
-    <div>
-        <h1>Home template
-        </h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolores, eaque porro tempora laudantium incidunt dicta ab ratione voluptates accusamus optio deserunt culpa facilis debitis! Laboriosam modi laborum ea sunt.
-
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis maxime eaque eius ea suscipit sunt quas. Hic ea, excepturi eaque delectus animi, minus sint natus nesciunt tempore modi cumque quisquam!
-        </p>
+    <div class="home-container">
+        {% include 'filter.html' %} 
+        {% include 'cards.html' %} 
     </div>
 
-</div>
-
-{% endblock content %}
+{% endblock content %} 
