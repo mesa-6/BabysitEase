@@ -36,11 +36,12 @@ jobs:
           rm db.sqlite3
           cd ..
         
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      # .  
+      # Opcional: adicione etapas de teste aqui, se necessário
 
       - name: Zip artifact for deployment
-        run: zip -r ../release.zip .
+        run: |
+          cd BabysitEase
+          zip -r ../release.zip .
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
@@ -61,13 +62,12 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: python-app
 
       - name: Unzip artifact for deployment
         run: unzip -o release.zip
-
       
       - name: Login to Azure
         uses: azure/login@v1
