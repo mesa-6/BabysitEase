@@ -1,7 +1,6 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
-
 name: Build and deploy Python app to Azure Web App - BabysitEase-fds
 
 on:
@@ -36,12 +35,11 @@ jobs:
           rm db.sqlite3
           cd ..
         
-      # Opcional: adicione etapas de teste aqui, se necessário
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      # .  
 
       - name: Zip artifact for deployment
-        run: |
-          cd BabysitEase
-          zip -r ../release.zip .
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
@@ -62,12 +60,13 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: python-app
 
       - name: Unzip artifact for deployment
-        run: unzip -o release.zip
+        run: unzip release.zip
+
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -82,4 +81,3 @@ jobs:
         with:
           app-name: 'BabysitEase-fds'
           slot-name: 'Production'
-          
