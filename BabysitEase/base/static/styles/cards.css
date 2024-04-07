@@ -14,12 +14,13 @@ h1 {
 
 /* Estilização para os cartões */
 .card {
-    width: 350px;
     background-color: #f0f0f0;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 20px;
+    padding: 0px;
+    
 }
 
 /* Estilização para o conteúdo dos cartões */
