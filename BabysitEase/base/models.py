@@ -22,10 +22,14 @@ class Babysitter(models.Model):
     sex = models.CharField(max_length=1)
     description = models.TextField()
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    # profile_pic = models.ImageField()
+    favorited = models.ManyToManyField(User, default=None, blank=True, related_name='favorited')
 
     def __str__(self):
         return self.cpf
+    
+    @property
+    def num_likes(self):
+        return self.favorited.all().count()
 
 class Parent(models.Model):
     cpf = models.CharField(max_length=14, primary_key=True)
@@ -40,15 +44,9 @@ class Parent(models.Model):
     birth_date = models.DateField()
     sex = models.CharField(max_length=1)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    favorited = models.ManyToManyField(Babysitter, default=None, blank=True, related_name='favorited')
-    # profile_pic = models.ImageField()
 
     def __str__(self):
         return self.cpf
-    
-    @property
-    def num_likes(self):
-        return self.favorited.all().count()
 
 
 class Favorite(models.Model):
@@ -56,5 +54,10 @@ class Favorite(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     value = models.CharField(choices=[('like', 'Like'), ('unlike', 'Unlike')], max_length=10)
 
-    def __str__(self):
-        return {self.babysitter_cpf, self.user_id, self.value}
+    class Meta:
+        unique_together = ('babysitter_cpf', 'user_id')
+
+    def str(self):
+        return f'{self.babysitter_cpf} - {self.user_id}'
+    
+    
