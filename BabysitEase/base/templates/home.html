@@ -1,25 +1,72 @@
-{% extends 'main.html' %} 
+{% extends 'main.html' %} {% load static %} {% block content %}
+<style>
+  /* Estilo para o corpo da página */
+  body {
+    background-color: #fdf9f1;
+  }
 
-{% block content %} 
-    <style>
-        /* Estilo para o corpo da página */
-        body {
-            background-color: #fdf9f1; 
-        }
+  /* Estilo para o contêiner principal da página inicial */
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-        /* Estilo para o contêiner principal da página inicial */
-        .home-container {
-            display: grid;
-            grid-template-columns: 1fr 4fr;
-            gap: 20px; 
-            border-radius: 7px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
-
-    <div class="home-container">
-        {% include 'filter.html' %} 
-        {% include 'cards.html' %} 
+  .card-content {
+    padding: 10px;
+  }
+</style>
+{% block head %}
+<!--Chamando o CSS dos cards-->
+<link rel="stylesheet" type="text/css" href="{% static 'styles/cards.css' %}" />
+{% endblock head %}
+<div class="home-container">
+  <!--Chamando os filtros-->
+  {% include 'filter.html' %}
+  <div class="main-content m-3">
+    <!-- Criando as colunas -->
+    <div class="col-md-10">
+      <div class="row">
+        <!-- criando os cards das babas-->
+        {% for babysitter in babysitters %}
+        <div class="col-md-6">
+          <div class="card">
+            <img src="{% static 'images/babysitter.jpg' %}" alt="Babysitter" />
+            <div class="card-content">
+              <h3>{{babysitter.name}}</h3>
+              <p>preço:{{babysitter.hourly_price}}</p>
+              <p>descrição:{{babysitter.description|truncatechars_html:100}}</p>
+              <a href="#" class="btn">Read More</a>
+              <a href="#" class="btn-favorite">
+                <form
+                  action="{% url 'favorited_babyssiter'%}"
+                  method="POST"
+                  class="ui form"
+                >
+                  {% csrf_token %}
+                  <input
+                    type="hidden"
+                    name="post_id"
+                    ,
+                    value="{{ babysitter.cpf }}"
+                  />
+                  {% if babysitter.favorited == True %}
+                  <button type="submit" class="ui button positive">❤</button>
+                  {% else %}
+                  <button type="submit" class="ui button negative">♡</button>
+                  {% endif %}
+                </form>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <h2>Não há babás disponiveis</h2>
+        {% endfor %}
+      </div>
     </div>
-
-{% endblock content %} 
+  </div>
+</div>
+{% endblock content %}
