@@ -29,7 +29,7 @@ def home(request):
         
     
     context = {
-        'qs': babysitters,  
+        'babysitters': babysitters,  
         'user': user,
         'favorites': favorites,
     }
@@ -44,9 +44,12 @@ def room(request):
 
 def favorited_babyssiter(request):
     user = request.user
-    
+    print('AQUI USER:')
+    print(user)
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
+        print('AQUI POST_ID:')
+        print(post_id)
         babysitter = Babysitter.objects.get(cpf=post_id)
         
         favorited = {}
