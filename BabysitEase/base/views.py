@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Babysitter, Favorite
+from django.views.generic import DetailView
 
 # Create your views here.
 def home(request):
@@ -63,3 +64,7 @@ def favorited_babyssiter(request):
     
     
     return redirect('home')
+
+class BabysitterDetailView(DetailView):
+    template_name = 'babysitterDetails.html'
+    queryset = Babysitter.objects.all()
