@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    .home-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .babysitter-details-container{
+    max-width: 350px;
+  }
+  .fotoex{
+    background-color: lightgray;
+    max-width: 250px;
+  }
+  .descricao{
+    position: absolute;
+    right: 400px;
+  }
+  #texto{
+    border: solid 2px lightgray;
+    border-radius: 5px;
+    max-width: 400px;
+  }
+
+</style>
+<div class="home-container">
+    <div class="fotoex">
+        <h1>Foto</h1>
+    </div>
+
+    <div class="babysitter-details-container">
+        <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
+        <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
+        <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
+    </div>
+    <div>
+        <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
+    </div>
+    <div class="descricao">
+        <h3><strong>Descrição:</strong></h3>
+        <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
+    </div>
+</div>
+<hr>
+<div>
+    <h2>Sobre mim 📝</h2>
+</div>
+    <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
+    <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
+    <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
+
+{% endblock content %}

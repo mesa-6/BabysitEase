@@ -8,4 +8,6 @@ urlpatterns = [
     
     path('like/', views.favorited_babyssiter, name="favorited_babyssiter"),
 
+    path('babysitter/<str:pk>/', views.BabysitterDetailView.as_view(), name="babysitter_details"),
+
 ]
