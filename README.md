@@ -37,6 +37,16 @@
             <img src = "prints/Quadro_Primeira_Entrega.png"/>
         </ul>
     </div> 
+
+    <div><h2> 2- Entrega</h2>
+        <ul>
+            <li><a href ="https://www.youtube.com/watch?v=nnYU0FI4NGI">Screancast das tres historias </a></li>
+            <li> <a href ="https://docs.google.com/document/d/1ZeMPv2CfbcyNhzv-Cb_9LR-AF1_GywFmJ9sGfoS8dUs/edit#heading=h.rrfpln9bkodr " ></a></li>
+            <li> <a href ="https://drive.google.com/file/d/1ng_QaCN7MSW4OGo86d2r1XWkFQ5Gw56j/view?usp=drive_link"</a>
+            
+        </ul>
+
+    </div>
     
        
 </body>
