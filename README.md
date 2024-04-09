@@ -46,7 +46,7 @@
             <h3>Quadro do Jira</h3>
             <img src="prints/QuadroJira-Entrega-dois.jpeg"/> 
             <h3> BugTracker: </h3>
-            <img src="prints/BugTracker-Entrega2.jpeg"/>
+            <img src="https://drive.google.com/file/d/1ng_QaCN7MSW4OGo86d2r1XWkFQ5Gw56j/view?usp=sharing"/>
         </ul>
     </div>
 </body>
