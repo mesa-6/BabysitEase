@@ -42,7 +42,7 @@
         <ul>
             <li><a href="https://www.youtube.com/watch?v=nnYU0FI4NGI">Screencast das três histórias</a></li>
             <li><a href="https://docs.google.com/document/d/1ZeMPv2CfbcyNhzv-Cb_9LR-AF1_GywFmJ9sGfoS8dUs/edit#heading=h.rrfpln9bkodr">Programação em Pares</a></li>
-            <li><a href="https://drive.google.com/file/d/1ng_QaCN7MSW4OGo86d2r1XWkFQ5Gw56j/view?usp=drive_link">Diagrama de Atividades</a></li>
+            <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de Atividades</a></li>
             <h3>Quadro do Jira</h3>
             <img src="prints/QuadroJira-Entrega-dois.jpeg"/> 
             <h3> BugTracker: </h3>
