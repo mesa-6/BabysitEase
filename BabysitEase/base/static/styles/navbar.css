@@ -6,13 +6,14 @@
     padding: 10px; 
 }
 
-.container h1{
+.container h1 {
     font-size: 30px;
     font-family: cursive;
     font-style: italic;
+    margin: 0; /* Remover margem padrão do h1 */
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
