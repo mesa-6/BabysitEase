@@ -1,8 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Pacifico&family=Sriracha&display=swap');
+.navbar {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 2rem 0 rgba(33, 37, 41, .1);
+}
 
-.sriracha-regular {
-    font-family: "Sriracha", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 30px;
-  }
+.calendar-item {
+    cursor: pointer;
+}
+
+.calendar-item:hover {
+    background-color: #f8f9fa;
+}
+
+.btn-send {
+  background-color: #4D4861;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+.btn-send:hover {
+  background-color: #847da1;
+  color: #fff;
+  border: none;
+}
+
+.modal-footer .btn-primary{
+  background-color: #4D4861;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+
+}
+
+.modal-footer .btn-primary:hover{
+background-color: #847da1;
+    color: #fff;
+    border: none;
+}

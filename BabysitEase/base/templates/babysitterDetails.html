@@ -8,68 +8,163 @@
   <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="{% static 'styles/detail.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/detail.css' %}">
 </head>
 <body>
 
-  <div class="main">
-    <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">            
-      <nav class="navbar navbar-expand px-4 py-3">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'home' %}"> <span style="font-weight: bold; font-size: 25px; font-family:sans-serif ;">BabysitEase</span> </a>
-              <form action="#" class="d-none d-sm-inline-block"></form>
-              <div class="navbar-collapse collapse">
-                  <ul class="navbar-nav ms-auto">
-                      <li class="nav-item dropdown">
-                          <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                              <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40">                            
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-end rounded">
-                              <a class="dropdown-item" href="#">Item 1</a>
-                              <a class="dropdown-item" href="#">Item 2</a>
-                              <a class="dropdown-item" href="#">Item 3</a>
-                          </div>
-                      </li>
-                  </ul>
-              </div>
+<div class="main">
+  <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">            
+    <nav class="navbar navbar-expand px-4 py-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}"> <span style="font-weight: bold; font-size: 25px; font-family:sans-serif ;">BabysitEase</span> </a>
+            <form action="#" class="d-none d-sm-inline-block"></form>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40">                            
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end rounded">
+                            <a class="dropdown-item" href="#">Item 1</a>
+                            <a class="dropdown-item" href="#">Item 2</a>
+                            <a class="dropdown-item" href="#">Item 3</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="home-container">
+  <div class="container py-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#" >
+                <div class="card-body">
+                    <h5 class="card-title">{{ babysitter.name }} {{ babysitter.last_name }}</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Profile Details</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Email:</strong> user@example.com</li>
+                        <li class="list-group-item"><strong>Phone:</strong> +1234567890</li>
+                        <li class="list-group-item"><strong>Address:</strong> 123, Street Name, City, Country</li>
+                        <li class="list-group-item"><strong>Bio:</strong> Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5 justify-content-center">
+  <div class="col-md-8">
+      <h2 class="text-left">Calendar</h2>
+      <div class="table-responsive">
+          <table class="table table-bordered text-center">
+              <thead>
+                  <tr>
+                      <th scope="col">Days</th>
+                      <th scope="col">Monday</th>
+                      <th scope="col">Tuesday</th>
+                      <th scope="col">Wednesday</th>
+                      <th scope="col">Thursday</th>
+                      <th scope="col">Friday</th>
+                      <th scope="col">Saturday</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">Morning</th>
+                      <td class="calendar-item">Morning</td>
+                      <td class="calendar-item">Morning</td>
+                      <td class="calendar-item">Morning</td>
+                      <td class="calendar-item">Morning</td>
+                      <td class="calendar-item">Morning</td>
+                      <td class="calendar-item">Morning</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Evening</th>
+                      <td class="calendar-item">Evening</td>
+                      <td class="calendar-item">Evening</td>
+                      <td class="calendar-item">Evening</td>
+                      <td class="calendar-item">Evening</td>
+                      <td class="calendar-item">Evening</td>
+                      <td class="calendar-item">Evening</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Night</th>
+                      <td class="calendar-item">Night</td>
+                      <td class="calendar-item">Night</td>
+                      <td class="calendar-item">Night</td>
+                      <td class="calendar-item">Night</td>
+                      <td class="calendar-item">Night</td>
+                      <td class="calendar-item">Night</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <button class="btn btn-send mt-4 float-end" data-bs-toggle="modal" data-bs-target="#confirmModal">Solicitar</button>
+      <!-- Modal -->
+      <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmModalLabel">Confirmar Envio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Confirma o envio de sua solicitação?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
           </div>
-      </nav>
-  </div>
-  
-  <div class="home-container">
-      <div class="fotoex">
-          <h1>Foto</h1>
-      </div>
-  
-      <div class="babysitter-details-container">
-          <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
-          <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
-          <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
-      </div>
-      <div>
-          <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
-      </div>
-      <div class="descricao">
-          <h3><strong>Descrição:</strong></h3>
-          <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
+        </div>
       </div>
   </div>
-  <hr>
+</div>
+
+  <div class="fotoex">
+      <h1>Foto</h1>
+  </div>
+
+  <div class="babysitter-details-container">
+      <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
+      <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
+      <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
+  </div>
   <div>
-      <h2>Sobre mim 📝</h2>
+      <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
   </div>
-      <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
-      <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
-      <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
-  
-  
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
-      <script src="{% static 'styles/details.js' %}">
-      </script>
-
+  <div class="descricao">
+      <h3><strong>Descrição:</strong></h3>
+      <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
+  </div>
+</div>
+<hr>
+<div>
+  <h2>Sobre mim 📝</h2>
+</div>
+  <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
+  <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
+  <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+  crossorigin="anonymous"></script>
+  <script src="{% static 'styles/details.js' %}">
+  </script>
 </body>
 </html>
-
