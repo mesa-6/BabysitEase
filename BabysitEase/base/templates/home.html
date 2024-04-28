@@ -18,10 +18,10 @@
         <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
-                    <i class="lni lni-grid-alt"></i>
+                    <i class="lni lni-menu"></i>
                 </button>
-                <div class="sidebar-logo">
-                    <a href="#">BabysitEase</a>
+                <div class="sidebar-logo ">
+                    <a href="#" >BabysitEase</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
@@ -84,7 +84,8 @@
             </div>
         </aside>
         <div class="main">
-          <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">            <nav class="navbar navbar-expand px-4 py-3">
+          <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">            
+            <nav class="navbar navbar-expand px-4 py-3">
                 <form action="#" class="d-none d-sm-inline-block">
 
                 </form>
@@ -92,10 +93,12 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="/account.png" class="avatar img-fluid" alt="">
+                                <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40">                            
                             </a>
                             <div class="dropdown-menu dropdown-menu-end rounded">
-
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
                             </div>
                         </li>
                     </ul>
@@ -103,7 +106,7 @@
             </nav>
           </div>
             <main class="content px-3 py-4">
-              <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="row row-cols-1 row-cols-md-4 g-4">
                 {% for babysitter in babysitters %}
                 <div class="col">
                   <div class="card h-100">

@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Pacifico&family=Sriracha&display=swap');
+
+.sriracha-regular {
+    font-family: "Sriracha", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+  }
+
 ::after,
 ::before {
     box-sizing: border-box;
