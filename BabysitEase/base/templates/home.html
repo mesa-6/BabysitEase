@@ -22,7 +22,7 @@
                     <i class="lni lni-menu"></i>
                 </button>
                 <div class="sidebar-logo ">
-                    <a href="#" >BabysitEase</a>
+                    <a href="#" ><span style="font-weight: bold; font-size: 23px; font-family: 'Roboto', sans-serif; color: #fff;">BabysitEase</span></a>
                 </div>
             </div>
             <ul class="sidebar-nav">
@@ -106,43 +106,40 @@
                 </div>
             </nav>
           </div>
-            <main class="content px-3 py-4">
-              <div class="row row-cols-1 row-cols-md-4 g-4">
+          <main class="content px-3 py-4">
+            <div class="row row-cols-1 row-cols-md-4 g-4 flex-wrap">
                 {% for babysitter in babysitters %}
                 <div class="col">
-                  <div class="card h-100">
-                    <img src="{% static 'images/babysitter.jpg' %}" class="card-img-top" alt="Babysitter">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ babysitter.name }}</h5>
-                      <p class="card-text">{{ babysitter.description }}</p>
+                    <div class="card h-100">
+                        <img src="{% static 'images/babysitter.jpg' %}" class="card-img-top" alt="Babysitter">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ babysitter.name }}</h5>
+                            <p class="card-text">{{ babysitter.description }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Preço/Hora: R$ {{ babysitter.hourly_price }}</small>
+                        </div>
+                        <div class="card-footer d-grid gap-2">
+                            <a href="{% url 'babysitter_details' pk=babysitter.cpf %}" class="btn btn-readmore d-inline-block align-items-center justify-content-center">Read More</a>
+                            <div>
+                                <form action="{% url 'favorited_babyssiter' %}" method="POST" class="ui form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="post_id" value="{{ babysitter.cpf }}">
+                                    {% if babysitter.favorited %}
+                                    <button type="submit" class="btn btn-success">❤ Favorited</button>
+                                    {% else %}
+                                    <button type="submit" class="btn btn-outline-secondary">♡ Favorite</button>
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                      <small class="text-muted">Preço/Hora: R$ {{ babysitter.hourly_price }}</small>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                      <a href="{% url 'babysitter_details' pk=babysitter.cpf %}" class="btn btn-readmore d-flex align-items-center justify-content-center">Read More</a>
-                      <div>
-                        <form action="{% url 'favorited_babyssiter' %}" method="POST" class="ui form">
-                          {% csrf_token %}
-                          <input type="hidden" name="post_id" value="{{ babysitter.cpf }}">
-                          {% if babysitter.favorited %}
-                            <button type="submit" class="btn btn-success">❤ Favorited</button>
-                          {% else %}
-                            <button type="submit" class="btn btn-outline-secondary">♡ Favorite</button>
-                          {% endif %}
-                        </form>
-                      </div>
-                    </div>
-                    
-                    
-                  </div>
                 </div>
                 {% empty %}
                 <h2>Não há babás disponíveis</h2>
                 {% endfor %}
-              </div>
-              
-            </main>
+            </div>
+        </main>
             
         </div>
     </div>

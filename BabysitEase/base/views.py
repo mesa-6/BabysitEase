@@ -47,6 +47,12 @@ def home(request):
 def room(request):
     return render(request, 'room.html')
 
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
+
 def favorited_babyssiter(request):
     user = request.user
 
