@@ -28,37 +28,38 @@
                         <div class="mb-4">
                             <span style="color: rgb(148, 148, 148);">Já tem uma conta? <a href="{% url 'login' %}" class="text-decoration-none">Entrar </a></span>
                         </div>
-                        <form>
+                        <form action="{% url 'register' %}" method="post">
+                            {% csrf_token %}
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Your name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
                             </div>
                             <div class="mb-3">
                                 <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Your last name">
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your last name">
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Your email">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Your password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="cpf" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="cpf" placeholder="Your CPF">
+                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Your CPF">
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="birth_date" class="form-label">Birth Date</label>
-                                    <input type="date" class="form-control" id="birth_date">
+                                    <input type="date" class="form-control" id="birth_date" name="birth_date">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="sex" class="form-label">Sex</label>
-                                    <select class="form-select" id="sex">
+                                    <select class="form-select" id="sex" name="sex">
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
                                     </select>
@@ -66,26 +67,26 @@
                             </div>
                             <div class="mb-3">
                                 <label for="street" class="form-label">Street</label>
-                                <input type="text" class="form-control" id="street" placeholder="Your street">
+                                <input type="text" class="form-control" id="street" name="street" placeholder="Your street">
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="neiborhood" class="form-label">Neighborhood</label>
-                                    <input type="text" class="form-control" id="neiborhood" placeholder="Your neighborhood">
+                                    <input type="text" class="form-control" id="neiborhood" name="neighborhood" placeholder="Your neighborhood">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="zip_code" class="form-label">ZIP Code</label>
-                                    <input type="text" class="form-control" id="zip_code" placeholder="Your ZIP code">
+                                    <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Your ZIP code">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="number" class="form-label">Number</label>
-                                    <input type="text" class="form-control" id="number" placeholder="Your number">
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Your number">
                                 </div>
                             </div>
                             <div class="text-end">
-                                <a href="{% url 'home' %}" class="btn btn-send ">Criar Conta</a>
+                                <button type="submit" class="btn btn-primary">Criar Conta</button>  
                             </div>
                         </form>
                     </div>

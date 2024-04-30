@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Babysitter, Favorite
 from django.views.generic import DetailView
+from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
@@ -51,6 +52,37 @@ def login(request):
     return render(request, 'login.html')
 
 def register(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        cpf = request.POST.get('cpf')
+        birth_date = request.POST.get('birth_date')
+        sex = request.POST.get('sex')
+        street = request.POST.get('street')
+        number = request.POST.get('number')
+        neighborhood = request.POST.get('neighborhood')
+        zip_code = request.POST.get('zip_code')
+        
+        user = User.objects.create_user(
+            name=name, 
+            email=email, 
+            password=password, 
+            last_name=last_name, 
+            cpf=cpf, 
+            birth=birth_date, 
+            sex=sex,
+            sreet=street,
+            number=number,
+            neighborhood=neighborhood,
+            zip_code=zip_code,
+            username=f'{name}_{last_name}'
+            )
+
+        user.save()
+        
+        return redirect('login')
     return render(request, 'register.html')
 
 def favorited_babyssiter(request):
