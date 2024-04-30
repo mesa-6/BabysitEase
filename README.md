@@ -4,6 +4,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
+    <div align ="center"> 
+        <img src="https://github.com/mesa-6/BabysitEase/assets/160547501/ae494e15-e114-47ec-ae2b-559e54894a77" >
+"
+    </div>
+    <p align="center">
+  <img
+    src="https://img.shields.io/github/repo-size/mesa-6/BabysitEase?style=flat"
+    alt="Repository Size"
+  />
+  <img
+    src="https://img.shields.io/github/commit-activity/t/mesa-6/BabysitEase?style=flat&logo=github"
+    alt="Commit Activity"
+  />
+  <a href="LICENSE.md"
+    ><img
+      src="https://img.shields.io/github/license/mesa-6/BabysitEase"
+      alt="License"
+  /></a>
+</p>
+
 <body>
     <div class="team">
         <h2>Equipe: Mesa 6</h2>
@@ -21,6 +41,7 @@
         <h3>Descrição:</h3>
         <p>BabysitEase é uma plataforma inovadora que visa tornar o serviço de cuidar dos filhos mais seguro, confiável e acessível. Com BabysitEase, os pais podem encontrar facilmente babás qualificadas e confiáveis para cuidar de seus filhos, enquanto os babás têm acesso a um mercado mais amplo e oportunidades de emprego. Nosso objetivo é proporcionar tranquilidade aos pais, garantindo que seus filhos estejam em boas mãos, enquanto oferecemos suporte e oportunidades aos cuidadores. Com recursos de avaliação e qualificação, BabysitEase garante a excelência no cuidado infantil.</p>
     </div>
+    
     <div>
         <h2>Links :</h2>
         <ul>
