@@ -29,20 +29,21 @@
                     <div class="mb-3">
                         <span style="color: rgb(148, 148, 148);">Não tem uma conta? <a href="{% url 'register' %}" class="text-decoration-none">Inscreva-se</a></span>
                     </div>
-                    <form>
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="login" class="form-label">Usuário</label>
-                            <input type="text" class="form-control" id="login" placeholder="Seu usuário">
+                            <input type="text" class="form-control" id="login" name="username" placeholder="Seu usuário">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Sua senha">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Sua senha">
                         </div>
                         <div class="mb-3">
                             <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" style="text-decoration: none;">Esqueceu a senha?</button>
                         </div>
                         <div class="text-center">
-                            <a href="{% url 'home' %}" class="btn btn-send">Entrar</a>
+                            <button type="submit" class="btn btn-send">Entrar</button>
                         </div>
                     </form>
                 </div>

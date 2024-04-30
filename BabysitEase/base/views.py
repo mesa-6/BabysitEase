@@ -49,7 +49,29 @@ def room(request):
     return render(request, 'room.html')
 
 def login(request):
-    return render(request, 'login.html')
+    from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            # se entrou aqui, é porque as credenciais estão corretas e o usuário foi autenticado
+            return redirect('home')
+        else:
+            # se entrou aqui, é porque as credenciais estão erradas
+            print('Credenciais inválidas. Por favor, tente novamente.')
+            return render(request, 'login.html', {'error_message': 'Credenciais inválidas. Por favor, tente novamente.'})
+    else:
+        # se entrou aqui, é porque o método não foi POST
+        return render(request, 'login.html')
+
 
 def register(request):
     if request.method == 'POST':
