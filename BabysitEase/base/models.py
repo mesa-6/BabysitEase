@@ -1,7 +1,27 @@
+from django.contrib.auth.models import AbstractUser, Group, Permission, User
 from django.db import models
-from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+class CustomUser(AbstractUser):
+    birth_date = models.DateField(null=True, blank=True)
+    cpf = models.CharField(max_length=11, unique=True, null=True, blank=True)
+    name= models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+    street = models.CharField(max_length=80, null=True, blank=True)
+    neighborhood = models.CharField(max_length=50, null=True, blank=True)
+    zip_code = models.CharField(max_length=10, null=True, blank=True)
+    number = models.CharField(max_length=10, null=True, blank=True)
+    sex = models.CharField(max_length=1, null=True, blank=True)
+
+    groups = models.ManyToManyField(Group, verbose_name=_('groups'), blank=True, related_name='customuser_set')
+    user_permissions = models.ManyToManyField(Permission, verbose_name=_('user permissions'), blank=True, related_name='customuser_set')
+
+    class Meta:
+        permissions = [
+            ('can_view_customuser', _('Can view custom users')),
+        ]
 
 class Babysitter(models.Model):
     cpf = models.CharField(max_length=14, primary_key=True)

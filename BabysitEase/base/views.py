@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Babysitter, Favorite
+from .models import Babysitter, Favorite, CustomUser
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
 
@@ -53,32 +53,32 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        cpf = request.POST.get('cpf')
-        birth_date = request.POST.get('birth_date')
-        sex = request.POST.get('sex')
-        street = request.POST.get('street')
-        number = request.POST.get('number')
-        neighborhood = request.POST.get('neighborhood')
-        zip_code = request.POST.get('zip_code')
-        
-        user = User.objects.create_user(
-            name=name, 
-            email=email, 
-            password=password, 
-            last_name=last_name, 
-            cpf=cpf, 
-            birth=birth_date, 
+        email = request.POST['email']
+        password = request.POST['password']
+        name = request.POST['name']
+        last_name = request.POST['last_name']
+        cpf = request.POST['cpf']
+        birth_date = request.POST['birth_date']
+        sex = request.POST['sex']
+        street = request.POST['street']
+        number = request.POST['number']
+        neighborhood = request.POST['neighborhood']
+        zip_code = request.POST['zip_code']
+
+        user = CustomUser.objects.create_user(
+            username=f'{name} {last_name}',
+            email=email,
+            password=password,
+            name=name,
+            last_name=last_name,
+            cpf=cpf,
+            birth_date=birth_date,
             sex=sex,
-            sreet=street,
+            street=street,
             number=number,
             neighborhood=neighborhood,
-            zip_code=zip_code,
-            username=f'{name}_{last_name}'
-            )
+            zip_code=zip_code
+        )
 
         user.save()
         
