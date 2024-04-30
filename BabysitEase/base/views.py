@@ -85,6 +85,9 @@ def register(request):
         return redirect('login')
     return render(request, 'register.html')
 
+def profile(request):
+    return render(request, 'profile.html')
+
 def favorited_babyssiter(request):
     user = request.user
 

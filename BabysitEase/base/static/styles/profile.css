@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #f5f5f5;
+    box-shadow: 0 0 2rem 0 rgba(33, 37, 41, .1);
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+    color: #3f3d56;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.btn-send {
+    background-color: #4D4861;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-send:hover {
+    background-color: #847da1;
+    color: #fff;
+    border: none;
+  }
