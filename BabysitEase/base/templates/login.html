@@ -7,45 +7,72 @@
     <title>Login</title>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
-  </head>
+</head>
 <body>
 
-    <div class="main">
-        <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">            
-          <nav class="navbar navbar-expand px-4 py-3">
-              <div class="container-fluid">
-                <span class="navbar-brand"> <span style="font-weight: bold; font-size: 25px; font-family: 'Roboto', sans-serif; color: #746d8d;">BabysitEase</span> </span>              
+<div class="main">
+    <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+        <nav class="navbar navbar-expand px-4 py-3">
+            <div class="container-fluid">
+                <span class="navbar-brand"> <span style="font-weight: bold; font-size: 25px; font-family: 'Roboto', sans-serif; color: #746d8d;">BabysitEase</span> </span>
             </div>
-          </nav>
-      </div>
+        </nav>
+    </div>
 
-
-      <div class="container mt-5">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-          <div class="col-md-4">
-            <div class="login-card p-4">
-              <h5 class="login-title mb-4">LogIn</h5>
-              <form>
-                <div class="mb-3">
-                  <label for="login" class="form-label">Usuário</label>
-                  <input type="text" class="form-control" id="login" placeholder="Seu usuário">
+            <div class="col-md-4">
+                <div class="login-card p-4">
+                    <h5 class="login-title mb-2">LogIn</h5>
+                    <div class="mb-3">
+                        <span style="color: rgb(148, 148, 148);">Não tem uma conta? <a href="{% url 'register' %}" class="text-decoration-none">Inscreva-se</a></span>
+                    </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Usuário</label>
+                            <input type="text" class="form-control" id="login" placeholder="Seu usuário">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="password" placeholder="Sua senha">
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" style="text-decoration: none;">Esqueceu a senha?</button>
+                        </div>
+                        <div class="text-center">
+                            <a href="{% url 'home' %}" class="btn btn-send">Entrar</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label">Senha</label>
-                  <input type="password" class="form-control" id="password" placeholder="Sua senha">
-                </div>
-                <div class="mb-3">
-                    <span style="color: rgb(148, 148, 148);">Não tem uma conta? <a href="{% url 'register' %}" class="text-decoration-none">Inscreva-se </a></span>
-                  </div>
-                <div class="text-center">
-                    <a href="{% url 'home' %}" class="btn btn-send ">Entrar</a>
-                </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forgotPasswordModalLabel">Esqueceu sua senha?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Por favor, insira seu endereço de e-mail. Você receberá um link para criar uma nova senha por e-mail.</p>
+                <input type="email" class="form-control mb-3" placeholder="Seu endereço de e-mail">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" style="font-weight: 600; color: #fff; border: none;">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-l8LRkqCV6DsjM5Td+HZ/hEyCmXr3GOvfS4DEdFpiopj2b2mDq8cqSKF3LEzzSggI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>

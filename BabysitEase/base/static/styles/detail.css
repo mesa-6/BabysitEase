@@ -6,7 +6,6 @@
 .calendar-item {
     cursor: pointer;
 }
-
 .calendar-item:hover {
     background-color: #f8f9fa;
 }
