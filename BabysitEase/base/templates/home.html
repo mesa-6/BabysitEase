@@ -30,18 +30,31 @@
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#location"
                         aria-expanded="false" aria-controls="location">
                         <i class="lni lni-map-marker"></i>
-                        <span>Localização</span>
+                        <span>Preço</span>
                     </a>
                     <ul id="location" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Próximo a mim</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Por Cidade</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Por CEP</a>
-                        </li>
+                        <form action="{% url 'home' %}" method="GET">
+                            <li class="sidebar-item">
+                                <label>
+                                    <input type="radio" name="range" value="6.42,20">
+                                    Preço baixo
+                                </label>
+                            </li>
+                            <li class="sidebar-item">
+                                <label>
+                                    <input type="radio" name="range" value="21,40">
+                                    medio
+                                </label>
+                            </li>
+                            <li class="sidebar-item">
+                                <label>
+                                    <input type="radio" name="range" value="41,60">
+                                    alto
+                                </label>
+                            </li>
+                            <button type="submit" class="sidebar-item">Filtrar</button>
+                        </form>
+                        
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -69,15 +82,28 @@
                         <span>Experiência</span>
                     </a>
                     <ul id="experience" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Iniciante</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Intermediário</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Avançado</a>
-                        </li>
+                        <form action="{% url 'home' %}" method="GET">
+                            <li class="sidebar-item">
+                                <label>
+                                    <input type="radio" name="intervalo" value="0,2">
+                                    Iniciante
+                                </label>
+                            </li>
+                            <li class="sidebar-item">
+                                <label>
+                                    <input type="radio" name="intervalo" value="2,3">
+                                    Intermediário
+                                </label>
+                            </li>
+                            <li class="sidebar-item">
+                                <label>
+                                    <input type="radio" name="intervalo" value="4,5">
+                                    Avançado
+                                </label>
+                            </li>
+                            <button type="submit" class="sidebar-item">Filtrar</button>
+                        </form>
+                        
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -143,7 +169,7 @@
                             <div>
                                 <form action="{% url 'favorited_babyssiter' %}" method="POST" class="ui form">
                                     {% csrf_token %}
-                                    <input type="hidden" name="post_id" value="{{ babysitter.cpf }}">
+                                    <input type="radio" name="post_id" value="{{ babysitter.cpf }}">
                                     {% if babysitter.favorited %}
                                     <button type="submit" class="btn btn-success">❤ Favorited</button>
                                     {% else %}

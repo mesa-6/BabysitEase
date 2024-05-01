@@ -8,15 +8,30 @@ def home(request):
 
     # Recebe o usuário logado
     user = request.user
+    range=request.GET.get("range")
+    intervalo=request.GET.get("intervalo")
+    if(range):
+        min, max=range.split(',')
+    if(intervalo):
+        inicio, fim=intervalo.split(',')
+    
+    
     
     # Busca todas as instâncias de favoritos do usuário
     favorites = Favorite.objects.filter(user_id=user.id)
     
     # Inicializa o array de babás que vai para a home
     babysitters = []
-    
+    if(range):
+        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max)
+    elif(intervalo):
+        Babysitter_list = Babysitter.objects.filter(experience_years__gte=inicio,experience_years__lte=fim)
+    elif(range and intervalo):
+        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max,experience_years__gte=inicio,experience_years__lte=fim)
+    else:
+        Babysitter_list=Babysitter.objects.all()
     # Itera sobre todas as babás cadastradas
-    for babysitter_obj in Babysitter.objects.all():
+    for babysitter_obj in Babysitter_list:
         
         # Verifica se a babá está nos favoritos do usuário
         is_favorited = favorites.filter(babysitter_cpf=babysitter_obj.cpf, user_id = user.id).exists()
