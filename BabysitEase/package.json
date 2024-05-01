@@ -1,14 +1,19 @@
 {
-  "name": "babysitease",
+  "name": "projeto",
   "version": "1.0.0",
-  "description": "",
+  "description": "testes para testes E2E",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Evaldo",
   "license": "ISC",
-  "dependencies": {
-    "cypress": "^13.8.1"
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step-definitions"
+  },
+  "devDependencies": {
+    "cypress": "^13.7.2",
+    "cypress-cucumber-preprocessor": "^4.3.1"
   }
 }
