@@ -11,4 +11,5 @@ urlpatterns = [
     path('like/', views.favorited_babyssiter, name="favorited_babyssiter"),
     path('babysitter-dtl/<str:pk>/', views.BabysitterDetailView.as_view(), name="babysitter_details"),
     path('editar-perfil/', views.PerfilUpdate.as_view(), name="editar-perfil"),
+    path('logout/', views.logout_view, name='logout')
 ]

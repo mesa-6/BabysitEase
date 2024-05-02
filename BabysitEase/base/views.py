@@ -7,6 +7,7 @@ from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout as auth_logout
 CustomUser = get_user_model()
 
 # Create your views here.
@@ -136,6 +137,11 @@ def favorited_babyssiter(request):
     
     
     return redirect('home')
+
+def logout_view(request):
+    auth_logout(request)
+    return redirect('home')
+
 
 class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
