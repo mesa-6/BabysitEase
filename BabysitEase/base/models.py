@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser, Group, Permission, User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django.conf import settings
+
 # Create your models here.
 
 class CustomUser(AbstractUser):
@@ -41,8 +43,8 @@ class Babysitter(models.Model):
     birth_date = models.DateField()
     sex = models.CharField(max_length=1)
     description = models.TextField()
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    favorited = models.ManyToManyField(User, default=None, blank=True, related_name='favorited')
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    favorited = models.ManyToManyField(settings.AUTH_USER_MODEL, default=None, blank=True, related_name='favorited')
 
     def __str__(self):
         return self.cpf
@@ -63,7 +65,7 @@ class Parent(models.Model):
     number = models.CharField(max_length=10)
     birth_date = models.DateField()
     sex = models.CharField(max_length=1)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.cpf
@@ -71,7 +73,7 @@ class Parent(models.Model):
 
 class Favorite(models.Model):
     babysitter_cpf = models.ForeignKey(Babysitter, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     value = models.CharField(choices=[('like', 'Like'), ('unlike', 'Unlike')], max_length=10)
 
     class Meta:

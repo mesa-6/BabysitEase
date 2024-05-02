@@ -13,6 +13,8 @@ load_dotenv(BASE_DIR / '.env')
 TARGET_ENV = os.getenv('TARGET_ENV')
 NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
+AUTH_USER_MODEL = 'base.CustomUser'
+
 if NOT_PROD:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True

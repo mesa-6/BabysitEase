@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Babysitter, Favorite, CustomUser
 from django.views.generic import DetailView
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+CustomUser = get_user_model()
 
 # Create your views here.
 def home(request):
@@ -63,30 +66,20 @@ def home(request):
 def room(request):
     return render(request, 'room.html')
 
-def login(request):
-    from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
-
-def login(request):
+def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            auth_login(request, user)
-            # se entrou aqui, é porque as credenciais estão corretas e o usuário foi autenticado
-            return redirect('home')
-        else:
-            # se entrou aqui, é porque as credenciais estão erradas
-            print('Credenciais inválidas. Por favor, tente novamente.')
-            return render(request, 'login.html', {'error_message': 'Credenciais inválidas. Por favor, tente novamente.'})
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            print(user)
+            if user is not None:
+                login(request, user)
+                return redirect('home')  
     else:
-        # se entrou aqui, é porque o método não foi POST
-        return render(request, 'login.html')
-
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
 
 def register(request):
     if request.method == 'POST':
@@ -96,27 +89,25 @@ def register(request):
         last_name = request.POST['last_name']
         cpf = request.POST['cpf']
         birth_date = request.POST['birth_date']
-        sex = request.POST['sex']
         street = request.POST['street']
         number = request.POST['number']
         neighborhood = request.POST['neighborhood']
         zip_code = request.POST['zip_code']
 
-        user = CustomUser.objects.create_user(
-            username=f'{name} {last_name}',
+        user = CustomUser(
+            username=f'{name.lower()}_',
             email=email,
-            password=password,
             name=name,
             last_name=last_name,
             cpf=cpf,
             birth_date=birth_date,
-            sex=sex,
             street=street,
             number=number,
             neighborhood=neighborhood,
             zip_code=zip_code
         )
-
+    
+        user.set_password(password)
         user.save()
         
         return redirect('login')
