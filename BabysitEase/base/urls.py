@@ -9,6 +9,6 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('profile/', views.profile, name="profile"),
     path('like/', views.favorited_babyssiter, name="favorited_babyssiter"),
-    path('babysitter/<str:pk>/', views.BabysitterDetailView.as_view(), name="babysitter_details"),
-
+    path('babysitter-dtl/<str:pk>/', views.BabysitterDetailView.as_view(), name="babysitter_details"),
+    path('editar-perfil/', views.PerfilUpdate.as_view(), name="editar-perfil"),
 ]

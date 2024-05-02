@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Babysitter, Favorite, CustomUser
+from .models import Babysitter, Favorite, CustomUser, Parent
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def home(request):
@@ -22,12 +25,12 @@ def home(request):
     
     # Inicializa o array de babás que vai para a home
     babysitters = []
-    if(range):
-        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max)
+    if(range and intervalo):
+        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max,experience_years__gte=inicio,experience_years__lte=fim)
     elif(intervalo):
         Babysitter_list = Babysitter.objects.filter(experience_years__gte=inicio,experience_years__lte=fim)
-    elif(range and intervalo):
-        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max,experience_years__gte=inicio,experience_years__lte=fim)
+    elif(range):
+        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max)
     else:
         Babysitter_list=Babysitter.objects.all()
     # Itera sobre todas as babás cadastradas
@@ -146,3 +149,21 @@ def favorited_babyssiter(request):
 class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
     queryset = Babysitter.objects.all()
+
+class PerfilUpdate(UpdateView):
+    model = Parent
+    fields = ['name', 'last_name', 'street', 'number', 'neiborhood', 'zip_code', 'sex']
+    template_name='form.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        self.object = get_object_or_404(Parent, user_id=self.request.user)
+        return self.object
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context["tituilo"] = "Editando Perfil"
+        context["botao"] = "Atualizar"
+
+        return context
