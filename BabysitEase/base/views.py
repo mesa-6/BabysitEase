@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Babysitter, Favorite, CustomUser, Parent
 from django.views.generic import DetailView
 from django.contrib.auth import authenticate, login, get_user_model
-from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
