@@ -25,8 +25,8 @@
                             <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40">                            
                         </a>
                         <div class="dropdown-menu dropdown-menu-end rounded">
-                            <a class="dropdown-item" href="#">Item 1</a>
-                            <a class="dropdown-item" href="#">Item 2</a>
+                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                            <a class="dropdown-item" href="{% url 'editar-perfil' %}">Editar Perfil</a>
                             <a class="dropdown-item" href="#">Item 3</a>
                         </div>
                     </li>
@@ -45,8 +45,7 @@
                 <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#" >
                 <div class="card-body">
                     <h5 class="card-title">{{ babysitter.name }} {{ babysitter.last_name }}</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="card-text">{{ babysitter.description }}</p>
                 </div>
             </div>
         </div>
@@ -55,13 +54,21 @@
                 <div class="card-body">
                     <h5 class="card-title">Profile Details</h5>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Email:</strong> user@example.com</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ babysitter.email }}</li>
                         <li class="list-group-item"><strong>Phone:</strong> +1234567890</li>
-                        <li class="list-group-item"><strong>Address:</strong> 123, Street Name, City, Country</li>
-                        <li class="list-group-item"><strong>Bio:</strong> Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat.</li>
+                        <li class="list-group-item"><strong>Address:</strong> {{ babysitter.number }}, {{ babysitter.street }}, Recife</li>
+                        <li class="list-group-item"><strong>Sex:</strong> {{ babysitter.sex }}</li>
+                        <li class="list-group-item"><strong>Documentation:</strong>
+                            {% if babysitter.documents_submitted %} 
+                                Apresentou documentos oficiais.
+                            {% else %} 
+                                Não apresentou documentos.
+                            {% endif %}
+                        </li>
+                        <li class="list-group-item"><strong>Hourly Price:</strong> R$ {{ babysitter.hourly_price }}</li>
+                        <li class="list-group-item"><strong>Experience Years:</strong> {{ babysitter.experience_years }}</li>
+                        <li class="list-group-item"><strong>Ratting:</strong> {{ babysitter.rating }}/5</li>
+
                     </ul>
                 </div>
             </div>
