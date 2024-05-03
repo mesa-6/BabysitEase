@@ -20,12 +20,11 @@ def home(request):
     user = request.user
     range=request.GET.get("range")
     intervalo=request.GET.get("intervalo")
+
     if(range):
         min, max=range.split(',')
     if(intervalo):
-        inicio, fim=intervalo.split(',')
-    
-    
+        inicio, fim=intervalo.split(',')    
     
     # Busca todas as instâncias de favoritos do usuário
     favorites = Favorite.objects.filter(user_id=user.id)
@@ -51,6 +50,7 @@ def home(request):
         ).select_related('user')
     else:
         Babysitter_list=Babysitter.objects.all().select_related('user')
+
     # Itera sobre todas as babás cadastradas
     for babysitter_obj in Babysitter_list:
         
@@ -77,7 +77,7 @@ def home(request):
         'babysitters': babysitters,  
         'user': user
     }
-    
+
     # Renderiza a home
     return render(request, 'home.html', context)
 
@@ -87,7 +87,6 @@ def room(request):
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
-        print(form.errors.as_data())
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -141,20 +140,19 @@ def register(request):
 def profile(request):
     return render(request, 'profile.html')
 
-def favorited_babyssiter(request):
+def favorited_babyssiter(request, pk):
     user = request.user
 
     if request.method == 'POST':
-        post_id = request.POST.get('post_id')
-        babysitter = Babysitter.objects.get(cpf=post_id)
+        babysitter = Babysitter.objects.get(cpf=pk)
         
         favorited = {}
         
         try:
-            favorited = Favorite.objects.get(user_id=user.id, babysitter=post_id) 
+            favorited = Favorite.objects.get(user=user, babysitter=pk) 
             Favorite.delete(favorited)
         except:
-            Favorite.objects.create(user_id=user, babysitter=babysitter)
+            Favorite.objects.create(user=user, babysitter=babysitter)
     
     
     return redirect('home')
@@ -179,8 +177,8 @@ def forgot_password(request):
 
         # Enviar a nova senha por email
         send_mail(
-            'Recuperação de senha',
-            f'Sua senha é {nova_senha}',
+            f'Recuperação de senha',
+            f'Olá {user.get_username().capitalize()}, você está recebendo esse email pois houve uma solicitação de recuperação de senha no BabysitEase. Então, sua nova senha é {nova_senha}. Por favor, altere sua senha assim que possível na aba editar perfil.',
             'gheyson.melo@ufpe.br',
             [email],
             fail_silently=False,
