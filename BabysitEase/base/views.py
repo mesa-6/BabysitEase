@@ -20,12 +20,11 @@ def home(request):
     user = request.user
     range=request.GET.get("range")
     intervalo=request.GET.get("intervalo")
+
     if(range):
         min, max=range.split(',')
     if(intervalo):
-        inicio, fim=intervalo.split(',')
-    
-    
+        inicio, fim=intervalo.split(',')    
     
     # Busca todas as instâncias de favoritos do usuário
     favorites = Favorite.objects.filter(user_id=user.id)
@@ -51,6 +50,7 @@ def home(request):
         ).select_related('user')
     else:
         Babysitter_list=Babysitter.objects.all().select_related('user')
+
     # Itera sobre todas as babás cadastradas
     for babysitter_obj in Babysitter_list:
         
@@ -77,7 +77,7 @@ def home(request):
         'babysitters': babysitters,  
         'user': user
     }
-    
+
     # Renderiza a home
     return render(request, 'home.html', context)
 
@@ -141,20 +141,20 @@ def register(request):
 def profile(request):
     return render(request, 'profile.html')
 
-def favorited_babyssiter(request):
+def favorited_babyssiter(request, pk):
     user = request.user
 
     if request.method == 'POST':
-        post_id = request.POST.get('post_id')
-        babysitter = Babysitter.objects.get(cpf=post_id)
+        print(request.POST)
+        babysitter = Babysitter.objects.get(cpf=pk)
         
         favorited = {}
         
         try:
-            favorited = Favorite.objects.get(user_id=user.id, babysitter=post_id) 
+            favorited = Favorite.objects.get(user=user, babysitter=pk) 
             Favorite.delete(favorited)
         except:
-            Favorite.objects.create(user_id=user, babysitter=babysitter)
+            Favorite.objects.create(user=user, babysitter=babysitter)
     
     
     return redirect('home')
