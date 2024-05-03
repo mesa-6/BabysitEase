@@ -87,7 +87,6 @@ def room(request):
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
-        print(form.errors.as_data())
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -145,7 +144,6 @@ def favorited_babyssiter(request, pk):
     user = request.user
 
     if request.method == 'POST':
-        print(request.POST)
         babysitter = Babysitter.objects.get(cpf=pk)
         
         favorited = {}
@@ -179,8 +177,8 @@ def forgot_password(request):
 
         # Enviar a nova senha por email
         send_mail(
-            'Recuperação de senha',
-            f'Sua senha é {nova_senha}',
+            f'Recuperação de senha',
+            f'Olá {user.get_username().capitalize()}, você está recebendo esse email pois houve uma solicitação de recuperação de senha no BabysitEase. Então, sua nova senha é {nova_senha}. Por favor, altere sua senha assim que possível na aba editar perfil.',
             'gheyson.melo@ufpe.br',
             [email],
             fail_silently=False,
