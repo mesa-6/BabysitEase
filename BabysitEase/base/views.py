@@ -84,7 +84,7 @@ def login_view(request):
                 return redirect('home')  
     else:
         form = AuthenticationForm()
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 def register(request):
     if request.method == 'POST':
