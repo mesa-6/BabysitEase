@@ -191,23 +191,20 @@ class BabysitterDetailView(DetailView):
     queryset = Babysitter.objects.all()
 
 class PerfilUpdate(UpdateView):
-    model = Parent
-    fields = ['name', 'last_name', 'street', 'number', 'neiborhood', 'zip_code', 'sex']
-    template_name='form.html'
+    model = CustomUser
+    fields = ['first_name', 'last_name', 'street', 'number', 'neighborhood', 'zip_code', 'sex']
+    template_name = 'form.html'
     success_url = reverse_lazy('home')
 
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(Parent, user_id=self.request.user)
-        return self.object
+        return self.request.user
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-
-        context["tituilo"] = "Editando Perfil"
+        context["titulo"] = "Editando Perfil"
         context["botao"] = "Atualizar"
-
         return context
-    
+
 def generate_secure_password(length=12):
     characters = string.ascii_letters + string.digits + string.punctuation
     secure_password = ''.join(secrets.choice(characters) for i in range(length))

@@ -210,7 +210,7 @@
                                 <small class="text-muted">Preço/Hora: R$ {{ babysitter.hourly_price }}</small>
                             </div>
                             <div class="card-footer d-grid gap-2">
-                                <a href="{% url 'babysitter_details' pk=babysitter %}" class="btn btn-readmore d-inline-block align-items-center justify-content-center">Read More</a>
+                                <a href="{% url 'babysitter_details' pk=babysitter.cpf %}" class="btn btn-readmore d-inline-block align-items-center justify-content-center">Read More</a>
                                 <div>
                                     <form action="{% url 'favorited_babyssiter' pk=babysitter.cpf %}" method="POST" class="ui form">
                                         {% csrf_token %}
