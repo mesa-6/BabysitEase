@@ -7,6 +7,9 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
+from django.core.mail import send_mail
+import os
+
 CustomUser = get_user_model()
 
 # Create your views here.
@@ -76,7 +79,6 @@ def login_view(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            print(user)
             if user is not None:
                 login(request, user)
                 return redirect('home')  
@@ -98,7 +100,7 @@ def register(request):
         zip_code = request.POST['zip_code']
 
         user = CustomUser(
-            username=f'{name.lower()}_',
+            username=f'{name.lower()}',
             email=email,
             name=name,
             last_name=last_name,
@@ -141,6 +143,27 @@ def logout_view(request):
     auth_logout(request)
     return redirect('home')
 
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        user = CustomUser.objects.get(email=email)
+
+        # Gerar um uuid para ser a nova senha
+        uuid = os.urandom(16).hex()
+
+        # Atualizar a senha do usuário
+        user.set_password(uuid)
+
+        # Enviar a nova senha por email
+        send_mail(
+            'Recuperação de senha',
+            f'Sua senha é {uuid}',
+            'gheyson.melo@ufpe.br',
+            [email],
+            fail_silently=False,
+        )
+        return redirect('login')
+    return render(request, 'forgot-password.html')
 
 class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
