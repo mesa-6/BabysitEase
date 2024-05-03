@@ -8,7 +8,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
 from django.core.mail import send_mail
-import os
+import string, secrets
+from django.contrib import messages
 
 CustomUser = get_user_model()
 
@@ -86,15 +87,23 @@ def room(request):
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
+        print(form.errors.as_data())
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  
+                return redirect('home')
+            else:
+                messages.error(request, 'Credenciais inválidas.')
+        else:
+            messages.error(request, 'Credenciais inválidas.')
+            # Aqui você pode adicionar um contador de tentativas de login e bloquear temporariamente o usuário se exceder um limite
+
     else:
         form = AuthenticationForm()
+    
     return render(request, 'login.html', {'form': form})
 
 def register(request):
@@ -159,16 +168,19 @@ def forgot_password(request):
         email = request.POST['email']
         user = CustomUser.objects.get(email=email)
 
-        # Gerar um uuid para ser a nova senha
-        uuid = os.urandom(16).hex()
+        # Gerar nova senha
+        nova_senha = generate_secure_password()
 
         # Atualizar a senha do usuário
-        user.set_password(uuid)
+        user.set_password(nova_senha)
+
+        # Salvar a nova senha
+        user.save()
 
         # Enviar a nova senha por email
         send_mail(
             'Recuperação de senha',
-            f'Sua senha é {uuid}',
+            f'Sua senha é {nova_senha}',
             'gheyson.melo@ufpe.br',
             [email],
             fail_silently=False,
@@ -197,3 +209,8 @@ class PerfilUpdate(UpdateView):
         context["botao"] = "Atualizar"
 
         return context
+    
+def generate_secure_password(length=12):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    secure_password = ''.join(secrets.choice(characters) for i in range(length))
+    return secure_password
