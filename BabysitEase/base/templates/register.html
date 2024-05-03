@@ -28,61 +28,95 @@
                         <div class="mb-4">
                             <span style="color: rgb(148, 148, 148);">Já tem uma conta? <a href="{% url 'login' %}" class="text-decoration-none">Entrar </a></span>
                         </div>
-                        <form action="{% url 'register' %}" method="post">
+                        <form class="needs-validation" action="{% url 'register' %}" method="post" novalidate>
                             {% csrf_token %}
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your last name">
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your last name" required>
+                                <div class="invalid-feedback">
+                                    Please enter your last name.
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your email" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Your password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="cpf" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Your CPF">
+                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Your CPF" required>
+                                <div class="invalid-feedback">
+                                    Please enter your CPF.
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="birth_date" class="form-label">Birth Date</label>
-                                    <input type="date" class="form-control" id="birth_date" name="birth_date">
+                                    <input type="date" class="form-control" id="birth_date" name="birth_date" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your birth date.
+                                    </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="sex" class="form-label">Sex</label>
-                                    <select class="form-select" id="sex" name="sex">
+                                    <select class="form-select" id="sex" name="sex" required>
+                                        <option value="">Choose...</option>
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        Please select your sex.
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="street" class="form-label">Street</label>
-                                <input type="text" class="form-control" id="street" name="street" placeholder="Your street">
+                                <input type="text" class="form-control" id="street" name="street" placeholder="Your street" required>
+                                <div class="invalid-feedback">
+                                    Please enter your street.
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="neiborhood" class="form-label">Neighborhood</label>
-                                    <input type="text" class="form-control" id="neiborhood" name="neighborhood" placeholder="Your neighborhood">
+                                    <input type="text" class="form-control" id="neiborhood" name="neighborhood" placeholder="Your neighborhood" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your neighborhood.
+                                    </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="zip_code" class="form-label">ZIP Code</label>
-                                    <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Your ZIP code">
+                                    <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Your ZIP code" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your ZIP code.
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="number" class="form-label">Number</label>
-                                    <input type="text" class="form-control" id="number" name="number" placeholder="Your number">
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Your number" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your number.
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-end">
@@ -93,6 +127,28 @@
                 </div>
             </div>
         </div>
-    </div>
+        
+        <script>
+            (function () {
+              'use strict'
+        
+              var forms = document.querySelectorAll('.needs-validation')
+        
+              Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                  form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+        
+                    form.classList.add('was-validated')
+                  }, false)
+                })
+            })()
+        </script>
+        
+        
+        
 </body>
 </html>
