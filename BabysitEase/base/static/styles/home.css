@@ -120,6 +120,7 @@ a.sidebar-link:hover {
     position: relative;
 }
 
+
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
     position: absolute;
     top: 0;
