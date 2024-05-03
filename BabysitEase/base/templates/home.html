@@ -32,26 +32,26 @@
                         <span>Preço</span>
                     </a>
                     <ul id="location" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <form action="{% url 'home' %}" method="GET">
-                            <li class="sidebar-item">
-                                <label>
-                                    <input type="radio" name="range" value="6.42,20">
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="range" id="low-price" value="6.42,20" checked>
+                                <label class="form-check-label text-white" for="low-price" style="font-size: 14px;">
                                     Preço baixo
                                 </label>
-                            </li>
-                            <li class="sidebar-item">
-                                <label>
-                                    <input type="radio" name="range" value="21,40">
-                                    medio
+                            </div>
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="range" id="medium-price" value="21,40">
+                                <label class="form-check-label text-white" for="medium-price" style="font-size: 14px;">
+                                    Médio
                                 </label>
-                            </li>
-                            <li class="sidebar-item">
-                                <label>
-                                    <input type="radio" name="range" value="41,60">
-                                    alto
+                            </div>
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="range" id="high-price" value="41,60">
+                                <label class="form-check-label text-white" for="high-price" style="font-size: 14px;">
+                                    Alto
                                 </label>
-                            </li>
-                            <button type="submit" class="sidebar-item">Filtrar</button>
+                            </div>
+                            <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
                         </form>
                     </ul>
                 </li>
@@ -62,15 +62,33 @@
                         <span>Disponibilidade</span>
                     </a>
                     <ul id="availability" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Hoje</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Esta Semana</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Próxima Semana</a>
-                        </li>
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="availability" id="today" value="today">
+                                    <label class="form-check-label text-white" for="today" style="font-size: 14px;">
+                                        Hoje
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="availability" id="this-week" value="this_week">
+                                    <label class="form-check-label text-white" for="this-week" style="font-size: 14px;">
+                                        Esta Semana
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="availability" id="next-week" value="next_week">
+                                    <label class="form-check-label text-white" for="next-week" style="font-size: 14px;">
+                                        Próxima Semana
+                                    </label>
+                                </div>
+                            </li>
+                            <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                        </form>
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -80,27 +98,33 @@
                         <span>Experiência</span>
                     </a>
                     <ul id="experience" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <form action="{% url 'home' %}" method="GET">
-                            <li class="sidebar-item">
-                                <label>
-                                    <input type="radio" name="intervalo" value="0,2">
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                        <li class="sidebar-item">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="intervalo" id="beginner" value="0,2" checked>
+                                <label class="form-check-label text-white" for="beginner" style="font-size: 14px;">
                                     Iniciante
                                 </label>
-                            </li>
-                            <li class="sidebar-item">
-                                <label>
-                                    <input type="radio" name="intervalo" value="2,3">
+                            </div>
+                        </li>
+                        <li class="sidebar-item">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="intervalo" id="intermediate" value="2,3">
+                                <label class="form-check-label text-white" for="intermediate" style="font-size: 14px;">
                                     Intermediário
                                 </label>
-                            </li>
-                            <li class="sidebar-item">
-                                <label>
-                                    <input type="radio" name="intervalo" value="4,5">
+                            </div>
+                        </li>
+                        <li class="sidebar-item">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="intervalo" id="advanced" value="4,5">
+                                <label class="form-check-label text-white" for="advanced" style="font-size: 14px;">
                                     Avançado
                                 </label>
-                            </li>
-                            <button type="submit" class="sidebar-item">Filtrar</button>
-                        </form>
+                            </div>
+                        </li>
+                        <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                    </form>
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -110,18 +134,37 @@
                         <span>Idioma</span>
                     </a>
                     <ul id="language" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Inglês</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Espanhol</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Português</a>
-                        </li>
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="intervalo" id="english" value="4,5">
+                                    <label class="form-check-label text-white" for="english" style="font-size: 14px;">
+                                        Inglês
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="intervalo" id="spanish" value="4,5">
+                                    <label class="form-check-label text-white" for="spanish" style="font-size: 14px;">
+                                        Espanhol
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="intervalo" id="portuguese" value="4,5">
+                                    <label class="form-check-label text-white" for="portuguese" style="font-size: 14px;">
+                                        Português
+                                    </label>
+                                </div>
+                            </li>
+                            <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                        </form>
                     </ul>
                 </li>
             </ul>
+            
         </aside>
         <div class="main">
             <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
@@ -171,7 +214,6 @@
                                 <div>
                                     <form action="{% url 'favorited_babyssiter' %}" method="POST" class="ui form">
                                         {% csrf_token %}
-                                        <input type="radio" name="post_id" value="{{ babysitter.cpf }}">
                                         {% if babysitter.favorited %}
                                         <button type="submit" class="btn btn-success">❤ Favorited</button>
                                         {% else %}
