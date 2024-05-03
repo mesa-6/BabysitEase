@@ -32,22 +32,33 @@ def home(request):
     # Inicializa o array de babás que vai para a home
     babysitters = []
     if(range and intervalo):
-        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max,experience_years__gte=inicio,experience_years__lte=fim)
+        Babysitter_list = Babysitter.objects.filter(
+            hourly_price__gte=min, 
+            hourly_price__lte=max,
+            experience_years__gte=inicio,
+            experience_years__lte=fim
+        ).select_related('user')
     elif(intervalo):
-        Babysitter_list = Babysitter.objects.filter(experience_years__gte=inicio,experience_years__lte=fim)
+        Babysitter_list = Babysitter.objects.filter(
+            experience_years__gte=inicio,
+            experience_years__lte=fim
+        ).select_related('user')
     elif(range):
-        Babysitter_list = Babysitter.objects.filter(hourly_price__gte=min, hourly_price__lte=max)
+        Babysitter_list = Babysitter.objects.filter(
+            hourly_price__gte=min, 
+            hourly_price__lte=max
+        ).select_related('user')
     else:
-        Babysitter_list=Babysitter.objects.all()
+        Babysitter_list=Babysitter.objects.all().select_related('user')
     # Itera sobre todas as babás cadastradas
     for babysitter_obj in Babysitter_list:
         
         # Verifica se a babá está nos favoritos do usuário
-        is_favorited = favorites.filter(babysitter_cpf=babysitter_obj.cpf, user_id = user.id).exists()
+        is_favorited = favorites.filter(babysitter=babysitter_obj, user_id = user.id).exists()
         
         # Monta o payload de dados da babá para a home
         babysitter_data = {
-            'name': babysitter_obj.name,
+            'name': babysitter_obj.user,
             'description': babysitter_obj.description,
             'hourly_price': babysitter_obj.hourly_price,
             'favorited': is_favorited,  
@@ -102,7 +113,7 @@ def register(request):
         user = CustomUser(
             username=f'{name.lower()}',
             email=email,
-            name=name,
+            first_name=name,
             last_name=last_name,
             cpf=cpf,
             birth_date=birth_date,
@@ -131,10 +142,10 @@ def favorited_babyssiter(request):
         favorited = {}
         
         try:
-            favorited = Favorite.objects.get(user_id=user.id, babysitter_cpf=post_id) 
+            favorited = Favorite.objects.get(user_id=user.id, babysitter=post_id) 
             Favorite.delete(favorited)
         except:
-            Favorite.objects.create(user_id=user, babysitter_cpf=babysitter)
+            Favorite.objects.create(user_id=user, babysitter=babysitter)
     
     
     return redirect('home')

@@ -20,6 +20,7 @@ class Babysitter(models.Model):
     education_level = models.CharField(max_length=50)
     description = models.TextField()
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # favorited = models.ManyToManyField(CustomUser, default=None, blank=True, related_name='favorited')
 
     def __str__(self):
         return self.cpf
