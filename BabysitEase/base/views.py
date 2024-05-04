@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Babysitter, Favorite, CustomUser, Parent
+from .models import Babysitter, Favorite, CustomUser, Schedule
 from django.views.generic import DetailView
 from django.contrib.auth import authenticate, login, get_user_model
 from django.views.generic.edit import UpdateView
@@ -186,9 +186,73 @@ def forgot_password(request):
         return redirect('login')
     return render(request, 'forgot-password.html')
 
+def schedules_solicitation(request):
+    if request.method == 'POST':
+        print(request.POST)
+
+        return redirect('home')
+
 class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
     queryset = Babysitter.objects.all()
+
+class BabysitterDetailView(DetailView):
+    template_name = 'babysitterDetails.html'
+    model = Babysitter
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        babysitter = self.get_object() 
+
+        # Adiciona o objeto Babysitter ao contexto
+        context['babysitter'] = babysitter
+
+        # Obtém todos os horários relacionados a esta babá
+        schedules = Schedule.objects.filter(babysitter=babysitter)
+
+        schedule_info = []
+
+        for schedule in schedules:
+            schedule = str(schedule)
+            # Divida a string por "-" para extrair informações
+            schedule_parts = schedule.split('-')
+
+            # Extrair o dia, o período do dia e o status de disponibilidade
+            day = schedule_parts[1]
+            time_of_day = schedule_parts[2]
+            availability = schedule_parts[3]
+
+            # Adicione as informações extraídas ao array
+            schedule_info.append({
+                'day': day,
+                'period': time_of_day,
+                'status': availability
+            })
+
+            
+        # Dicionário para mapear os dias da semana para números
+        day_order = {
+            'monday': 1,
+            'tuesday': 2,
+            'wednesday': 3,
+            'thursday': 4,
+            'friday': 5,
+            'saturday': 6,
+            'sunday': 7
+        }
+
+        period_order = {
+            'morning': 1,
+            'afternoon': 2,
+            'night': 3
+        }
+
+        # Ordena os horários por dia e período do dia
+        schedule_info.sort(key=lambda x: (day_order[x['day']], period_order[x['period']]))
+
+        # Adiciona os horários ao contexto
+        context['schedules'] = schedule_info
+        return context
 
 class PerfilUpdate(UpdateView):
     model = CustomUser

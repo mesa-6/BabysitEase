@@ -13,4 +13,5 @@ urlpatterns = [
     path('editar-perfil/', views.PerfilUpdate.as_view(), name="editar-perfil"),
     path('logout/', views.logout_view, name='logout'),
     path('forgot-password/', views.forgot_password, name='forgot-password'),
+    path('schedules-solicitation/', views.schedules_solicitation, name='schedules-solicitation'),
 ]

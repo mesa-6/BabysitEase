@@ -49,7 +49,7 @@ class Favorite(models.Model):
 
 class Schedule(models.Model):
     babysitter = models.ForeignKey(Babysitter, on_delete=models.CASCADE)
-    status=models.CharField(max_length=15,choices=[('available','available'),('unavailable','unavailable')])
+    status=models.CharField(max_length=15,choices=[('Disponível','Disponível'),('Indisponível','Indisponível'), ('Pendente','Pendente')])
     period = models.CharField(choices=[('morning', 'Morning'), ('afternoon', 'Afternoon'), ('night', 'Night')], max_length=10)
     day = models.CharField(choices=[('monday', 'Monday'), ('tuesday', 'Tuesday'), ('wednesday', 'Wednesday'), ('thursday', 'Thursday'), ('friday', 'Friday'), ('saturday', 'Saturday'), ('sunday', 'Sunday')], max_length=10)
 
@@ -57,4 +57,4 @@ class Schedule(models.Model):
         unique_together = ('babysitter', 'day', 'period')
 
     def __str__(self):
-        return f'{self.babysitter} - {self.day} - {self.period}'
+        return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}'
