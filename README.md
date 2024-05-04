@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/mesa-6/BabysitEase/assets/160547501/ae494e15-e114-47ec-ae2b-559e54894a77" >
+    <img src="https://github.com/mesa-6/BabysitEase/blob/main/prints/326804941-ae494e15-e114-47ec-ae2b-559e54894a77-removebg-preview.png" >
 </p>
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/mesa-6/BabysitEase?style=flat" alt="Repository Size" />

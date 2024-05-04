@@ -16,27 +16,25 @@ Given('que tenho um perfil de usuário chamado "tiago" no site', () => {
     'bairro',
     '12345178',
     '113')
-    cy.login('teste', 
+    cy.login('tiago', 
     '1' )
+    
   });
   
   And('esteja na página "Profile"', () => {
-    cy.visit('/profile');
-    cy.wait(2000);
+    cy.verProfile();
+
   });
-  
   When('eu acessar "Editar Perfil", e trocar o nome para "hiago"', () => {
     cy.get('#EditarPerfil').click();
-
-    cy.get('#MudarNome').click().type('hiago');
-
+    cy.get('#id_first_name').clear().type('hiago');
     cy.get('#AtualizarPerfil').click();
 
 });
-  
+
   Then('o novo nome do perfil deve ser "hiago"', () => {
-    cy.visit('/profile');
-    cy.wait(2000);
+    cy.verProfile();
     cy.get('#username').invoke('val').should('contain', 'hiago');
+
 });
 
