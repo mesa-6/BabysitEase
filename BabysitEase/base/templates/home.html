@@ -167,35 +167,36 @@
             
         </aside>
         <div class="main">
-            <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
-                <nav class="navbar navbar-expand px-4 py-3">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="{% url 'home' %}"> <span style="font-weight: bold; font-size: 25px; font-family: 'Roboto', sans-serif; color: #746d8d;">BabysitEase</span> </a>
+            <nav class="navbar navbar-expand px-4 py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <span style="font-weight: bold; font-size: 25px; font-family: 'Roboto', sans-serif; color: #746d8d;">BabysitEase</span>
+                    </a>
+                    <div class="d-flex align-items-center mr-4"> 
+                        {% if user.is_authenticated %}
+                        <p class="ms-4 mb-0" style= "font-weight: bold; font-size: 20px; font-family: 'Roboto', sans-serif; color: #746d8d;">Olá {{ request.user.first_name }}!</p> 
+                        {% endif %}
                     </div>
-                    <form action="#" class="d-none d-sm-inline-block">
-
-                    </form>
-                    <div class="navbar-collapse collapse">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item dropdown">
-                                <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                    <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40">                            
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end rounded">
-                                    {% if user.is_authenticated %}
-                                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                                    <a class="dropdown-item" href="{% url 'editar-perfil' %}">Editar Perfil</a>
-                                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                                    {% else %}
-                                    <a class="dropdown-item" href="{% url 'register' %}">Criar Conta</a>
-                                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                                    {% endif %}
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40" style="max-width: none;">                            
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end rounded">
+                                {% if user.is_authenticated %}
+                                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                <a class="dropdown-item" href="{% url 'editar-perfil' %}">Editar Perfil</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                {% else %}
+                                <a class="dropdown-item" href="{% url 'register' %}">Criar Conta</a>
+                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
             <main class="content px-3 py-4">
                 <div class="row row-cols-1 row-cols-md-4 g-4 flex-wrap">
                     {% for babysitter in babysitters %}
@@ -215,7 +216,7 @@
                                     <form action="{% url 'favorited_babyssiter' pk=babysitter.cpf %}" method="POST" class="ui form">
                                         {% csrf_token %}
                                         {% if babysitter.favorited %}
-                                        <button type="submit" class="btn btn-success">❤ Favorited</button>
+                                        <button type="submit" id="FavSuccess" class="btn btn-success">❤ Favorited</button>
                                         {% else %}
                                         <button type="submit" class="btn btn-outline-secondary">♡ Favorite</button>
                                         {% endif %}
