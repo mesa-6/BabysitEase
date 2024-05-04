@@ -179,12 +179,12 @@
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <a href="#" id="imgDropdown" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40" style="max-width: none;">                            
                             </a>
                             <div class="dropdown-menu dropdown-menu-end rounded">
                                 {% if user.is_authenticated %}
-                                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                <a id="verProfile" class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                                 <a class="dropdown-item" href="{% url 'editar-perfil' %}">Editar Perfil</a>
                                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                                 {% else %}
