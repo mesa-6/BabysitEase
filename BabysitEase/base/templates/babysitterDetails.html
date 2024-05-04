@@ -79,7 +79,7 @@
   <div class="col-md-8">
       <h2 class="text-left">Calendar</h2>
       <div class="table-responsive">
-          <table class="table table-bordered text-center">
+          <table id="calendarTable" class="table table-bordered text-center">
               <thead>
                   <tr>
                       <th scope="col">Days</th>
@@ -94,36 +94,39 @@
               <tbody>
                   <tr>
                       <th scope="row">Morning</th>
-                      <td class="calendar-item">Morning</td>
-                      <td class="calendar-item">Morning</td>
-                      <td class="calendar-item">Morning</td>
-                      <td class="calendar-item">Morning</td>
-                      <td class="calendar-item">Morning</td>
-                      <td class="calendar-item">Morning</td>
+                      <td class="calendar-item" data-day="Monday" data-time="Morning">Morning</td>
+                      <td class="calendar-item" data-day="Tuesday" data-time="Morning">Morning</td>
+                      <td class="calendar-item" data-day="Wednesday" data-time="Morning">Morning</td>
+                      <td class="calendar-item" data-day="Thursday" data-time="Morning">Morning</td>
+                      <td class="calendar-item" data-day="Friday" data-time="Morning">Morning</td>
+                      <td class="calendar-item" data-day="Saturday" data-time="Morning">Morning</td>
                   </tr>
                   <tr>
                       <th scope="row">Evening</th>
-                      <td class="calendar-item">Evening</td>
-                      <td class="calendar-item">Evening</td>
-                      <td class="calendar-item">Evening</td>
-                      <td class="calendar-item">Evening</td>
-                      <td class="calendar-item">Evening</td>
-                      <td class="calendar-item">Evening</td>
+                      <td class="calendar-item" data-day="Monday" data-time="Evening">Evening</td>
+                      <td class="calendar-item" data-day="Tuesday" data-time="Evening">Evening</td>
+                      <td class="calendar-item" data-day="Wednesday" data-time="Evening">Evening</td>
+                      <td class="calendar-item" data-day="Thursday" data-time="Evening">Evening</td>
+                      <td class="calendar-item" data-day="Friday" data-time="Evening">Evening</td>
+                      <td class="calendar-item" data-day="Saturday" data-time="Evening">Evening</td>
                   </tr>
                   <tr>
                       <th scope="row">Night</th>
-                      <td class="calendar-item">Night</td>
-                      <td class="calendar-item">Night</td>
-                      <td class="calendar-item">Night</td>
-                      <td class="calendar-item">Night</td>
-                      <td class="calendar-item">Night</td>
-                      <td class="calendar-item">Night</td>
+                      <td class="calendar-item" data-day="Monday" data-time="Night">Night</td>
+                     
+
+ <td class="calendar-item" data-day="Tuesday" data-time="Night">Night</td>
+                      <td class="calendar-item" data-day="Wednesday" data-time="Night">Night</td>
+                      <td class="calendar-item" data-day="Thursday" data-time="Night">Night</td>
+                      <td class="calendar-item" data-day="Friday" data-time="Night">Night</td>
+                      <td class="calendar-item" data-day="Saturday" data-time="Night">Night</td>
                   </tr>
               </tbody>
           </table>
       </div>
-      <button class="btn btn-send mt-4 float-end" data-bs-toggle="modal" data-bs-target="#confirmModal">Solicitar</button>
-      <!-- Modal -->
+      <!-- Botão para abrir o modal de confirmação -->
+      <button id="confirmButton" class="btn btn-send mt-4 float-end" data-bs-toggle="modal" data-bs-target="#confirmModal">Solicitar</button>
+      <!-- Modal de confirmação -->
       <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -136,7 +139,8 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Enviar</button>
+              <!-- Botão dentro do modal para enviar os dados -->
+              <button type="button" id="sendDataButton" class="btn btn-primary">Enviar</button>
             </div>
           </div>
         </div>
@@ -168,10 +172,64 @@
   <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
   <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
   <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
   crossorigin="anonymous"></script>
-  <script src="{% static 'styles/details.js' %}">
-  </script>
+<script src="{% static 'styles/details.js' %}"></script>
+
+<script>
+  // Função para lidar com a seleção das células da tabela
+  function handleCellSelection(event) {
+    const selectedCell = event.target;
+    
+    // Verifica se a célula já está selecionada
+    const isSelected = selectedCell.classList.contains('selected');
+
+    if (!isSelected) {
+      // Adiciona a classe 'selected' para destacar a célula selecionada
+      selectedCell.classList.add('selected');
+      // Muda a cor de fundo da célula selecionada
+      selectedCell.style.backgroundColor = '#4d4861'; // ou qualquer outra cor que você desejar
+    } else {
+      // Remove a classe 'selected' da célula se ela já estiver selecionada
+      selectedCell.classList.remove('selected');
+      // Retorna a cor de fundo padrão da célula
+      selectedCell.style.backgroundColor = ''; // Retorna à cor padrão do CSS
+    }
+  }
+
+  // Função para enviar os dados selecionados
+  function sendData() {
+    const selectedCells = document.querySelectorAll('.selected');
+    const selectedData = [];
+
+    selectedCells.forEach(cell => {
+      const day = cell.dataset.day;
+      const time = cell.dataset.time;
+      selectedData.push({ day, time });
+    });
+
+    console.log(selectedData); // Aqui você pode enviar os dados selecionados para o backend
+
+    // Fechar o modal após enviar os dados
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.hide();
+  }
+
+  // Adiciona o evento de clique a todas as células da tabela
+  const calendarCells = document.querySelectorAll('.calendar-item');
+  calendarCells.forEach(cell => {
+    cell.addEventListener('click', handleCellSelection);
+  });
+
+  // Obtém o botão de enviar dentro do modal
+  const sendDataButton = document.getElementById('sendDataButton');
+
+  // Adiciona o evento de clique ao botão de enviar dentro do modal
+  sendDataButton.addEventListener('click', sendData);
+</script>
+
 </body>
 </html>
