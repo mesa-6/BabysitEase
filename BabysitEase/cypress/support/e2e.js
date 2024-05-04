@@ -14,8 +14,10 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 require('./pages/home.pages')
+require('./pages/cadastro.pages')
+require('./pages/login.pages')
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
