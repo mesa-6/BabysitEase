@@ -1,91 +1,241 @@
-{% extends 'main.html' %} {% load static %} {% block content %}
-<style>
-  /* Estilo para o corpo da página */
-  body {
-    background-color: #fdf9f1;
-  }
+<!DOCTYPE html>
+{% load static %}
+<html>
 
-  /* Estilo para o contêiner principal da página inicial */
-  .home-container {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 20px;
-    border-radius: 7px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+</head>
 
-  .card-content {
-    padding: 10px;
-  }
-  .button-group{
-    display: flex;
-    justify-content: center;
-  }
-  #btn-favorite{
-    background-color:  #f0f0f0;
-    margin-left: 130px;
-  }
-  .main-content{
-    display: flex;
-    justify-content: center;
-    
-  }
-</style>
-{% block head %}
-<!--Chamando o CSS dos cards-->
-<link rel="stylesheet" type="text/css" href="{% static 'styles/cards.css' %}" />
-{% endblock head %}
-<div class="home-container">
-  <!--Chamando os filtros-->
-  {% include 'filter.html' %}
-  <div class="main-content m-3">
-    <!-- Criando as colunas -->
-    <div class="col-md-10">
-      <div class="row">
-        <!-- criando os cards das babas-->
-        {% for babysitter in babysitters %}
-        <div class="col-md-6">
-          <div class="card">
-            <img src="{% static 'images/babysitter.jpg' %}" alt="Babysitter" />
-            <div class="card-content">
-              <div class="">
-                <h3>{{babysitter.name}}</h3>
-                <p>{{babysitter.}}</p>
-              </div>
-              <p>Preço/Hora:{{babysitter.hourly_price}}</p>
-              <p>Descrição:{{babysitter.description|truncatechars_html:100}}</p>
-              <div class="button-group">
-
-                <a href="{% url 'babysitter_details' pk=babysitter.cpf %}" class="btn">Read More</a>
-                <a href="#" class="btn-favorite" id="btn-favorite">
-                  <form
-                    action="{% url 'favorited_babyssiter'%}"
-                    method="POST"
-                    class="ui form"
-                  >
-                    {% csrf_token %}
-                    <input
-                      type="hidden"
-                      name="post_id"
-                      ,
-                      value="{{ babysitter.cpf }}"
-                    />
-                    {% if babysitter.favorited == True %}
-                    <button type="submit" class="ui button positive">❤</button>
-                    {% else %}
-                    <button type="submit" class="ui button negative">♡</button>
-                    {% endif %}
-                  </form>
-                </a>
-              </div>
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class="lni lni-menu"></i>
+                </button>
+                <div class="sidebar-logo ">
+                    <span style="font-weight: bold; font-size: 23px; font-family: 'Roboto', sans-serif; color: #fff;">Filtros</span>
+                </div>
             </div>
-          </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#location"
+                        aria-expanded="false" aria-controls="location">
+                        <i class="lni lni-map-marker"></i>
+                        <span>Preço</span>
+                    </a>
+                    <ul id="location" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="range" id="low-price" value="6.42,20" checked>
+                                <label class="form-check-label text-white" for="low-price" style="font-size: 14px;">
+                                    Preço baixo
+                                </label>
+                            </div>
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="range" id="medium-price" value="21,40">
+                                <label class="form-check-label text-white" for="medium-price" style="font-size: 14px;">
+                                    Médio
+                                </label>
+                            </div>
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="range" id="high-price" value="41,60">
+                                <label class="form-check-label text-white" for="high-price" style="font-size: 14px;">
+                                    Alto
+                                </label>
+                            </div>
+                            <button type="submit" id= "filtroPreco" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                        </form>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#availability"
+                        aria-expanded="false" aria-controls="availability">
+                        <i class="lni lni-calendar"></i>
+                        <span>Disponibilidade</span>
+                    </a>
+                    <ul id="availability" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="availability" id="today" value="today">
+                                    <label class="form-check-label text-white" for="today" style="font-size: 14px;">
+                                        Hoje
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="availability" id="this-week" value="this_week">
+                                    <label class="form-check-label text-white" for="this-week" style="font-size: 14px;">
+                                        Esta Semana
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="availability" id="next-week" value="next_week">
+                                    <label class="form-check-label text-white" for="next-week" style="font-size: 14px;">
+                                        Próxima Semana
+                                    </label>
+                                </div>
+                            </li>
+                            <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                        </form>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#experience"
+                        aria-expanded="false" aria-controls="experience">
+                        <i class="lni lni-graduation"></i>
+                        <span>Experiência</span>
+                    </a>
+                    <ul id="experience" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                        <li class="sidebar-item">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="intervalo" id="beginner" value="0,2" checked>
+                                <label class="form-check-label text-white" for="beginner" style="font-size: 14px;">
+                                    Iniciante
+                                </label>
+                            </div>
+                        </li>
+                        <li class="sidebar-item">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="intervalo" id="intermediate" value="2,3">
+                                <label class="form-check-label text-white" for="intermediate" style="font-size: 14px;">
+                                    Intermediário
+                                </label>
+                            </div>
+                        </li>
+                        <li class="sidebar-item">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="intervalo" id="advanced" value="4,5">
+                                <label class="form-check-label text-white" for="advanced" style="font-size: 14px;">
+                                    Avançado
+                                </label>
+                            </div>
+                        </li>
+                        <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                    </form>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#language"
+                        aria-expanded="false" aria-controls="language">
+                        <i class="lni lni-graduation"></i>
+                        <span>Idioma</span>
+                    </a>
+                    <ul id="language" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <form action="{% url 'home' %}" method="GET" class="text-center">
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="intervalo" id="english" value="4,5">
+                                    <label class="form-check-label text-white" for="english" style="font-size: 14px;">
+                                        Inglês
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="intervalo" id="spanish" value="4,5">
+                                    <label class="form-check-label text-white" for="spanish" style="font-size: 14px;">
+                                        Espanhol
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="sidebar-item">
+                                <div class="form-check px-4">
+                                    <input class="form-check-input" type="radio" name="intervalo" id="portuguese" value="4,5">
+                                    <label class="form-check-label text-white" for="portuguese" style="font-size: 14px;">
+                                        Português
+                                    </label>
+                                </div>
+                            </li>
+                            <button type="submit" class="btn btn-light btn-sm mt-2">Filtrar</button>
+                        </form>
+                    </ul>
+                </li>
+            </ul>
+            
+        </aside>
+        <div class="main">
+            <nav class="navbar navbar-expand px-4 py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <span style="font-weight: bold; font-size: 25px; font-family: 'Roboto', sans-serif; color: #746d8d;">BabysitEase</span>
+                    </a>
+                    <div class="d-flex align-items-center mr-4"> 
+                        {% if user.is_authenticated %}
+                        <p class="ms-4 mb-0" style= "font-weight: bold; font-size: 20px; font-family: 'Roboto', sans-serif; color: #746d8d;">Olá {{ request.user.first_name }}!</p> 
+                        {% endif %}
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" id="imgDropdown" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                                <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40" style="max-width: none;">                            
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end rounded">
+                                {% if user.is_authenticated %}
+                                <a id="verProfile" class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                <a class="dropdown-item" href="{% url 'editar-perfil' %}">Editar Perfil</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                {% else %}
+                                <a class="dropdown-item" href="{% url 'register' %}">Criar Conta</a>
+                                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <main class="content px-3 py-4">
+                <div class="row row-cols-1 row-cols-md-4 g-4 flex-wrap">
+                    {% for babysitter in babysitters %}
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="{% static 'images/babysitter.jpg' %}" class="card-img-top" alt="Babysitter">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ babysitter.name }}</h5>
+                                <p class="card-text">{{ babysitter.description }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Preço/Hora: R$ {{ babysitter.hourly_price }}</small>
+                            </div>
+                            <div class="card-footer d-grid gap-2">
+                                <a href="{% url 'babysitter_details' pk=babysitter.cpf %}" class="btn btn-readmore d-inline-block align-items-center justify-content-center">Read More</a>
+                                <div>
+                                    <form action="{% url 'favorited_babyssiter' pk=babysitter.cpf %}" method="POST" class="ui form">
+                                        {% csrf_token %}
+                                        {% if babysitter.favorited %}
+                                        <button type="submit" id="FavSuccess" class="btn btn-success">❤ Favorited</button>
+                                        {% else %}
+                                        <button type="submit" class="btn btn-outline-secondary">♡ Favorite</button>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <h2 id= "SemBabasDisponiveis">Não há babás disponíveis</h2>
+                    {% endfor %}
+                </div>
+            </main>
         </div>
-        {% empty %}
-        <h2>Não há babás disponiveis</h2>
-        {% endfor %}
-      </div>
     </div>
-  </div>
-</div>
-{% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+      <script src="{% static 'styles/home.js' %}">
+      </script>
+</body>
+</html>

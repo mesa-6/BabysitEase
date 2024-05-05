@@ -13,6 +13,8 @@ load_dotenv(BASE_DIR / '.env')
 TARGET_ENV = os.getenv('TARGET_ENV')
 NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
+AUTH_USER_MODEL = 'base.CustomUser'
+
 if NOT_PROD:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -47,7 +49,15 @@ else:
             'OPTIONS': {'sslmode': 'require'},
         }
     }
-    
+
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS').lower() in ['true', 't', '1']
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
 # Application definition
 
 INSTALLED_APPS = [

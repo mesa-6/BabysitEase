@@ -1,0 +1,42 @@
+.navbar {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 2rem 0 rgba(33, 37, 41, 0.1);
+}
+
+.calendar-item {
+  cursor: pointer;
+}
+.calendar-item:hover {
+  background-color: #f8f9fa;
+}
+
+#calendarTable .calendar-item.selected {
+  background-color: #4d4861 !important; /* Define a cor de fundo com !important para garantir que ela seja aplicada */
+  color: #fff; /* Define a cor do texto para branco */
+}
+
+.btn-send {
+  background-color: #4d4861;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+.btn-send:hover {
+  background-color: #847da1;
+  color: #fff;
+  border: none;
+}
+
+.modal-footer .btn-primary {
+  background-color: #4d4861;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #847da1;
+  color: #fff;
+  border: none;
+}

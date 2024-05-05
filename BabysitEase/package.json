@@ -1,0 +1,22 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "testes para testes E2E",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evaldo",
+  "license": "ISC",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step-definitions"
+  },
+  "devDependencies": {
+    "cypress": "^13.7.2",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "dependencies": {
+    "cypress-mailosaur": "^2.14.0"
+  }
+}

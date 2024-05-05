@@ -1,58 +1,295 @@
-{% extends 'main.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Details</title>
+  <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/detail.css' %}">
+</head>
+<body>
 
-{% block content %}
+<div class="main">
+  <div style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">            
+    <nav class="navbar navbar-expand px-4 py-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}"> <span style="font-weight: bold; font-size: 25px; font-family: 'Roboto', sans-serif; color: #746d8d;">BabysitEase</span> </a>
+            <form action="#" class="d-none d-sm-inline-block"></form>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <img onclick="myFunction()" class="dropbtn" src="https://cdn-icons-png.freepik.com/512/64/64572.png" height="40">                            
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end rounded">
+                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                            <a class="dropdown-item" href="{% url 'editar-perfil' %}">Editar Perfil</a>
+                            <a class="dropdown-item" href="#">Item 3</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 
-<style>
-    .home-container {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 20px;
-    border-radius: 7px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
 
-  .babysitter-details-container{
-    max-width: 350px;
-  }
-  .fotoex{
-    background-color: lightgray;
-    max-width: 250px;
-  }
-  .descricao{
-    position: absolute;
-    right: 400px;
-  }
-  #texto{
-    border: solid 2px lightgray;
-    border-radius: 5px;
-    max-width: 400px;
-  }
-
-</style>
 <div class="home-container">
-    <div class="fotoex">
-        <h1>Foto</h1>
-    </div>
+  <div class="container py-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#" >
+                <div class="card-body">
+                    <h5 class="card-title">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
+                    <p class="card-text">{{ babysitter.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Profile Details</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Email:</strong> {{ babysitter.email }}</li>
+                        <li class="list-group-item"><strong>Phone:</strong> +1234567890</li>
+                        <li class="list-group-item"><strong>Address:</strong> {{ babysitter.number }}, {{ babysitter.street }}, Recife</li>
+                        <li class="list-group-item"><strong>Sex:</strong> {{ babysitter.sex }}</li>
+                        <li class="list-group-item"><strong>Documentation:</strong>
+                            {% if babysitter.documents_submitted %} 
+                                Apresentou documentos oficiais.
+                            {% else %} 
+                                Não apresentou documentos.
+                            {% endif %}
+                        </li>
+                        <li class="list-group-item"><strong>Hourly Price:</strong> R$ {{ babysitter.hourly_price }}</li>
+                        <li class="list-group-item"><strong>Experience Years:</strong> {{ babysitter.experience_years }}</li>
+                        <li class="list-group-item"><strong>Ratting:</strong> {{ babysitter.rating }}/5</li>
 
-    <div class="babysitter-details-container">
-        <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
-        <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
-        <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
-    </div>
-    <div class="descricao">
-        <h3><strong>Descrição:</strong></h3>
-        <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
-    </div>
+</div>
+<div class="row mt-5 justify-content-center">
+  <div class="col-md-8">
+      <h2 class="text-left">Calendar</h2>
+      <div class="table-responsive">
+          <table id="calendarTable" class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th scope="col">-</th>
+                    <th scope="col">Segunda</th>
+                    <th scope="col">Terça</th>
+                    <th scope="col">Quarta</th>
+                    <th scope="col">Quinta</th>
+                    <th scope="col">Sexta</th>
+                    <th scope="col">Sábado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Manhã</th>
+                    <td class="calendar-item {% if schedules.0.status == 'Indisponível' %}bg-danger text-white{% elif schedules.0.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Morning" {% if schedules.0.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.0.id }}">{{ schedules.0.status }}</td>
+                    <td class="calendar-item {% if schedules.3.status == 'Indisponível' %}bg-danger text-white{% elif schedules.3.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Morning" {% if schedules.3.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.3.id }}">{{ schedules.3.status }}</td>
+                    <td class="calendar-item {% if schedules.6.status == 'Indisponível' %}bg-danger text-white{% elif schedules.6.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Morning" {% if schedules.6.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.6.id }}">{{ schedules.6.status }}</td>
+                    <td class="calendar-item {% if schedules.9.status == 'Indisponível' %}bg-danger text-white{% elif schedules.9.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Morning" {% if schedules.9.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.9.id }}">{{ schedules.9.status }}</td>
+                    <td class="calendar-item {% if schedules.12.status == 'Indisponível' %}bg-danger text-white{% elif schedules.12.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Morning" {% if schedules.12.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.12.id }}">{{ schedules.12.status }}</td>
+                    <td class="calendar-item {% if schedules.15.status == 'Indisponível' %}bg-danger text-white{% elif schedules.15.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Morning" {% if schedules.15.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.15.id }}">{{ schedules.15.status }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tarde</th>
+                    <td class="calendar-item {% if schedules.1.status == 'Indisponível' %}bg-danger text-white{% elif schedules.1.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Afternoon" {% if schedules.1.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.1.id }}">{{ schedules.1.status }}</td>
+                    <td class="calendar-item {% if schedules.4.status == 'Indisponível' %}bg-danger text-white{% elif schedules.4.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Afternoon" {% if schedules.4.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.4.id }}">{{ schedules.4.status }}</td>
+                    <td class="calendar-item {% if schedules.7.status == 'Indisponível' %}bg-danger text-white{% elif schedules.7.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Afternoon" {% if schedules.7.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.7.id }}">{{ schedules.7.status }}</td>
+                    <td class="calendar-item {% if schedules.10.status == 'Indisponível' %}bg-danger text-white{% elif schedules.10.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Afternoon" {% if schedules.10.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.10.id }}">{{ schedules.10.status }}</td>
+                    <td class="calendar-item {% if schedules.13.status == 'Indisponível' %}bg-danger text-white{% elif schedules.13.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Afternoon" {% if schedules.13.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.13.id }}">{{ schedules.13.status }}</td>
+                    <td class="calendar-item {% if schedules.16.status == 'Indisponível' %}bg-danger text-white{% elif schedules.16.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Afternoon" {% if schedules.16.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.16.id }}">{{ schedules.16.status }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Noite</th>
+                    <td class="calendar-item {% if schedules.2.status == 'Indisponível' %}bg-danger text-white{% elif schedules.2.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Night" {% if schedules.2.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.2.id }}">{{ schedules.2.status }}</td>
+                    <td class="calendar-item {% if schedules.5.status == 'Indisponível' %}bg-danger text-white{% elif schedules.5.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Night" {% if schedules.5.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.5.id }}">{{ schedules.5.status }}</td>
+                    <td class="calendar-item {% if schedules.8.status == 'Indisponível' %}bg-danger text-white{% elif schedules.8.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Night" {% if schedules.8.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.8.id }}">{{ schedules.8.status }}</td>
+                    <td class="calendar-item {% if schedules.11.status == 'Indisponível' %}bg-danger text-white{% elif schedules.11.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Night" {% if schedules.11.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.11.id }}">{{ schedules.11.status }}</td>
+                    <td class="calendar-item {% if schedules.14.status == 'Indisponível' %}bg-danger text-white{% elif schedules.14.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Night" {% if schedules.14.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.14.id }}">{{ schedules.14.status }}</td>
+                    <td class="calendar-item {% if schedules.17.status == 'Indisponível' %}bg-danger text-white{% elif schedules.17.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Night" {% if schedules.17.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.17.id }}">{{ schedules.17.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <!-- Botão para abrir o modal de confirmação -->
+      <button id="confirmButton" class="btn btn-send mt-4 float-end" data-bs-toggle="modal" data-bs-target="#confirmModal">Solicitar</button>
+      <!-- Modal de confirmação -->
+      <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmModalLabel">Confirmar Envio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Confirma o envio de sua solicitação?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <!-- Botão dentro do modal para enviar os dados -->
+              <button type="button" id="sendDataButton" class="btn btn-primary" data-url="{{ schedules_solicitation }}">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="fotoex">
+      <h1>Foto</h1>
+  </div>
+
+  <div class="babysitter-details-container">
+      <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
+      <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
+      <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
+  </div>
+  <div>
+      <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
+  </div>
+  <div class="descricao">
+      <h3><strong>Descrição:</strong></h3>
+      <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
+  </div>
 </div>
 <hr>
 <div>
-    <h2>Sobre mim 📝</h2>
+  <h2>Sobre mim 📝</h2>
 </div>
-    <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
-    <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
-    <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
+  <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
+  <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
+  <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
 
-{% endblock content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+  crossorigin="anonymous"></script>
+<script src="{% static 'styles/details.js' %}"></script>
+
+<script>
+  // Função para lidar com a seleção das células da tabela
+  function handleCellSelection(event) {
+    const selectedCell = event.target;
+
+    // Verifica se a célula está disponível para seleção
+    const status = selectedCell.innerText;
+    if (status !== 'Indisponível' && status !== 'Pendente') {
+      // Verifica se a célula já está selecionada
+      const isSelected = selectedCell.classList.contains('selected');
+      if (!isSelected) {
+        // Adiciona a classe 'selected' para destacar a célula selecionada
+        selectedCell.classList.add('selected');
+        // Muda a cor de fundo da célula selecionada
+        selectedCell.style.backgroundColor = '#847da1'; // ou qualquer outra cor que você desejar
+      } else {
+        // Remove a classe 'selected' da célula se ela já estiver selecionada
+        selectedCell.classList.remove('selected');
+        // Retorna a cor de fundo padrão da célula
+        selectedCell.style.backgroundColor = ''; // Retorna à cor padrão do CSS
+      }
+    }
+  }
+
+  function sendData() {
+    const selectedCells = document.querySelectorAll('.selected');
+    const selectedData = [];
+
+    selectedCells.forEach(cell => {
+      const status = cell.innerText;
+      const id = cell.dataset.id;
+
+      if (status === 'Disponível') {
+        selectedData.push({ id });
+      }
+    });
+
+    // Obtém o token CSRF do cookie
+    const csrftoken = getCookie('csrftoken');
+
+    // Enviar os dados para a URL
+    fetch("/schedules-solicitation/", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({ schedules: selectedData }),
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Erro ao enviar dados.');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Dados enviados com sucesso:', data);
+    // Exibe um alerta para o usuário
+    alert('Solicitação enviada com sucesso. A Babá entrará em contato em breve.');
+    // Fecha o modal
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.hide();
+    // Recarrega a página
+    window.location.reload();
+})
+.catch(error => {
+    console.error('Erro ao enviar dados:', error);
+    // Se necessário, faça alguma ação em caso de erro
+});
+
+
+    // Fechar o modal após enviar os dados
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.hide();
+  }
+
+  // Função para obter o valor do token CSRF do cookie
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Verifica se o cookie contém o nome do token CSRF
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // Adiciona o evento de clique a todas as células da tabela
+  const calendarCells = document.querySelectorAll('.calendar-item');
+  calendarCells.forEach((cell, index) => {
+    cell.addEventListener('click', handleCellSelection);
+
+    // Altera o estilo do cursor para um símbolo de bloqueio se a célula estiver indisponível ou pendente
+    if (cell.innerText === 'Indisponível' || cell.innerText === 'Pendente') {
+      cell.style.cursor = 'not-allowed';
+    }
+  });
+
+  // Obtém o botão de enviar dentro do modal
+  const sendDataButton = document.getElementById('sendDataButton');
+
+  // Adiciona o evento de clique ao botão de enviar dentro do modal
+  sendDataButton.addEventListener('click', sendData);
+
+</script>
+
+
+
+</body>
+</html>
