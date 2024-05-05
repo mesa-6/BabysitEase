@@ -156,7 +156,8 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              Confirma o envio de sua solicitação?
+              <!-- Aqui será exibida a mensagem de aviso -->
+              <p>Por favor, confirme sua solicitação</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -202,6 +203,15 @@
 
   function sendData() {
     const selectedCells = document.querySelectorAll('.selected');
+
+    // Verifica se alguma célula está selecionada
+    if (selectedCells.length === 0) {
+      // Se nenhuma célula estiver selecionada, exibe uma mensagem de aviso no modal
+      const modalBody = document.querySelector('#confirmModal .modal-body');
+      modalBody.innerHTML = '<p id="aoMenosUmHorario" class="text-danger">Por favor, selecione pelo menos um horário.</p>';
+      return;
+    }
+
     const selectedData = [];
 
     selectedCells.forEach(cell => {
@@ -218,34 +228,33 @@
 
     // Enviar os dados para a URL
     fetch("/schedules-solicitation/", {
-    method: 'POST',
-    headers: {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({ schedules: selectedData }),
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Erro ao enviar dados.');
-    }
-    return response.json();
-})
-.then(data => {
-    console.log('Dados enviados com sucesso:', data);
-    // Exibe um alerta para o usuário
-    
-    // Fecha o modal
-    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-    modal.hide();
-    // Recarrega a página
-    window.location.reload();
-})
-.catch(error => {
-    console.error('Erro ao enviar dados:', error);
-    // Se necessário, faça alguma ação em caso de erro
-});
-
+      },
+      body: JSON.stringify({ schedules: selectedData }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao enviar dados.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Dados enviados com sucesso:', data);
+        // Exibe um alerta para o usuário
+        
+        // Fecha o modal
+        const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+        modal.hide();
+        // Recarrega a página
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Erro ao enviar dados:', error);
+        // Se necessário, faça alguma ação em caso de erro
+      });
 
     // Fechar o modal após enviar os dados
     const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
@@ -285,8 +294,9 @@
 
   // Adiciona o evento de clique ao botão de enviar dentro do modal
   sendDataButton.addEventListener('click', sendData);
-
 </script>
+
+
 
 
 </body>
