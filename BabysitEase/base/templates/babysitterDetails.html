@@ -80,47 +80,47 @@
       <h2 class="text-left">Calendar</h2>
       <div class="table-responsive">
           <table id="calendarTable" class="table table-bordered text-center">
-              <thead>
-                  <tr>
-                      <th scope="col">-</th>
-                      <th scope="col">Segunda</th>
-                      <th scope="col">Terça</th>
-                      <th scope="col">Quarta</th>
-                      <th scope="col">Quinta</th>
-                      <th scope="col">Sexta</th>
-                      <th scope="col">Sábado</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <th scope="row">Manhã</th>
-                      <td class="calendar-item {% if schedules.0.status == 'Indisponível' %}bg-danger text-white{% elif schedules.0.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Morning" {% if schedules.0.status != 'Disponível' %}disabled{% endif %}>{{ schedules.0.status }}</td>
-                      <td class="calendar-item {% if schedules.3.status == 'Indisponível' %}bg-danger text-white{% elif schedules.3.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Morning" {% if schedules.3.status != 'Disponível' %}disabled{% endif %}>{{ schedules.3.status }}</td>
-                      <td class="calendar-item {% if schedules.6.status == 'Indisponível' %}bg-danger text-white{% elif schedules.6.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Morning" {% if schedules.6.status != 'Disponível' %}disabled{% endif %}>{{ schedules.6.status }}</td>
-                      <td class="calendar-item {% if schedules.9.status == 'Indisponível' %}bg-danger text-white{% elif schedules.9.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Morning" {% if schedules.9.status != 'Disponível' %}disabled{% endif %}>{{ schedules.9.status }}</td>
-                      <td class="calendar-item {% if schedules.12.status == 'Indisponível' %}bg-danger text-white{% elif schedules.12.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Morning" {% if schedules.12.status != 'Disponível' %}disabled{% endif %}>{{ schedules.12.status }}</td>
-                      <td class="calendar-item {% if schedules.15.status == 'Indisponível' %}bg-danger text-white{% elif schedules.15.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Morning" {% if schedules.15.status != 'Disponível' %}disabled{% endif %}>{{ schedules.15.status }}</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Tarde</th>
-                      <td class="calendar-item {% if schedules.1.status == 'Indisponível' %}bg-danger text-white{% elif schedules.1.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Evening" {% if schedules.1.status != 'Disponível' %}disabled{% endif %}>{{ schedules.1.status }}</td>
-                      <td class="calendar-item {% if schedules.4.status == 'Indisponível' %}bg-danger text-white{% elif schedules.4.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Evening" {% if schedules.4.status != 'Disponível' %}disabled{% endif %}>{{ schedules.4.status }}</td>
-                      <td class="calendar-item {% if schedules.7.status == 'Indisponível' %}bg-danger text-white{% elif schedules.7.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Evening" {% if schedules.7.status != 'Disponível' %}disabled{% endif %}>{{ schedules.7.status }}</td>
-                      <td class="calendar-item {% if schedules.10.status == 'Indisponível' %}bg-danger text-white{% elif schedules.10.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Evening" {% if schedules.10.status != 'Disponível' %}disabled{% endif %}>{{ schedules.10.status }}</td>
-                      <td class="calendar-item {% if schedules.13.status == 'Indisponível' %}bg-danger text-white{% elif schedules.13.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Evening" {% if schedules.13.status != 'Disponível' %}disabled{% endif %}>{{ schedules.13.status }}</td>
-                      <td class="calendar-item {% if schedules.16.status == 'Indisponível' %}bg-danger text-white{% elif schedules.16.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Evening" {% if schedules.16.status != 'Disponível' %}disabled{% endif %}>{{ schedules.16.status }}</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Noite</th>
-                      <td class="calendar-item {% if schedules.2.status == 'Indisponível' %}bg-danger text-white{% elif schedules.2.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Night" {% if schedules.2.status != 'Disponível' %}disabled{% endif %}>{{ schedules.2.status }}</td>
-                      <td class="calendar-item {% if schedules.5.status == 'Indisponível' %}bg-danger text-white{% elif schedules.5.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Night" {% if schedules.5.status != 'Disponível' %}disabled{% endif %}>{{ schedules.5.status }}</td>
-                      <td class="calendar-item {% if schedules.8.status == 'Indisponível' %}bg-danger text-white{% elif schedules.8.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Night" {% if schedules.8.status != 'Disponível' %}disabled{% endif %}>{{ schedules.8.status }}</td>
-                      <td class="calendar-item {% if schedules.11.status == 'Indisponível' %}bg-danger text-white{% elif schedules.11.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Night" {% if schedules.11.status != 'Disponível' %}disabled{% endif %}>{{ schedules.11.status }}</td>
-                      <td class="calendar-item {% if schedules.14.status == 'Indisponível' %}bg-danger text-white{% elif schedules.14.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Night" {% if schedules.14.status != 'Disponível' %}disabled{% endif %}>{{ schedules.14.status }}</td>
-                      <td class="calendar-item {% if schedules.17.status == 'Indisponível' %}bg-danger text-white{% elif schedules.17.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Night" {% if schedules.17.status != 'Disponível' %}disabled{% endif %}>{{ schedules.17.status }}</td>
-                  </tr>
-              </tbody>
-          </table>
+            <thead>
+                <tr>
+                    <th scope="col">-</th>
+                    <th scope="col">Segunda</th>
+                    <th scope="col">Terça</th>
+                    <th scope="col">Quarta</th>
+                    <th scope="col">Quinta</th>
+                    <th scope="col">Sexta</th>
+                    <th scope="col">Sábado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Manhã</th>
+                    <td class="calendar-item {% if schedules.0.status == 'Indisponível' %}bg-danger text-white{% elif schedules.0.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Morning" {% if schedules.0.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.0.id }}">{{ schedules.0.status }}</td>
+                    <td class="calendar-item {% if schedules.3.status == 'Indisponível' %}bg-danger text-white{% elif schedules.3.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Morning" {% if schedules.3.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.3.id }}">{{ schedules.3.status }}</td>
+                    <td class="calendar-item {% if schedules.6.status == 'Indisponível' %}bg-danger text-white{% elif schedules.6.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Morning" {% if schedules.6.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.6.id }}">{{ schedules.6.status }}</td>
+                    <td class="calendar-item {% if schedules.9.status == 'Indisponível' %}bg-danger text-white{% elif schedules.9.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Morning" {% if schedules.9.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.9.id }}">{{ schedules.9.status }}</td>
+                    <td class="calendar-item {% if schedules.12.status == 'Indisponível' %}bg-danger text-white{% elif schedules.12.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Morning" {% if schedules.12.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.12.id }}">{{ schedules.12.status }}</td>
+                    <td class="calendar-item {% if schedules.15.status == 'Indisponível' %}bg-danger text-white{% elif schedules.15.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Morning" {% if schedules.15.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.15.id }}">{{ schedules.15.status }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tarde</th>
+                    <td class="calendar-item {% if schedules.1.status == 'Indisponível' %}bg-danger text-white{% elif schedules.1.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Afternoon" {% if schedules.1.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.1.id }}">{{ schedules.1.status }}</td>
+                    <td class="calendar-item {% if schedules.4.status == 'Indisponível' %}bg-danger text-white{% elif schedules.4.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Afternoon" {% if schedules.4.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.4.id }}">{{ schedules.4.status }}</td>
+                    <td class="calendar-item {% if schedules.7.status == 'Indisponível' %}bg-danger text-white{% elif schedules.7.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Afternoon" {% if schedules.7.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.7.id }}">{{ schedules.7.status }}</td>
+                    <td class="calendar-item {% if schedules.10.status == 'Indisponível' %}bg-danger text-white{% elif schedules.10.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Afternoon" {% if schedules.10.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.10.id }}">{{ schedules.10.status }}</td>
+                    <td class="calendar-item {% if schedules.13.status == 'Indisponível' %}bg-danger text-white{% elif schedules.13.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Afternoon" {% if schedules.13.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.13.id }}">{{ schedules.13.status }}</td>
+                    <td class="calendar-item {% if schedules.16.status == 'Indisponível' %}bg-danger text-white{% elif schedules.16.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Afternoon" {% if schedules.16.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.16.id }}">{{ schedules.16.status }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Noite</th>
+                    <td class="calendar-item {% if schedules.2.status == 'Indisponível' %}bg-danger text-white{% elif schedules.2.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Night" {% if schedules.2.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.2.id }}">{{ schedules.2.status }}</td>
+                    <td class="calendar-item {% if schedules.5.status == 'Indisponível' %}bg-danger text-white{% elif schedules.5.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Night" {% if schedules.5.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.5.id }}">{{ schedules.5.status }}</td>
+                    <td class="calendar-item {% if schedules.8.status == 'Indisponível' %}bg-danger text-white{% elif schedules.8.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Night" {% if schedules.8.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.8.id }}">{{ schedules.8.status }}</td>
+                    <td class="calendar-item {% if schedules.11.status == 'Indisponível' %}bg-danger text-white{% elif schedules.11.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Night" {% if schedules.11.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.11.id }}">{{ schedules.11.status }}</td>
+                    <td class="calendar-item {% if schedules.14.status == 'Indisponível' %}bg-danger text-white{% elif schedules.14.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Night" {% if schedules.14.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.14.id }}">{{ schedules.14.status }}</td>
+                    <td class="calendar-item {% if schedules.17.status == 'Indisponível' %}bg-danger text-white{% elif schedules.17.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Night" {% if schedules.17.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.17.id }}">{{ schedules.17.status }}</td>
+                </tr>
+            </tbody>
+        </table>
       </div>
       <!-- Botão para abrir o modal de confirmação -->
       <button id="confirmButton" class="btn btn-send mt-4 float-end" data-bs-toggle="modal" data-bs-target="#confirmModal">Solicitar</button>
@@ -179,68 +179,117 @@
 
 <script>
   // Função para lidar com a seleção das células da tabela
-function handleCellSelection(event) {
-  const selectedCell = event.target;
+  function handleCellSelection(event) {
+    const selectedCell = event.target;
 
-  // Verifica se a célula está disponível para seleção
-  const status = selectedCell.dataset.status;
-  if (status !== 'Indisponível' && status !== 'Pendente') {
-    // Verifica se a célula já está selecionada
-    const isSelected = selectedCell.classList.contains('selected');
-    if (!isSelected) {
-      // Adiciona a classe 'selected' para destacar a célula selecionada
-      selectedCell.classList.add('selected');
-      // Muda a cor de fundo da célula selecionada
-      selectedCell.style.backgroundColor = '#847da1'; // ou qualquer outra cor que você desejar
-    } else {
-      // Remove a classe 'selected' da célula se ela já estiver selecionada
-      selectedCell.classList.remove('selected');
-      // Retorna a cor de fundo padrão da célula
-      selectedCell.style.backgroundColor = ''; // Retorna à cor padrão do CSS
+    // Verifica se a célula está disponível para seleção
+    const status = selectedCell.innerText;
+    if (status !== 'Indisponível' && status !== 'Pendente') {
+      // Verifica se a célula já está selecionada
+      const isSelected = selectedCell.classList.contains('selected');
+      if (!isSelected) {
+        // Adiciona a classe 'selected' para destacar a célula selecionada
+        selectedCell.classList.add('selected');
+        // Muda a cor de fundo da célula selecionada
+        selectedCell.style.backgroundColor = '#847da1'; // ou qualquer outra cor que você desejar
+      } else {
+        // Remove a classe 'selected' da célula se ela já estiver selecionada
+        selectedCell.classList.remove('selected');
+        // Retorna a cor de fundo padrão da célula
+        selectedCell.style.backgroundColor = ''; // Retorna à cor padrão do CSS
+      }
     }
   }
-}
 
-// Função para enviar os dados selecionados
-function sendData() {
-  const selectedCells = document.querySelectorAll('.selected');
-  const selectedData = [];
+  function sendData() {
+    const selectedCells = document.querySelectorAll('.selected');
+    const selectedData = [];
 
-  selectedCells.forEach(cell => {
-    const day = cell.dataset.day;
-    const time = cell.dataset.time;
-    const status = cell.innerText;
+    selectedCells.forEach(cell => {
+      const status = cell.innerText;
+      const id = cell.dataset.id;
 
-    if (status === 'Disponível') {
-      selectedData.push({ day, time });
+      if (status === 'Disponível') {
+        selectedData.push({ id });
+      }
+    });
+
+    // Obtém o token CSRF do cookie
+    const csrftoken = getCookie('csrftoken');
+
+    // Enviar os dados para a URL
+    fetch("/schedules-solicitation/", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({ schedules: selectedData }),
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Erro ao enviar dados.');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Dados enviados com sucesso:', data);
+    // Exibe um alerta para o usuário
+    alert('Solicitação enviada com sucesso. A Babá entrará em contato em breve.');
+    // Fecha o modal
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.hide();
+    // Recarrega a página
+    window.location.reload();
+})
+.catch(error => {
+    console.error('Erro ao enviar dados:', error);
+    // Se necessário, faça alguma ação em caso de erro
+});
+
+
+    // Fechar o modal após enviar os dados
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    modal.hide();
+  }
+
+  // Função para obter o valor do token CSRF do cookie
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Verifica se o cookie contém o nome do token CSRF
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // Adiciona o evento de clique a todas as células da tabela
+  const calendarCells = document.querySelectorAll('.calendar-item');
+  calendarCells.forEach((cell, index) => {
+    cell.addEventListener('click', handleCellSelection);
+
+    // Altera o estilo do cursor para um símbolo de bloqueio se a célula estiver indisponível ou pendente
+    if (cell.innerText === 'Indisponível' || cell.innerText === 'Pendente') {
+      cell.style.cursor = 'not-allowed';
     }
   });
 
-  console.log(selectedData); // Aqui você pode enviar os dados selecionados para o backend
+  // Obtém o botão de enviar dentro do modal
+  const sendDataButton = document.getElementById('sendDataButton');
 
-  // Fechar o modal após enviar os dados
-  const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-  modal.hide();
-}
-
-// Adiciona o evento de clique a todas as células da tabela
-const calendarCells = document.querySelectorAll('.calendar-item');
-calendarCells.forEach(cell => {
-  cell.addEventListener('click', handleCellSelection);
-
-  // Altera o estilo do cursor para um símbolo de bloqueio se a célula estiver indisponível ou pendente
-  if (cell.dataset.status === 'Indisponível' || cell.dataset.status === 'Pendente') {
-    cell.style.cursor = 'not-allowed';
-  }
-});
-
-// Obtém o botão de enviar dentro do modal
-const sendDataButton = document.getElementById('sendDataButton');
-
-// Adiciona o evento de clique ao botão de enviar dentro do modal
-sendDataButton.addEventListener('click', sendData);
+  // Adiciona o evento de clique ao botão de enviar dentro do modal
+  sendDataButton.addEventListener('click', sendData);
 
 </script>
+
+
 
 </body>
 </html>

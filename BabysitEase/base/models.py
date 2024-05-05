@@ -57,4 +57,4 @@ class Schedule(models.Model):
         unique_together = ('babysitter', 'day', 'period')
 
     def __str__(self):
-        return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}'
+        return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}-{self.id}'

@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
-from .models import Babysitter, Favorite, CustomUser, Schedule
-from django.views.generic import DetailView
 from django.contrib.auth import authenticate, login, get_user_model
-from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from .models import Babysitter, Favorite, CustomUser, Schedule
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
+from django.views.generic.edit import UpdateView
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 from django.core.mail import send_mail
-import string, secrets
+from django.urls import reverse_lazy
+from django.http import JsonResponse
 from django.contrib import messages
+import string, secrets
+import json
 
 CustomUser = get_user_model()
 
@@ -188,9 +190,38 @@ def forgot_password(request):
 
 def schedules_solicitation(request):
     if request.method == 'POST':
-        print(request.POST)
+       
+        # Supondo que 'data' contenha os bytes recebidos
+        data_bytes = request.body
 
-        return redirect('home')
+        # Decodificar os bytes para uma string
+        data_string = data_bytes.decode('utf-8')
+
+        # Analisar o JSON
+        parsed_data = json.loads(data_string)
+
+        # Acessar o array de objetos 'schedules'
+        schedules = parsed_data['schedules']
+
+        # Agora você pode trabalhar com o array 'schedules' conforme necessário
+        for schedule in schedules:
+            # Transformando o 'id' em um inteiro
+            id = int(schedule['id'])
+
+            # Buscando o Schedule pelo id
+            schedule_obj = Schedule.objects.get(id=id)
+
+            # Atualizando o status do Schedule
+            schedule_obj.status = 'Pendente'
+
+            # Salvando o Schedule
+            schedule_obj.save()
+
+        # Retorna uma resposta de sucesso
+        return JsonResponse({'message': 'Solicitação enviada com sucesso'}, status=200)
+
+    # Se o método da solicitação não for POST, retorne um erro
+    return JsonResponse({'error': 'Método não permitido'}, status=405)
 
 class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
@@ -221,9 +252,11 @@ class BabysitterDetailView(DetailView):
             day = schedule_parts[1]
             time_of_day = schedule_parts[2]
             availability = schedule_parts[3]
+            id = schedule_parts[4]
 
             # Adicione as informações extraídas ao array
             schedule_info.append({
+                'id': id,
                 'day': day,
                 'period': time_of_day,
                 'status': availability
