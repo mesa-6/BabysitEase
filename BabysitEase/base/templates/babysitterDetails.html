@@ -38,47 +38,73 @@
 
 
 <div class="home-container">
-  <div class="container py-5">
+  <div class="container py-5" >
     <div class="row">
         <div class="col-md-4">
-            <div class="card">
+            <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
                 <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#" >
                 <div class="card-body">
-                    <h5 class="card-title">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
+                    <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
                     <p class="card-text">{{ babysitter.description }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Profile Details</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Email:</strong> {{ babysitter.email }}</li>
-                        <li class="list-group-item"><strong>Phone:</strong> +1234567890</li>
-                        <li class="list-group-item"><strong>Address:</strong> {{ babysitter.number }}, {{ babysitter.street }}, Recife</li>
-                        <li class="list-group-item"><strong>Sex:</strong> {{ babysitter.sex }}</li>
-                        <li class="list-group-item"><strong>Documentation:</strong>
-                            {% if babysitter.documents_submitted %} 
-                                Apresentou documentos oficiais.
-                            {% else %} 
-                                Não apresentou documentos.
-                            {% endif %}
-                        </li>
-                        <li class="list-group-item"><strong>Hourly Price:</strong> R$ {{ babysitter.hourly_price }}</li>
-                        <li class="list-group-item"><strong>Experience Years:</strong> {{ babysitter.experience_years }}</li>
-                        <li class="list-group-item"><strong>Ratting:</strong> {{ babysitter.rating }}/5</li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+          <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
+              <div class="card-body">
+                  <h5 class="card-title mb-2" style="font-weight: 600; font-size: 22px; font-family: 'Roboto', sans-serif;">Detalhes da Babá</h5>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Email:</strong> {{ babysitter.email }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Telefone:</strong> +1234567890
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Endereço:</strong> {{ babysitter.number }}, {{ babysitter.street }}, Recife
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Sexo:</strong> {{ babysitter.sex }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Documentação:</strong>
+                      {% if babysitter.documents_submitted %} 
+                          Apresentou documentos oficiais.
+                      {% else %} 
+                          Não apresentou documentos.
+                      {% endif %}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Preço por Hora:</strong> R$ {{ babysitter.hourly_price }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Anos de Experiência:</strong> {{ babysitter.experience_years }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Nota Avaliação:</strong> {{ babysitter.rating }}/5
+                  </div>
+              </div>
+          </div>
+      </div>
 </div>
-<div class="row mt-5 justify-content-center">
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-left">Olá, {{ request.user.first_name }}! Veja meus Horários</h2>
+      <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;;">
+        <div class="card-body">
+          <h6>Você pode solicitar meus horários disponíveis neste calendário abaixo:</h6>
+          <br>
+          <p>Ao terminar de selecionar os horários clique em "Solicitar"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3 justify-content-center">
   <div class="col-md-8">
-      <h2 class="text-left">Calendar</h2>
-      <div class="table-responsive">
+      <div class="table-responsive" >
           <table id="calendarTable" class="table table-bordered text-center">
             <thead>
                 <tr>
@@ -146,31 +172,7 @@
   </div>
 </div>
 
-  <div class="fotoex">
-      <h1>Foto</h1>
-  </div>
-
-  <div class="babysitter-details-container">
-      <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
-      <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
-      <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
-  </div>
-  <div>
-      <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
-  </div>
-  <div class="descricao">
-      <h3><strong>Descrição:</strong></h3>
-      <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
-  </div>
-</div>
-<hr>
-<div>
-  <h2>Sobre mim 📝</h2>
-</div>
-  <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
-  <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
-  <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
-
+ 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -288,7 +290,6 @@
   sendDataButton.addEventListener('click', sendData);
 
 </script>
-
 
 
 </body>
