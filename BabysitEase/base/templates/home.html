@@ -174,7 +174,7 @@
                     </a>
                     <div class="d-flex align-items-center mr-4"> 
                         {% if user.is_authenticated %}
-                        <p class="ms-4 mb-0" style= "font-weight: bold; font-size: 20px; font-family: 'Roboto', sans-serif; color: #746d8d;">Olá {{ request.user.first_name }}!</p> 
+                        <p class="ms-4 mb-0" style= "font-weight: bold; font-size: 20px; font-family: 'Roboto', sans-serif; color: #746d8d; text-transform: capitalize;">Olá {{ request.user.first_name }}!</p> 
                         {% endif %}
                     </div>
                     <ul class="navbar-nav ms-auto">
@@ -204,7 +204,7 @@
                         <div class="card h-100">
                             <img src="{% static 'images/babysitter.jpg' %}" class="card-img-top" alt="Babysitter">
                             <div class="card-body">
-                                <h5 class="card-title">{{ babysitter.name }}</h5>
+                                <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.name }}</h5>
                                 <p class="card-text">{{ babysitter.description }}</p>
                             </div>
                             <div class="card-footer">
