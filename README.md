@@ -59,6 +59,7 @@
 <ul>
     <!-- Detalhes da terceira entrega aqui -->
     <li><a href = "https://www.youtube.com/watch?v=WMOjSOUMBHc">ScreenCast Lo Fi</a></li>
+    <li><a href = "https://www.youtube.com/watch?v=tot8A8UsewM">ScreenCast Testes automatizados</a></li>
 </ul>
 </details>
     
