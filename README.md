@@ -65,7 +65,9 @@
     <li><a href = "https://www.youtube.com/watch?v=4GfzXZ1GFZY">ScreenCast CI/CD</a></li>
     <h2>Diagrama:</h2>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
-    
+    <h2>Bug Tracker: </h2>
+        <img src="https://github.com/mesa-6/BabysitEase/blob/main/prints/Home%20-%20Google%20Chrome%2006_05_2024%2020_38_06.png">
+        
 </ul>
 </details>
     
