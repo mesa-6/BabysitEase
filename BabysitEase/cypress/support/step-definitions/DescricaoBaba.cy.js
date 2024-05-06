@@ -11,11 +11,13 @@ Given('que estou na página inicial', () => {
 
 And('existam babas disponíveis', () => {
   cy.get('#SemBabasDisponiveis').should('not.exist');
+  cy.wait(2000);
   cy.get('.card.h-100').should('exist');
   cy.wait(2000);
 });
 
 When('eu acessar "Read More" da baba', () => {
+  cy.wait(2000);
     cy.get('.card.h-100').first().within(() => {
         cy.get('.card-body').within(() => {
           cy.get('h5').invoke('text').then(text => {
@@ -25,13 +27,15 @@ When('eu acessar "Read More" da baba', () => {
             babysitterDescription = text.trim(); 
           });
         });
+        cy.wait(2000);
         cy.get('.btn-readmore').click();
       });
     });
     
 
 Then('devo conseguir visualizar as mesmas informações da baba selecionada', () => {
-    cy.get('.card').first().within(() => {
+  cy.wait(2000);
+  cy.get('.card').first().within(() => {
         cy.get('.card-body').within(() => {
           cy.get('h5').invoke('text').then(detailName => {
             expect(detailName.trim()).to.equal(babysitterName);
