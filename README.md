@@ -58,9 +58,12 @@
 <summary><h2>3- Entrega</h2></summary>
 <ul>
     <!-- Detalhes da terceira entrega aqui -->
+    <h2>Videos:</h2>
     <li><a href = "https://www.youtube.com/watch?v=WMOjSOUMBHc">ScreenCast Lo Fi</a></li>
     <li><a href = "https://www.youtube.com/watch?v=tot8A8UsewM">ScreenCast Testes automatizados</a></li>
     <li><a href = "https://www.youtube.com/watch?v=uRCAzswGDLg">ScreenCast Azure</a></li>
+    <li><a href = "https://www.youtube.com/watch?v=4GfzXZ1GFZY">ScreenCast CI/CD</a></li>
+    <h2>Diagrama:</h2>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
     
 </ul>
