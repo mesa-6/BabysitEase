@@ -58,6 +58,7 @@
 <summary><h2>3- Entrega</h2></summary>
 <ul>
     <!-- Detalhes da terceira entrega aqui -->
+    <li><a href = "https://www.youtube.com/watch?v=WMOjSOUMBHc">ScreenCast Lo Fi</a></li>
 </ul>
 </details>
     

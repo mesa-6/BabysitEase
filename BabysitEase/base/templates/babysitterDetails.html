@@ -38,47 +38,70 @@
 
 
 <div class="home-container">
-  <div class="container py-5">
+  <div class="container py-5" >
     <div class="row">
         <div class="col-md-4">
-            <div class="card">
+            <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
                 <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#" >
                 <div class="card-body">
-                    <h5 class="card-title">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
+                    <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
                     <p class="card-text">{{ babysitter.description }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Profile Details</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Email:</strong> {{ babysitter.email }}</li>
-                        <li class="list-group-item"><strong>Phone:</strong> +1234567890</li>
-                        <li class="list-group-item"><strong>Address:</strong> {{ babysitter.number }}, {{ babysitter.street }}, Recife</li>
-                        <li class="list-group-item"><strong>Sex:</strong> {{ babysitter.sex }}</li>
-                        <li class="list-group-item"><strong>Documentation:</strong>
-                            {% if babysitter.documents_submitted %} 
-                                Apresentou documentos oficiais.
-                            {% else %} 
-                                Não apresentou documentos.
-                            {% endif %}
-                        </li>
-                        <li class="list-group-item"><strong>Hourly Price:</strong> R$ {{ babysitter.hourly_price }}</li>
-                        <li class="list-group-item"><strong>Experience Years:</strong> {{ babysitter.experience_years }}</li>
-                        <li class="list-group-item"><strong>Ratting:</strong> {{ babysitter.rating }}/5</li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+          <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
+              <div class="card-body">
+                  <h5 class="card-title mb-2" style="font-weight: 600; font-size: 22px; font-family: 'Roboto', sans-serif;">Detalhes da Babá</h5>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Email:</strong> {{ babysitter.email }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Telefone:</strong> +1234567890
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Endereço:</strong> {{ babysitter.number }}, {{ babysitter.street }}, Recife
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Documentação:</strong>
+                      {% if babysitter.documents_submitted %} 
+                          Apresentou documentos oficiais.
+                      {% else %} 
+                          Não apresentou documentos.
+                      {% endif %}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Preço por Hora:</strong> R$ {{ babysitter.hourly_price }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Anos de Experiência:</strong> {{ babysitter.experience_years }}
+                  </div>
+                  <div class="mb-3 bg-light p-2 rounded-4">
+                      <strong>Nota Avaliação:</strong> {{ babysitter.rating }}/5
+                  </div>
+              </div>
+          </div>
+      </div>
 </div>
-<div class="row mt-5 justify-content-center">
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-left">Olá, {{ request.user.first_name }}! Veja meus Horários</h2>
+      <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;;">
+        <div class="card-body">
+          <h6>Você pode solicitar meus horários disponíveis neste calendário abaixo:</h6>
+          <br>
+          <p>Ao terminar de selecionar os horários clique em "Solicitar"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3 justify-content-center">
   <div class="col-md-8">
-      <h2 class="text-left">Calendar</h2>
-      <div class="table-responsive">
+      <div class="table-responsive" >
           <table id="calendarTable" class="table table-bordered text-center">
             <thead>
                 <tr>
@@ -91,35 +114,35 @@
                     <th scope="col">Sábado</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Manhã</th>
-                    <td class="calendar-item {% if schedules.0.status == 'Indisponível' %}bg-danger text-white{% elif schedules.0.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Morning" {% if schedules.0.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.0.id }}">{{ schedules.0.status }}</td>
-                    <td class="calendar-item {% if schedules.3.status == 'Indisponível' %}bg-danger text-white{% elif schedules.3.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Morning" {% if schedules.3.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.3.id }}">{{ schedules.3.status }}</td>
-                    <td class="calendar-item {% if schedules.6.status == 'Indisponível' %}bg-danger text-white{% elif schedules.6.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Morning" {% if schedules.6.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.6.id }}">{{ schedules.6.status }}</td>
-                    <td class="calendar-item {% if schedules.9.status == 'Indisponível' %}bg-danger text-white{% elif schedules.9.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Morning" {% if schedules.9.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.9.id }}">{{ schedules.9.status }}</td>
-                    <td class="calendar-item {% if schedules.12.status == 'Indisponível' %}bg-danger text-white{% elif schedules.12.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Morning" {% if schedules.12.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.12.id }}">{{ schedules.12.status }}</td>
-                    <td class="calendar-item {% if schedules.15.status == 'Indisponível' %}bg-danger text-white{% elif schedules.15.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Morning" {% if schedules.15.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.15.id }}">{{ schedules.15.status }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Tarde</th>
-                    <td class="calendar-item {% if schedules.1.status == 'Indisponível' %}bg-danger text-white{% elif schedules.1.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Afternoon" {% if schedules.1.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.1.id }}">{{ schedules.1.status }}</td>
-                    <td class="calendar-item {% if schedules.4.status == 'Indisponível' %}bg-danger text-white{% elif schedules.4.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Afternoon" {% if schedules.4.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.4.id }}">{{ schedules.4.status }}</td>
-                    <td class="calendar-item {% if schedules.7.status == 'Indisponível' %}bg-danger text-white{% elif schedules.7.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Afternoon" {% if schedules.7.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.7.id }}">{{ schedules.7.status }}</td>
-                    <td class="calendar-item {% if schedules.10.status == 'Indisponível' %}bg-danger text-white{% elif schedules.10.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Afternoon" {% if schedules.10.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.10.id }}">{{ schedules.10.status }}</td>
-                    <td class="calendar-item {% if schedules.13.status == 'Indisponível' %}bg-danger text-white{% elif schedules.13.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Afternoon" {% if schedules.13.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.13.id }}">{{ schedules.13.status }}</td>
-                    <td class="calendar-item {% if schedules.16.status == 'Indisponível' %}bg-danger text-white{% elif schedules.16.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Afternoon" {% if schedules.16.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.16.id }}">{{ schedules.16.status }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Noite</th>
-                    <td class="calendar-item {% if schedules.2.status == 'Indisponível' %}bg-danger text-white{% elif schedules.2.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Night" {% if schedules.2.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.2.id }}">{{ schedules.2.status }}</td>
-                    <td class="calendar-item {% if schedules.5.status == 'Indisponível' %}bg-danger text-white{% elif schedules.5.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Night" {% if schedules.5.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.5.id }}">{{ schedules.5.status }}</td>
-                    <td class="calendar-item {% if schedules.8.status == 'Indisponível' %}bg-danger text-white{% elif schedules.8.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Night" {% if schedules.8.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.8.id }}">{{ schedules.8.status }}</td>
-                    <td class="calendar-item {% if schedules.11.status == 'Indisponível' %}bg-danger text-white{% elif schedules.11.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Night" {% if schedules.11.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.11.id }}">{{ schedules.11.status }}</td>
-                    <td class="calendar-item {% if schedules.14.status == 'Indisponível' %}bg-danger text-white{% elif schedules.14.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Night" {% if schedules.14.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.14.id }}">{{ schedules.14.status }}</td>
-                    <td class="calendar-item {% if schedules.17.status == 'Indisponível' %}bg-danger text-white{% elif schedules.17.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Night" {% if schedules.17.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.17.id }}">{{ schedules.17.status }}</td>
-                </tr>
-            </tbody>
+            <tbody id="horarios">
+              <tr id="manha">
+                  <th scope="row">Manhã</th>
+                  <td id="segunda-manha" class="calendar-item {% if schedules.0.status == 'Indisponível' %}bg-danger text-white{% elif schedules.0.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Morning" {% if schedules.0.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.0.id }}">{{ schedules.0.status }}</td>
+                  <td id="terca-manha" class="calendar-item {% if schedules.3.status == 'Indisponível' %}bg-danger text-white{% elif schedules.3.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Morning" {% if schedules.3.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.3.id }}">{{ schedules.3.status }}</td>
+                  <td id="quarta-manha" class="calendar-item {% if schedules.6.status == 'Indisponível' %}bg-danger text-white{% elif schedules.6.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Morning" {% if schedules.6.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.6.id }}">{{ schedules.6.status }}</td>
+                  <td id="quinta-manha" class="calendar-item {% if schedules.9.status == 'Indisponível' %}bg-danger text-white{% elif schedules.9.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Morning" {% if schedules.9.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.9.id }}">{{ schedules.9.status }}</td>
+                  <td id="sexta-manha" class="calendar-item {% if schedules.12.status == 'Indisponível' %}bg-danger text-white{% elif schedules.12.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Morning" {% if schedules.12.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.12.id }}">{{ schedules.12.status }}</td>
+                  <td id="sabado-manha" class="calendar-item {% if schedules.15.status == 'Indisponível' %}bg-danger text-white{% elif schedules.15.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Morning" {% if schedules.15.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.15.id }}">{{ schedules.15.status }}</td>
+              </tr>
+              <tr id="tarde">
+                  <th scope="row">Tarde</th>
+                  <td id="segunda-tarde" class="calendar-item {% if schedules.1.status == 'Indisponível' %}bg-danger text-white{% elif schedules.1.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Afternoon" {% if schedules.1.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.1.id }}">{{ schedules.1.status }}</td>
+                  <td id="terca-tarde" class="calendar-item {% if schedules.4.status == 'Indisponível' %}bg-danger text-white{% elif schedules.4.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Afternoon" {% if schedules.4.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.4.id }}">{{ schedules.4.status }}</td>
+                  <td id="quarta-tarde" class="calendar-item {% if schedules.7.status == 'Indisponível' %}bg-danger text-white{% elif schedules.7.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Afternoon" {% if schedules.7.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.7.id }}">{{ schedules.7.status }}</td>
+                  <td id="quinta-tarde" class="calendar-item {% if schedules.10.status == 'Indisponível' %}bg-danger text-white{% elif schedules.10.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Afternoon" {% if schedules.10.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.10.id }}">{{ schedules.10.status }}</td>
+                  <td id="sexta-tarde" class="calendar-item {% if schedules.13.status == 'Indisponível' %}bg-danger text-white{% elif schedules.13.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Afternoon" {% if schedules.13.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.13.id }}">{{ schedules.13.status }}</td>
+                  <td id="sabado-tarde" class="calendar-item {% if schedules.16.status == 'Indisponível' %}bg-danger text-white{% elif schedules.16.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Afternoon" {% if schedules.16.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.16.id }}">{{ schedules.16.status }}</td>
+              </tr>
+              <tr id="noite">
+                  <th scope="row">Noite</th>
+                  <td id="segunda-noite" class="calendar-item {% if schedules.2.status == 'Indisponível' %}bg-danger text-white{% elif schedules.2.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Monday" data-time="Night" {% if schedules.2.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.2.id }}">{{ schedules.2.status }}</td>
+                  <td id="terca-noite" class="calendar-item {% if schedules.5.status == 'Indisponível' %}bg-danger text-white{% elif schedules.5.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Tuesday" data-time="Night" {% if schedules.5.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.5.id }}">{{ schedules.5.status }}</td>
+                  <td id="quarta-noite" class="calendar-item {% if schedules.8.status == 'Indisponível' %}bg-danger text-white{% elif schedules.8.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Wednesday" data-time="Night" {% if schedules.8.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.8.id }}">{{ schedules.8.status }}</td>
+                  <td id="quinta-noite" class="calendar-item {% if schedules.11.status == 'Indisponível' %}bg-danger text-white{% elif schedules.11.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Thursday" data-time="Night" {% if schedules.11.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.11.id }}">{{ schedules.11.status }}</td>
+                  <td id="sexta-noite" class="calendar-item {% if schedules.14.status == 'Indisponível' %}bg-danger text-white{% elif schedules.14.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Friday" data-time="Night" {% if schedules.14.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.14.id }}">{{ schedules.14.status }}</td>
+                  <td id="sabado-noite" class="calendar-item {% if schedules.17.status == 'Indisponível' %}bg-danger text-white{% elif schedules.17.status == 'Pendente' %}bg-warning text-white{% endif %}" data-day="Saturday" data-time="Night" {% if schedules.17.status != 'Disponível' %}disabled{% endif %} data-id="{{ schedules.17.id }}">{{ schedules.17.status }}</td>
+              </tr>
+          </tbody>
         </table>
       </div>
       <!-- Botão para abrir o modal de confirmação -->
@@ -133,7 +156,8 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              Confirma o envio de sua solicitação?
+              <!-- Aqui será exibida a mensagem de aviso -->
+              <p>Por favor, confirme sua solicitação</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -146,31 +170,7 @@
   </div>
 </div>
 
-  <div class="fotoex">
-      <h1>Foto</h1>
-  </div>
-
-  <div class="babysitter-details-container">
-      <h3><strong>{{ babysitter.name }} {{ babysitter.last_name }}</strong></h3>
-      <p><strong>Preço por hora:</strong> R$ {{ babysitter.hourly_price }}</p>
-      <p><strong>Anos de experiência:</strong> {{ babysitter.experience_years }}</p>
-  </div>
-  <div>
-      <p><strong>Nota:</strong> {{ babysitter.rating }}</p>
-  </div>
-  <div class="descricao">
-      <h3><strong>Descrição:</strong></h3>
-      <h4 id="texto"><small>"{{ babysitter.description }}"</small></h4>
-  </div>
-</div>
-<hr>
-<div>
-  <h2>Sobre mim 📝</h2>
-</div>
-  <h5><strong>📃 Documentação:</strong>{% if babysitter.documents_submitted %} Apresentou documentos oficiais{% else %} Não apresentou documentos{% endif %}</h5>
-  <h5><strong>📚 Nível de educação:</strong> {{ babysitter.education_level }}</h5>
-  <h5><strong>📧 Email:</strong> {{ babysitter.email }}</h5>
-
+ 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -203,6 +203,15 @@
 
   function sendData() {
     const selectedCells = document.querySelectorAll('.selected');
+
+    // Verifica se alguma célula está selecionada
+    if (selectedCells.length === 0) {
+      // Se nenhuma célula estiver selecionada, exibe uma mensagem de aviso no modal
+      const modalBody = document.querySelector('#confirmModal .modal-body');
+      modalBody.innerHTML = '<p id="aoMenosUmHorario" class="text-danger">Por favor, selecione pelo menos um horário.</p>';
+      return;
+    }
+
     const selectedData = [];
 
     selectedCells.forEach(cell => {
@@ -219,34 +228,33 @@
 
     // Enviar os dados para a URL
     fetch("/schedules-solicitation/", {
-    method: 'POST',
-    headers: {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({ schedules: selectedData }),
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Erro ao enviar dados.');
-    }
-    return response.json();
-})
-.then(data => {
-    console.log('Dados enviados com sucesso:', data);
-    // Exibe um alerta para o usuário
-    alert('Solicitação enviada com sucesso. A Babá entrará em contato em breve.');
-    // Fecha o modal
-    const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-    modal.hide();
-    // Recarrega a página
-    window.location.reload();
-})
-.catch(error => {
-    console.error('Erro ao enviar dados:', error);
-    // Se necessário, faça alguma ação em caso de erro
-});
-
+      },
+      body: JSON.stringify({ schedules: selectedData }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao enviar dados.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Dados enviados com sucesso:', data);
+        // Exibe um alerta para o usuário
+        
+        // Fecha o modal
+        const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+        modal.hide();
+        // Recarrega a página
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Erro ao enviar dados:', error);
+        // Se necessário, faça alguma ação em caso de erro
+      });
 
     // Fechar o modal após enviar os dados
     const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
@@ -286,8 +294,8 @@
 
   // Adiciona o evento de clique ao botão de enviar dentro do modal
   sendDataButton.addEventListener('click', sendData);
-
 </script>
+
 
 
 
