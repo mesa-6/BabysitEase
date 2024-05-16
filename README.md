@@ -15,12 +15,13 @@
     BabysitEase é uma plataforma inovadora que visa tornar o serviço de cuidar dos filhos mais seguro, confiável e acessível. Com BabysitEase, os pais podem encontrar facilmente babás qualificadas e confiáveis para cuidar de seus filhos, enquanto os babás têm acesso a um mercado mais amplo e oportunidades de emprego. Nosso objetivo é proporcionar tranquilidade aos pais, garantindo que seus filhos estejam em boas mãos, enquanto oferecemos suporte e oportunidades aos cuidadores. Com recursos de avaliação e qualificação, BabysitEase garante a excelência no cuidado infantil.
 </p>
 
-<h2>🔗 Links :</h2>
+<h2>🔗 Links Importantes:</h2>
 <ul>
     <li><a href="https://projeto-fds.atlassian.net/jira/software/projects/EW/boards/2">Link do Jira</a></li>
     <li><a href="https://www.figma.com/file/KL098ypwC8jrrPUnRASYJm?type=design">Link do Figma</a></li>
     <li><a href= "https://docs.google.com/document/d/1ZeMPv2CfbcyNhzv-Cb_9LR-AF1_GywFmJ9sGfoS8dUs/edit#heading=h.owlmmn8nicl2">Pair Programing</a></li>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
+    <li><a href="https://babysitease.azurewebsites.net/">Site Azure</a></li>
 </ul>
 
 ## ⚙ Tecnologias Utilizadas
