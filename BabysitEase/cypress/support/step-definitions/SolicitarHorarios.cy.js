@@ -54,7 +54,7 @@ Given('que tenho login em um perfil de usuário', () => {
     cy.wait(2000);  
     cy.visit('/login')
     cy.wait(2000);
-    cy.login('tiago', 
+    cy.login('joao', 
     '1' )
     
   });
