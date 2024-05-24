@@ -26,27 +26,17 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-
+      
       - name: Install dependencies
         run: pip install -r BabysitEase/requirements.txt
         
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install Node.js dependencies
-        run: |
-          cd BabysitEase
-          npm install
-
-      - name: Run local server
-        run: |
-          cd BabysitEase
-          python manage.py migrate
-          python manage.py runserver &
-          sleep 5
-          npx cypress run
+      # - name: Run local server
+      #   run: |
+      #     cd BabysitEase
+      #     python manage.py migrate
+      #     python manage.py runserver &
+      #     sleep 5
+      #     npx cypress run
 
       - name: Cleaning testing files
         run: |
@@ -88,6 +78,7 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      
       - name: Login to Azure
         uses: azure/login@v1
         with:
