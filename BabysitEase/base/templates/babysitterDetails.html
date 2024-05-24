@@ -37,19 +37,22 @@
 </div>
 
 
-<div class="home-container">
-  <div class="container py-5" >
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
-                <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#" >
-                <div class="card-body">
-                    <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
-                    <p class="card-text">{{ babysitter.description }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
+<div class="container py-5">
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
+              <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#">
+              <div class="card-body">
+                  <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
+                  <p class="card-text">{{ babysitter.description }}</p>
+                  <button id="btnmensagem" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal"
+                    style="background-color: #4d4861; font-weight: 600; color: #fff; border: none; transition: background-color 0.3s;">
+                    Me mande uma Mensagem
+                </button>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-8">
           <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
               <div class="card-body">
                   <h5 class="card-title mb-2" style="font-weight: 600; font-size: 22px; font-family: 'Roboto', sans-serif;">Detalhes da Babá</h5>
@@ -82,7 +85,33 @@
               </div>
           </div>
       </div>
+  </div>
 </div>
+
+<!-- Modal de Enviar Mensagem -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="contactModalLabel">Fale comigo!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Mensagem:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Enviar mensagem</button>
+          </div>
+      </div>
+  </div>
+</div>
+
 
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -170,6 +199,39 @@
   </div>
 </div>
 
+<!-- Seção de Comentários -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-left">Comentários</h2>
+      <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
+        <div class="card-body">
+          <!-- Listagem de Comentários -->
+          <div id="commentSection">
+
+            {% if comments %}
+            {% for comment in comments %}
+              <div class="comment mb-3 p-3 bg-light rounded-4">
+                <div class="d-flex justify-content-between">
+                  <strong>{{ comment.user }}</strong>
+                  <span>{{ comment.created_at }}</span>
+                </div>
+                <p>{{ comment.content }}</p>
+              </div>
+            {% endfor %}
+          {% else %}
+          <div class="comment mb-3 p-3 bg-light rounded-4">
+            <h6>Não tenho comentários disponíveis ainda.</h6>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5"></div>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
