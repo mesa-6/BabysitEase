@@ -306,3 +306,7 @@ def generate_secure_password(length=12):
     characters = string.ascii_letters + string.digits + string.punctuation
     secure_password = ''.join(secrets.choice(characters) for i in range(length))
     return secure_password
+
+
+def show_messages(request):
+    return render(request, "messages.html")

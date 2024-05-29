@@ -58,3 +58,22 @@ class Schedule(models.Model):
 
     def __str__(self):
         return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}-{self.id}'
+
+class Converstions(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete= models.CASCADE
+    )
+    title = models.CharField( max_length=200)
+    messanges = models.ManyToManyField ('Message', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Message(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete= models.CASCADE
+    )
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return {self.user.username}
