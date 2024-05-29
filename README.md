@@ -73,6 +73,25 @@
         
 </ul>
 </details>
+
+<details>
+<summary><h2>4- Entrega</h2></summary>
+<ul>
+    <!-- Detalhes da terceira entrega aqui -->
+    <h2>Videos:</h2>
+    <li><a href = "">ScreenCast Lo Fi</a></li>
+    <li><a href = "">ScreenCast Testes automatizados</a></li>
+    <li><a href = "">ScreenCast Azure</a></li>
+    <li><a href = "">ScreenCast CI/CD</a></li>
+    <h2>Diagrama:</h2>
+    <li><a href="">Diagrama de atividades</a></li>
+    <h2>Bug Tracker: </h2>
+        <img src="">
+    <h2>Quadro Jira: </h2>
+        <img src ="">
+        
+</ul>
+</details>
     
 <h2>👥 Equipe: Mesa 6</h2>
 <ul>
