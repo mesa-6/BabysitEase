@@ -30,13 +30,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r BabysitEase/requirements.txt
         
-      # - name: Run local server
-      #   run: |
-      #     cd BabysitEase
-      #     python manage.py migrate
-      #     python manage.py runserver &
-      #     sleep 5
-      #     npx cypress run
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Node.js dependencies
+        run: |
+          cd BabysitEase
+          npm ci
+
+      - name: Run local server
+        run: |
+          cd BabysitEase
+          python manage.py migrate
+          python manage.py runserver &
+          sleep 5
+          npx cypress run
 
       - name: Cleaning testing files
         run: |
