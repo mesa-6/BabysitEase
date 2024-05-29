@@ -39,10 +39,24 @@ Seja bem-vindo ao projeto BabysitEase! Estamos entusiasmados em receber novas pe
 
 ### Padrões de Código:
 
-* Certifique-se de que o código está padronizado.
+* Certifique-se de que o código está limpo e legével, seguingo a diretrizes de desenvolvimento.
 * Crie testes automatizados para as novas funcionalidades.
 
 ## Diretrizes de Desenvolvimento
 
+### Convenções de Codificação:
 
+* Utilize nomes em ingles descritivos para variáveis, funções, classes, etc
+* Crie sempre comentarios para explicar a sua função.
+* Garanta que o admin tenha acesso a tabela criada no models.
+
+### Organização de Arquivos:
+
+* Mantenha uma estrututa de arquivos e pastas consistentes com o projeto.
+* Organize os arquivos de forma lógica e intuitiva para facil navegação.
+
+### Desempenho:
+
+* Evite codigos desnecessarios.
+* Otimize as operações.
 
