@@ -38,7 +38,6 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           cd BabysitEase
-          npm install -g n
           npm ci
 
       - name: Run local server
