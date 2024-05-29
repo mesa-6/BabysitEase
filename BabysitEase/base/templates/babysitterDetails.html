@@ -97,16 +97,18 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <form>
+              <form action="{% url 'message' %}"  method="post">
+                {% csrf_token %}
                   <div class="mb-3">
                       <label for="message-text" class="col-form-label">Mensagem:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
+                      <textarea class="form-control" id="message-text" name="text"></textarea>
                   </div>
+                  <div class="modal-footer">
+                    <input type="hidden" name="pk" value="{{ pk }}">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                </div>
               </form>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary">Enviar mensagem</button>
           </div>
       </div>
   </div>

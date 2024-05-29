@@ -14,6 +14,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('forgot-password/', views.forgot_password, name='forgot-password'),
     path('schedules-solicitation/', views.schedules_solicitation, name='schedules-solicitation'),
-    path('messages/', views.show_messages, name="show-messages"),
-
+    path('messages/', views.show_messages, name= 'message')
 ]
