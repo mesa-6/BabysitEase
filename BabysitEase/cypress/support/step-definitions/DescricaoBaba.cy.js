@@ -1,5 +1,3 @@
-const { Given, And, When, Then } = require("cypress-cucumber-preprocessor/lib/resolveStepDefinition");
-
 let babysitterName;
 let babysitterDescription;
 
