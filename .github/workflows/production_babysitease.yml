@@ -29,7 +29,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd BabysitEase
           pip install -r BabysitEase/requirements.txt
           npm ci
           cd ..
