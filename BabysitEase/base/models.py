@@ -69,4 +69,7 @@ class Message(models.Model):
     message = models.TextField()
     Babysitter = models.ForeignKey(Babysitter, on_delete=models.CASCADE, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def str(self):
+        return f"{self.user.first_name}: {self.text}"
    

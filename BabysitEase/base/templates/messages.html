@@ -16,6 +16,16 @@
         overflow: auto;
         height: 350px;
     }
+    .profile-card {
+        margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+    }
+    .card-title {
+        flex: 1; /* Ocupa todo o espaço disponível */
+    }
+    .message-date {
+    color: gray;
+    font-size: 14px;
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -50,16 +60,25 @@ crossorigin="anonymous"></script>
             <div class ="main-content ">
                 <h1 class="title m-5 text-center">Conversas</h1>
                 <div class="container mt-5" style="box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1); background-color: #f5f5f5";>
-                    <div class="scrollspySite" data-spy="scroll" data-offset = "0">
-                        <div class="column space justify-content-md-between">
-                            <div class="card m-lg-5">
-                                <div class="row col-5">
-                                    <div class="profile-card p-4 mb-auto" style="width: auto; height: auto;">
-                                        <div class="card bg-white text-white">
-                                            <img src="https://via.placeholder.com/150" class="card-img" alt="Foto de Perfil">
+                  <div class="scrollspySite" data-spy="scroll" data-offset="0">
+                            <div class="column space justify-content-md-between">
+                                {% for message in messages %}
+                                    <div class="card m-lg-5">
+                                        <div class="card-container d-flex">
+                                            <div class="profile-card p-4 mb-auto">
+                                                <div class="card bg-white text-white">
+                                                    <img src="https://via.placeholder.com/150" class="card-img" alt="Foto de Perfil">
+                                                </div>
+                                            </div>
+                                            <div class="card-title m-5">
+                                                <h4>De : {{ message.user.username }}</h4>
+                                                <h4>Para :   {{ message.Babysitter.user.first_name }}</h4>
+                                                <p style="font-size: large;">Mensagem: {{ message.message }}</p>
+                                                <p class="message-date">Data: {{ message.created_at }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

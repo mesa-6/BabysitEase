@@ -312,18 +312,20 @@ def generate_secure_password(length=12):
 
 
 def show_messages(request):
+    babysitter_list = None
     if request.method == 'POST':
         if request.user.is_authenticated:
             user = request.user
-            babysitter = request.POST.get('pk')
-            babysitters = Babysitter.objects.filter( pk = babysitter)
+            babysitter_cpf = request.POST.get('cpf')
+
+            print(request)
+            print(babysitter_cpf)
+
+            babysitter = Babysitter.objects.get(cpf=babysitter_cpf)
             text = request.POST['text']
+            Message.objects.create(user=user, Babysitter=babysitter, message=text)
             
-        Message.objects.create(user=user, babysitter = babysitters ,message=text)
 
-            
-    return render(request,"messages.html")
+    messages = Message.objects.all()
     
-
-
-
+    return render(request, "messages.html", {"messages": messages})
