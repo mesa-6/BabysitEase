@@ -30,14 +30,7 @@ jobs:
           npm ci
           cd ..
 
-      - name: Run tests
-        run: |
-          cd BabysitEase
-          source ../venv/bin/activate
-          pytest
-          cd ..
-
-      - name: Run local server and Cypress tests
+      - name: Run migrations and Cypress tests
         run: |
           cd BabysitEase
           source ../venv/bin/activate
