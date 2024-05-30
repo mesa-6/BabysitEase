@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, get_user_model
-from .models import Babysitter, Favorite, CustomUser, Schedule
+from .models import Babysitter, Favorite, CustomUser, Schedule,Message
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
 from django.views.generic.edit import UpdateView
@@ -231,6 +231,8 @@ class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
     model = Babysitter
 
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         babysitter = self.get_object() 
@@ -306,3 +308,22 @@ def generate_secure_password(length=12):
     characters = string.ascii_letters + string.digits + string.punctuation
     secure_password = ''.join(secrets.choice(characters) for i in range(length))
     return secure_password
+
+
+
+def show_messages(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            user = request.user
+            babysitter = request.POST.get('pk')
+            babysitters = Babysitter.objects.filter( pk = babysitter)
+            text = request.POST['text']
+            
+        Message.objects.create(user=user, babysitter = babysitters ,message=text)
+
+            
+    return render(request,"messages.html")
+    
+
+
+

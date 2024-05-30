@@ -15,12 +15,13 @@
     BabysitEase é uma plataforma inovadora que visa tornar o serviço de cuidar dos filhos mais seguro, confiável e acessível. Com BabysitEase, os pais podem encontrar facilmente babás qualificadas e confiáveis para cuidar de seus filhos, enquanto os babás têm acesso a um mercado mais amplo e oportunidades de emprego. Nosso objetivo é proporcionar tranquilidade aos pais, garantindo que seus filhos estejam em boas mãos, enquanto oferecemos suporte e oportunidades aos cuidadores. Com recursos de avaliação e qualificação, BabysitEase garante a excelência no cuidado infantil.
 </p>
 
-<h2>🔗 Links :</h2>
+<h2>🔗 Links Importantes:</h2>
 <ul>
     <li><a href="https://projeto-fds.atlassian.net/jira/software/projects/EW/boards/2">Link do Jira</a></li>
     <li><a href="https://www.figma.com/file/KL098ypwC8jrrPUnRASYJm?type=design">Link do Figma</a></li>
     <li><a href= "https://docs.google.com/document/d/1ZeMPv2CfbcyNhzv-Cb_9LR-AF1_GywFmJ9sGfoS8dUs/edit#heading=h.owlmmn8nicl2">Pair Programing</a></li>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
+    <li><a href="https://babysitease.azurewebsites.net/">Site Azure</a></li>
 </ul>
 
 ## ⚙ Tecnologias Utilizadas
@@ -58,7 +59,37 @@
 <summary><h2>3- Entrega</h2></summary>
 <ul>
     <!-- Detalhes da terceira entrega aqui -->
+    <h2>Videos:</h2>
     <li><a href = "https://www.youtube.com/watch?v=WMOjSOUMBHc">ScreenCast Lo Fi</a></li>
+    <li><a href = "https://www.youtube.com/watch?v=tot8A8UsewM">ScreenCast Testes automatizados</a></li>
+    <li><a href = "https://www.youtube.com/watch?v=uRCAzswGDLg">ScreenCast Azure</a></li>
+    <li><a href = "https://www.youtube.com/watch?v=4GfzXZ1GFZY">ScreenCast CI/CD</a></li>
+    <h2>Diagrama:</h2>
+    <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
+    <h2>Bug Tracker: </h2>
+        <img src="https://github.com/mesa-6/BabysitEase/blob/main/prints/Home%20-%20Google%20Chrome%2006_05_2024%2020_38_06.png">
+    <h2>Quadro Jira: </h2>
+        <img src ="https://github.com/mesa-6/BabysitEase/blob/main/prints/WhatsApp%20Image%202024-05-06%20at%2020.42.08.jpeg">
+        
+</ul>
+</details>
+
+<details>
+<summary><h2>4- Entrega</h2></summary>
+<ul>
+    <!-- Detalhes da terceira entrega aqui -->
+    <h2>Videos:</h2>
+    <li><a href = "">ScreenCast Lo Fi</a></li>
+    <li><a href = "">ScreenCast Testes automatizados</a></li>
+    <li><a href = "">ScreenCast Azure</a></li>
+    <li><a href = "">ScreenCast CI/CD</a></li>
+    <h2>Diagrama:</h2>
+    <li><a href="">Diagrama de atividades</a></li>
+    <h2>Bug Tracker: </h2>
+        <img src="">
+    <h2>Quadro Jira: </h2>
+        <img src ="">
+        
 </ul>
 </details>
     

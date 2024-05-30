@@ -58,3 +58,15 @@ class Schedule(models.Model):
 
     def __str__(self):
         return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}-{self.id}'
+
+
+
+class Message(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete= models.CASCADE
+    )
+    message = models.TextField()
+    Babysitter = models.ForeignKey(Babysitter, on_delete=models.CASCADE, default=None)
+    created_at = models.DateTimeField(auto_now_add=True)
+   
