@@ -25,6 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          source venv/bin/activate
           cd BabysitEase
           pip install -r requirements.txt
           npm ci
@@ -32,8 +33,8 @@ jobs:
 
       - name: Run migrations and Cypress tests
         run: |
+          source venv/bin/activate
           cd BabysitEase
-          source ../venv/bin/activate
           python manage.py migrate
           python manage.py runserver &
           sleep 5
@@ -49,6 +50,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
+          source venv/bin/activate
           cd BabysitEase/
           zip -r release.zip .
           cd ..
