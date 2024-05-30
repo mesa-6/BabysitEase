@@ -1,5 +1,3 @@
-const { Given, And, When, Then } = require("cypress-cucumber-preprocessor/lib/resolveStepDefinition")
-
 
 // Cenário 1
 Given('que tenho um perfil de usuário chamado "tiago" no site', () => {

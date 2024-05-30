@@ -1,4 +1,3 @@
-const { Given, And, When, Then } = require("cypress-cucumber-preprocessor/lib/resolveStepDefinition")
 
 // Cenário 1
 Given('que estou na página inicial', () => {
