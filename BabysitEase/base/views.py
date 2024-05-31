@@ -335,7 +335,6 @@ def generate_secure_password(length=12):
     return secure_password
 
 def show_messages(request):
-    babysitter_list = None
     if request.method == 'POST':
         if request.user.is_authenticated:
             user = request.user
@@ -349,8 +348,10 @@ def show_messages(request):
             Message.objects.create(user=user, Babysitter=babysitter, message=text)
             
 
-    messages = Message.objects.all()
-    messages_order = messages.order_by('-created_at')
+    if request.user.is_authenticated:
+        messages = Message.objects.filter(user=request.user).order_by('-created_at')
+    else:
+        messages = Message.objects.none()  # Se o usuário não estiver autenticado, não exibe mensagens
+
     
-    
-    return render(request, "messages.html", {"messages": messages_order})
+    return render(request, "messages.html", {"messages": messages})
