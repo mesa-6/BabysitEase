@@ -350,5 +350,7 @@ def show_messages(request):
             
 
     messages = Message.objects.all()
+    messages_order = messages.order_by('-created_at')
     
-    return render(request, "messages.html", {"messages": messages})
+    
+    return render(request, "messages.html", {"messages": messages_order})
