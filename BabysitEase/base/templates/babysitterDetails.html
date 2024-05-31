@@ -45,6 +45,10 @@
               <div class="card-body">
                   <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
                   <p class="card-text">{{ babysitter.description }}</p>
+                  <p style="display: flex; align-items: center;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/148/148841.png" alt="Estrela" style="width: 45px; height: 45px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+                    <span style="font-size: 1.5em; font-weight: 500; margin-left: 10px; margin-top: 5px;">{{ babysitter.rating }}/5</span>
+                </p>
                   <button id="btnmensagem" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal"
                     style="background-color: #4d4861; font-weight: 600; color: #fff; border: none; transition: background-color 0.3s;">
                     Me mande uma Mensagem
@@ -78,9 +82,6 @@
                   </div>
                   <div class="mb-3 bg-light p-2 rounded-4">
                       <strong>Anos de Experiência:</strong> {{ babysitter.experience_years }}
-                  </div>
-                  <div class="mb-3 bg-light p-2 rounded-4">
-                      <strong>Nota Avaliação:</strong> {{ babysitter.rating }}/5
                   </div>
               </div>
           </div>
