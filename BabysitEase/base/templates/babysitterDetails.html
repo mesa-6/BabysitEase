@@ -45,10 +45,14 @@
           <div class="card-body">
               <h5 id="NomeUsuarioDaBabysitter" class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
               <p id="BabaDescricao" class="card-text">{{ babysitter.description }}</p>
-              <span style="display: flex; align-items: center;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/148/148841.png" alt="Estrela" style="width: 40px; height: 40px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
-                  <span style="font-size: 1.4em; font-weight: 500; margin-left: 10px; margin-top: 5px;">{{ babysitter.rating }}/5</span>
-              </span>
+              {% if babysitter.rating_average %}
+                  <span style="display: flex; align-items: center;">
+                      <img src="https://cdn-icons-png.flaticon.com/512/148/148841.png" alt="Estrela" style="width: 40px; height: 40px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+                      <span style="font-size: 1.4em; font-weight: 500; margin-left: 10px; margin-top: 5px;">{{ babysitter.rating_average }}/5</span>
+                  </span>
+              {% else %}
+                  <p>Ops! Nenhuma avaliação disponível.</p>
+              {% endif %}
               <button id="btnmensagem" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal"
                   style="background-color: #4d4861; font-weight: 600; color: #fff; border: none; transition: background-color 0.3s;">
                   Me mande uma Mensagem
