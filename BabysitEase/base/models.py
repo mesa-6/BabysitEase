@@ -59,8 +59,6 @@ class Schedule(models.Model):
     def __str__(self):
         return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}-{self.id}'
 
-
-
 class Message(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -72,4 +70,13 @@ class Message(models.Model):
     
     def str(self):
         return f"{self.user.first_name}: {self.text}"
-   
+
+class Feedback(models.Model):
+    babysitter = models.ForeignKey(Babysitter, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    feedback = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.babysitter}-{self.user}-{self.feedback}-{self.created_at}'

@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, get_user_model
-from .models import Babysitter, Favorite, CustomUser, Schedule,Message
+from .models import Babysitter, Favorite, CustomUser, Feedback, Schedule,Message
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
 from django.views.generic.edit import UpdateView
@@ -231,8 +231,6 @@ class BabysitterDetailView(DetailView):
     template_name = 'babysitterDetails.html'
     model = Babysitter
 
-
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         babysitter = self.get_object() 
@@ -263,7 +261,6 @@ class BabysitterDetailView(DetailView):
                 'period': time_of_day,
                 'status': availability
             })
-
             
         # Dicionário para mapear os dias da semana para números
         day_order = {
@@ -285,8 +282,36 @@ class BabysitterDetailView(DetailView):
         # Ordena os horários por dia e período do dia
         schedule_info.sort(key=lambda x: (day_order[x['day']], period_order[x['period']]))
 
+        # Busca os feedbacks da babá
+        feedbacks = Feedback.objects.filter(babysitter=babysitter)
+
+        feedbacks_array = []
+
+        for feedback in feedbacks:
+            # Transforme o feedback em uma string
+            feedback = str(feedback)
+
+            # Divide a string por "-" para extrair informações
+            feedback_parts = feedback.split('-')
+
+            # Extrai o usuário, o feedback e a data de criação
+            user = feedback_parts[1]
+            feedback = feedback_parts[2]
+            created_at = feedback_parts[3]
+
+            # Adiciona as informações ao array
+            feedbacks_array.append({
+                'user': user,
+                'feedback': feedback,
+                'created_at': created_at
+            })
+
         # Adiciona os horários ao contexto
         context['schedules'] = schedule_info
+
+        # Adiciona os feedbacks ao contexto
+        context['feedbacks'] = feedbacks_array
+
         return context
 
 class PerfilUpdate(UpdateView):
@@ -308,8 +333,6 @@ def generate_secure_password(length=12):
     characters = string.ascii_letters + string.digits + string.punctuation
     secure_password = ''.join(secrets.choice(characters) for i in range(length))
     return secure_password
-
-
 
 def show_messages(request):
     babysitter_list = None
