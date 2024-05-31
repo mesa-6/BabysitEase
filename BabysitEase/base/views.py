@@ -297,7 +297,7 @@ class BabysitterDetailView(DetailView):
             # Extrai o usuário, o feedback e a data de criação
             user = feedback_parts[1]
             feedback = feedback_parts[2]
-            created_at = feedback_parts[3]
+            created_at = f"{feedback_parts[4]}/{feedback_parts[3]}"
 
             # Adiciona as informações ao array
             feedbacks_array.append({
