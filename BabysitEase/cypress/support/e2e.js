@@ -19,6 +19,11 @@ require('./pages/home.pages')
 require('./pages/cadastro.pages')
 require('./pages/login.pages')
 require('./pages/profile.pages')
+require('./pages/idbaba.pages')
+require('./pages/criarfeedback.pages')
+require('./pages/loginadmin.pages')
+require('./pages/criarratingbaba.pages')
+
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

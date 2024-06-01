@@ -14,7 +14,6 @@ class CustomUser(AbstractUser):
 class Babysitter(models.Model):
     cpf = models.CharField(max_length=14, primary_key=True)
     hourly_price = models.DecimalField(max_digits=5, decimal_places=2)
-    rating = models.IntegerField()
     experience_years = models.IntegerField()
     documents_submitted = models.BooleanField()
     education_level = models.CharField(max_length=50)
@@ -28,6 +27,21 @@ class Babysitter(models.Model):
     @property
     def num_likes(self):
         return self.favorited.all().count()
+    
+    def rating_average(self):
+        ratings = BabysitterRating.objects.filter(babysitter=self)
+        if ratings.exists():
+            return sum(rating.rating for rating in ratings) / len(ratings)
+        else:
+            return None
+
+class BabysitterRating(models.Model):
+    babysitter = models.ForeignKey('Babysitter', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.babysitter} - {self.user}'
 
 class Parent(models.Model):
     cpf = models.CharField(max_length=14, primary_key=True)
@@ -59,8 +73,6 @@ class Schedule(models.Model):
     def __str__(self):
         return f'{self.babysitter}-{self.day}-{self.period}-{self.status.capitalize()}-{self.id}'
 
-
-
 class Message(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -69,4 +81,16 @@ class Message(models.Model):
     message = models.TextField()
     Babysitter = models.ForeignKey(Babysitter, on_delete=models.CASCADE, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
-   
+    
+    def str(self):
+        return f"{self.user.first_name}: {self.text}"
+
+class Feedback(models.Model):
+    babysitter = models.ForeignKey(Babysitter, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    feedback = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.babysitter}-{self.user}-{self.feedback}-{self.created_at}'

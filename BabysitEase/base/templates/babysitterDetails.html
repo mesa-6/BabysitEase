@@ -39,19 +39,29 @@
 
 <div class="container py-5">
   <div class="row">
-      <div class="col-md-4">
-          <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
-              <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#">
-              <div class="card-body">
-                  <h5 class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
-                  <p class="card-text">{{ babysitter.description }}</p>
-                  <button id="btnmensagem" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal"
-                    style="background-color: #4d4861; font-weight: 600; color: #fff; border: none; transition: background-color 0.3s;">
-                    Me mande uma Mensagem
-                </button>
-              </div>
-          </div>
+    <div class="col-md-4">
+      <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
+          <img src="https://s2.glbimg.com/-iAjSgo-VEaDfA3698q1xLzBo0M=/620x453/e.glbimg.com/og/ed/f/original/2016/08/18/baba-cuidando-do-bebe.jpg" class="card-img-top" alt="#">
+          <div class="card-body">
+            <h5 id="NomeUsuarioDaBabysitter" class="card-title" style="text-transform: capitalize;">{{ babysitter.user }} {{ babysitter.last_name }}</h5>
+            <p id="BabaDescricao" class="card-text">{{ babysitter.description }}</p>
+            {% if babysitter.rating_average %}
+                <div class="my-3"> <!-- Adiciona espaço vertical -->
+                    <span style="display: flex; align-items: center;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/148/148841.png" alt="Estrela" style="width: 40px; height: 40px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+                        <span class="rating-message" style="font-size: 1.4em; font-weight: 500; margin-left: 10px; margin-top: 5px;">{{ babysitter.rating_average }}/5</span>
+                    </span>
+                </div>
+            {% else %}
+                <p class="no-rating-message">Ops! Nenhuma avaliação disponível.</p>
+            {% endif %}
+            <button id="btnmensagem" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal"
+                style="background-color: #4d4861; font-weight: 600; color: #fff; border: none; transition: background-color 0.3s;">
+                Me mande uma Mensagem
+            </button>
+        </div>
       </div>
+  </div>
       <div class="col-md-8">
           <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
               <div class="card-body">
@@ -79,9 +89,6 @@
                   <div class="mb-3 bg-light p-2 rounded-4">
                       <strong>Anos de Experiência:</strong> {{ babysitter.experience_years }}
                   </div>
-                  <div class="mb-3 bg-light p-2 rounded-4">
-                      <strong>Nota Avaliação:</strong> {{ babysitter.rating }}/5
-                  </div>
               </div>
           </div>
       </div>
@@ -97,18 +104,35 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <form action="{% url 'message' %}"  method="post">
+              <form id="messageForm" method="post">
                 {% csrf_token %}
                   <div class="mb-3">
                       <label for="message-text" class="col-form-label">Mensagem:</label>
                       <textarea class="form-control" id="message-text" name="text"></textarea>
                   </div>
                   <div class="modal-footer">
-                    <input type="hidden" name="pk" value="{{ pk }}">
+                    <input type="hidden" name="cpf" value="{{ babysitter.cpf }}">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                    <button id="EnviarMensagemBaba"  type="submit" class="btn btn-primary">Enviar mensagem</button>
                 </div>
               </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+  <div id="messageToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+          <strong class="me-auto">Notificação</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+          <p id="MensagemEnviadoSucesso">Sua mensagem foi enviada</p>
+          <div class="mt-2 pt-2 border-top">
+              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast" >Ficar na página</button>
+              <a id="IrPaginaMensagens" href="{% url 'messages' %}" class="btn btn-primary btn-sm" style="background-color: #4d4861; font-weight: 600; color: #fff; border: none; transition: background-color 0.3s;">Ir para página de mensagens</a>
           </div>
       </div>
   </div>
@@ -205,25 +229,25 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2 class="text-left">Comentários</h2>
+      <h2 id="feedbacksTitle" class="text-left">Feedbacks</h2>
       <div class="card" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #eaeaea;">
         <div class="card-body">
           <!-- Listagem de Comentários -->
           <div id="commentSection">
 
-            {% if comments %}
-            {% for comment in comments %}
-              <div class="comment mb-3 p-3 bg-light rounded-4">
+            {% if feedbacks %}
+            {% for feedback in feedbacks %}
+              <div class="feedback mb-3 p-3 bg-light rounded-4">
                 <div class="d-flex justify-content-between">
-                  <strong>{{ comment.user }}</strong>
-                  <span>{{ comment.created_at }}</span>
+                  <strong class="userName">{{ feedback.user }}</strong>
+                  <span class="createdAt">{{ feedback.created_at }}</span>
                 </div>
-                <p>{{ comment.content }}</p>
+                <p class="feedbackContent">{{ feedback.feedback }}</p>
               </div>
             {% endfor %}
           {% else %}
           <div class="comment mb-3 p-3 bg-light rounded-4">
-            <h6>Não tenho comentários disponíveis ainda.</h6>
+            <h6 id="noFeedbackMessage">Não tenho feedbacks disponíveis ainda.</h6>
           </div>
           {% endif %}
           </div>
@@ -232,6 +256,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="container mt-5"></div>
  
@@ -358,6 +383,42 @@
 
   // Adiciona o evento de clique ao botão de enviar dentro do modal
   sendDataButton.addEventListener('click', sendData);
+
+
+  
+document.getElementById('messageForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    var form = this;
+    var formData = new FormData(form);
+    var csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fetch('{% url "messages" %}', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': csrfToken
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            var toastEl = document.getElementById('messageToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+            form.reset();
+            var modalEl = document.getElementById('contactModal');
+            var modal = bootstrap.Modal.getInstance(modalEl);
+            modal.hide();
+        } else {
+            alert('Erro ao enviar a mensagem. Tente novamente.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Erro ao enviar a mensagem. Tente novamente.');
+    });
+});
+
 </script>
 
 
