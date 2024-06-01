@@ -88,7 +88,7 @@
     <h2>Bug Tracker: </h2>
         <img src="">
     <h2>Quadro Jira: </h2>
-        <img src ="">
+        <img src ="https://github.com/mesa-6/BabysitEase/blob/main/prints/QuadroJira-Entrega-tres.PNG">
         
 </ul>
 </details>
