@@ -3,7 +3,7 @@
 
 Funcionalidade: Verificação do Histórico de Conversas
 
-Cenário: Visualizar perfil da babá adicionado ao histórico de conversas com sucesso
+Cenário: Visualizar meu usuário e mensagem enviada adicionados ao histórico de conversas com sucesso
   Dado que tenho um perfil de usuário.
   E existam babas disponíveis
   E eu acessar "Read More" da baba

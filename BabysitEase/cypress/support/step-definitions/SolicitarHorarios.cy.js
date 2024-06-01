@@ -1,6 +1,6 @@
 
 // Cenário 1
-Given('que tenho um perfil de usuário', () => {
+Given('que tenho registro e perfil de usuário', () => {
     cy.visit('/register')
     cy.cadastrar('joao',
     '1',
@@ -49,12 +49,21 @@ Given('que tenho um perfil de usuário', () => {
 });
 
 // Cenário 2
-Given('que tenho login em um perfil de usuário', () => {
-    cy.wait(2000);  
-    cy.visit('/login')
-    cy.wait(2000);
-    cy.login('joao', 
-    '1' )
+Given('que tenho registro e login em um perfil de usuário', () => {
+  cy.visit('/register')
+  cy.cadastrar('marcos',
+  '1',
+  'jh@cesar.school',
+  '1',
+  '11222678900',
+  '1990-01-01',
+  'Male',
+  'rua',
+  'bairro',
+  '12345178',
+  '113')
+  cy.login('marcos', 
+  '1' )
     
   });
   
