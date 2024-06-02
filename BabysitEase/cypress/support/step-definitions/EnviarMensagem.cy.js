@@ -53,6 +53,7 @@ And('escrevo uma mensagem para a babá', () => {
   Then('devo ver uma confirmação de que a mensagem foi enviada com sucesso', () => {
     cy.wait(2000);
     cy.get('#MensagemEnviadoSucesso').should('contain', 'Sua mensagem foi enviada');
+    cy.wait(2000);
 
 });
 
