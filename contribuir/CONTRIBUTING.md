@@ -8,7 +8,7 @@ Seja bem-vindo ao projeto BabysitEase! Estamos entusiasmados em receber novas pe
   - [Reportar bugs](#reportar-bugs)
   - [Sugerindo funcionalidades](#sugerindo-funcionalidades)
   - [Enviar um pull request](#enviar-um-pull-request)
-- [Padrões de Código](#padrões-de-código)
+- [Boas Práticas](#boas-práticas)
 - [Diretrizes de Desenvolvimento](#diretrizes-de-desenvolvimento)
   - [Convenções de Codificação](#convenções-de-codificação)
   - [Organização de Arquivos](#organização-de-arquivos)
@@ -49,10 +49,22 @@ Seja bem-vindo ao projeto BabysitEase! Estamos entusiasmados em receber novas pe
 6. **Abra um pull request:**
     - Descreva as mudanças que você fez detalhadamente. Esteja pronto para debater a ideia e fazer alterações, se necessário.
 
-## Padrões de Código:
+## Boas Práticas:
 
-* Certifique-se de que o código está limpo e legível, seguindo a diretrizes de desenvolvimento.
-* Crie testes automatizados para as novas funcionalidades.
+- **Código Limpo e Legível:**
+  - Mantenha o código Python, HTML, CSS e JavaScript limpo, organizado e fácil de entender.
+  - Use nomes descritivos para variáveis, funções e classes.
+
+- **Comentários e Documentação:**
+  - Adicione comentários explicativos sempre que necessário para esclarecer partes complexas do código.
+  - Documente funções e métodos de forma clara, explicando seu propósito e parâmetros.
+
+- **Testes Automatizados:**
+  - Escreva testes automatizados para todas as funcionalidades, utilizando Cypress para testes de front-end.
+  - Garanta uma boa cobertura de testes para identificar e corrigir bugs com eficiência.
+
+- **Responsividade e Layout:**
+  - Desenvolva layouts utilizando o Bootstrap 5.
 
 ## Diretrizes de Desenvolvimento
 
