@@ -48,7 +48,7 @@ And('existam babas disponíveis', () => {
 And('exista algum comentário na 1° babá', () => {
     // Execute as etapas específicas do Cenário 2 aqui
     cy.visit('/register');
-    cy.cadastrar('testfeedback', '1', 'th@cesar.school', '1', '12345633330', '1990-01-01', 'Male', 'rua', 'bairro', '12345178', '113');
+    cy.cadastrar('testfeedback', '1', 'th@cesar.school', '1', '33396286022', '1990-01-01', 'Male', 'rua', 'bairro', '12345178', '113');
     cy.login('testfeedback', '1');
     cy.visit('/');
     cy.get('.card.h-100').first().within(() => {
