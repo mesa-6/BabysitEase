@@ -58,7 +58,9 @@ And('acesso página "messages"', () => {
 
 Then('devo conseguir visualizar meu usuário e mensagem enviada no "Histórico de Conversas"', () => {
     cy.url().should('equal', 'http://127.0.0.1:8000/messages/');
+    cy.wait(2000);
     cy.get('#UsuarioMensagem').should('contain', 'testevizmensagem');
+    cy.wait(2000);
     cy.get('#MensagemParaBaba').should('contain', MensagemVizTeste);
 });
 
@@ -90,7 +92,7 @@ When('eu não tiver enviado mensagens antes', () => {
 });
 
 Then('devo visualizar "Não existem conversas"', () => {
-
+    cy.wait(2000);
     cy.contains('.text-center', 'Ops! Você não tem nenhuma conversa ainda.').should('exist');
 
 });
