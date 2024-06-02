@@ -351,7 +351,7 @@ def show_messages(request):
     if request.user.is_authenticated:
         messages = Message.objects.filter(user=request.user).order_by('-created_at')
     else:
-        messages = Message.objects.none()  # Se o usuário não estiver autenticado, não exibe mensagens
+        messages = Message.objects.none()  # Se o usuário não estiver autenticado, não exibe as mensagens
 
     
     return render(request, "messages.html", {"messages": messages})

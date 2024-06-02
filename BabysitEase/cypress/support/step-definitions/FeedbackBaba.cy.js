@@ -20,13 +20,15 @@ cy.wait(2000);
 });
 
 And('estiver na seção de “Feedbacks”', () => {
+    cy.wait(2000);
     cy.get('#feedbacksTitle').should('exist');
 
 });
 
 Then('devo ver a mensagem: "Não tenho feedbacks disponíveis ainda."', () => {
+    cy.wait(2000);
     cy.get('#noFeedbackMessage').should('exist').and('contain', 'Não tenho feedbacks disponíveis ainda.');
-
+    cy.wait(5000);
 });
 
 
@@ -46,7 +48,7 @@ And('existam babas disponíveis', () => {
 And('exista algum comentário na 1° babá', () => {
     // Execute as etapas específicas do Cenário 2 aqui
     cy.visit('/register');
-    cy.cadastrar('testfeedback', '1', 'th@cesar.school', '1', '12345633330', '1990-01-01', 'Male', 'rua', 'bairro', '12345178', '113');
+    cy.cadastrar('testfeedback', '1', 'th@cesar.school', '1', '33396286022', '1990-01-01', 'Male', 'rua', 'bairro', '12345178', '113');
     cy.login('testfeedback', '1');
     cy.visit('/');
     cy.get('.card.h-100').first().within(() => {
@@ -55,7 +57,9 @@ And('exista algum comentário na 1° babá', () => {
     return cy.extrairNumeroDoURL().then(numero => {
         // Execute as etapas que dependem do número extraído do URL
         cy.loginComoAdmin();
+        cy.wait(2000);
         cy.criarFeedback(numero, 'testfeedback', 'Excelente Serviço!');
+        cy.wait(2000);
         cy.visit('/');
     });
 });
@@ -73,6 +77,7 @@ And('estiver na seção de "Feedbacks"', () => {
 });
 
 Then('devo ver os feedbacks existentes sobre a babá.', () => {
+    cy.wait(2000);
     cy.get('.feedback').should('have.length.gt', 0);
 });
 

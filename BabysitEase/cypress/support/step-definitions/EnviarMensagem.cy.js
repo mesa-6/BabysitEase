@@ -5,7 +5,7 @@ Given('que tenho um perfil de usuário', () => {
     '1',
     'tem@cesar.school',
     '1',
-    '12345971230',
+    '79996863018',
     '1990-01-01',
     'Male',
     'rua',
@@ -53,6 +53,7 @@ And('escrevo uma mensagem para a babá', () => {
   Then('devo ver uma confirmação de que a mensagem foi enviada com sucesso', () => {
     cy.wait(2000);
     cy.get('#MensagemEnviadoSucesso').should('contain', 'Sua mensagem foi enviada');
+    cy.wait(2000);
 
 });
 

@@ -61,7 +61,7 @@
     <!-- Detalhes da terceira entrega aqui -->
     <h2>Videos:</h2>
     <li><a href = "https://www.youtube.com/watch?v=WMOjSOUMBHc">ScreenCast Lo Fi</a></li>
-    <li><a href = "https://www.youtube.com/watch?v=tot8A8UsewM">ScreenCast Testes automatizados</a></li>
+    <li><a href = "https://youtu.be/NA8YYmMfT-4">ScreenCast Testes automatizados</a></li>
     <li><a href = "https://www.youtube.com/watch?v=uRCAzswGDLg">ScreenCast Azure</a></li>
     <li><a href = "https://www.youtube.com/watch?v=4GfzXZ1GFZY">ScreenCast CI/CD</a></li>
     <h2>Diagrama:</h2>

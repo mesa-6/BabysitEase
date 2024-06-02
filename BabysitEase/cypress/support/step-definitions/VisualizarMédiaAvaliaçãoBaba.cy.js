@@ -24,7 +24,7 @@ And('a babá ainda não foi avaliada', () => {
 });
 
 Then('devo visualizar uma mensagem “Ops! Nenhuma avaliação disponível.”', () => {
-    
+    cy.wait(2000);
     cy.get('.no-rating-message').should('exist');
     
 });
@@ -52,14 +52,16 @@ When('eu acessar "Read More" da baba que já foi avaliada', () => {
     return cy.extrairNumeroDoURL().then(numero => {
         // Execute as etapas que dependem do número extraído do URL
         cy.loginComoAdmin();
+        cy.wait(2000);
         cy.criarRatingBaba(numero, 'gheyson', 5);
+        cy.wait(2000);
         cy.visit('/babysitter-dtl/' + numero);
     });
 
 });
 
 Then('devo visualizar uma média das avaliações da babá', () => {
-    
+    cy.wait(2000);
     cy.get('.rating-message').should('exist');
     
 });
