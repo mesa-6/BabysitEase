@@ -6,6 +6,7 @@ Certifique-se de que você tem as seguintes ferramentas instaladas em seu sistem
 
 - **Git**
 - **Python 3.8+**
+- **Node e npm**
 
 ## Passos para configurar o ambiente
 
@@ -14,6 +15,7 @@ Certifique-se de que você tem as seguintes ferramentas instaladas em seu sistem
 
 - **2. Configure o ambiente Python**
     - python -m venv env
+    - pip install django
     - .\venv\Scripts\activate
     - cd BabysitEase
     - pip install -r requirements.txt
