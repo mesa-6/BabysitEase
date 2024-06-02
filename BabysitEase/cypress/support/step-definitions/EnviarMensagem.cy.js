@@ -5,7 +5,7 @@ Given('que tenho um perfil de usuário', () => {
     '1',
     'tem@cesar.school',
     '1',
-    '12345971230',
+    '79996863018',
     '1990-01-01',
     'Male',
     'rua',
