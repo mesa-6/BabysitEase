@@ -22,6 +22,7 @@
     <li><a href= "https://docs.google.com/document/d/1ZeMPv2CfbcyNhzv-Cb_9LR-AF1_GywFmJ9sGfoS8dUs/edit#heading=h.owlmmn8nicl2">Pair Programing</a></li>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
     <li><a href="https://babysitease.azurewebsites.net/">Site Azure</a></li>
+    <li><a href = "https://www.canva.com/design/DAGGJKLYOzE/RSga-wOGQ5EvSnqJ7EBy0g/edit?utm_content=DAGGJKLYOzE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link Apresentação</a></li>
 </ul>
 
 ## ⚙ Tecnologias Utilizadas
