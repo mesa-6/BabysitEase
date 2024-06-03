@@ -1,0 +1,63 @@
+name: Build and deploy Python app to Azure Web App - BabysitEase-fds
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+
+      - name: Install dependencies
+        run: |
+          source venv/bin/activate
+          cd BabysitEase
+          pip install -r requirements.txt
+          npm ci
+          cd ..
+
+      - name: Run migrations and Cypress tests
+        run: |
+          source venv/bin/activate
+          cd BabysitEase
+          python manage.py migrate
+          python manage.py runserver &
+          sleep 5
+          npx cypress run
+          cd ..
+
+      - name: Clean testing files
+        run: |
+          cd BabysitEase/
+          rm .env db.sqlite3 cypress.config.js package-lock.json package.json
+          rm -rf cypress node_modules
+          cd ..
+
+      - name: Zip artifact for deployment
+        run: |
+          source venv/bin/activate
+          cd BabysitEase/
+          zip -r release.zip .
+          cd ..
+          mv BabysitEase/release.zip .
+
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-app
+          path: release.zip

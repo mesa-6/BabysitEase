@@ -22,6 +22,7 @@
     <li><a href= "https://docs.google.com/document/d/1ZeMPv2CfbcyNhzv-Cb_9LR-AF1_GywFmJ9sGfoS8dUs/edit#heading=h.owlmmn8nicl2">Pair Programing</a></li>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
     <li><a href="https://babysitease.azurewebsites.net/">Site Azure</a></li>
+    <li><a href = "https://www.canva.com/design/DAGGJKLYOzE/RSga-wOGQ5EvSnqJ7EBy0g/edit?utm_content=DAGGJKLYOzE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link Apresentação</a></li>
 </ul>
 
 ## ⚙ Tecnologias Utilizadas
@@ -62,7 +63,7 @@
     <h2>Videos:</h2>
     <li><a href = "https://www.youtube.com/watch?v=WMOjSOUMBHc">ScreenCast Lo Fi</a></li>
     <li><a href = "https://youtu.be/NA8YYmMfT-4">ScreenCast Testes automatizados</a></li>
-    <li><a href = "https://www.youtube.com/watch?v=uRCAzswGDLg">ScreenCast Azure</a></li>
+    <li><a href="https://www.youtube.com/watch?v=5I2CHOZSugY">ScreenCast Azure</a></li>
     <li><a href = "https://www.youtube.com/watch?v=4GfzXZ1GFZY">ScreenCast CI/CD</a></li>
     <h2>Diagrama:</h2>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
@@ -78,13 +79,15 @@
 <summary><h2>4- Entrega</h2></summary>
 <ul>
     <!-- Detalhes da terceira entrega aqui -->
+    <h2>Link Apresentação</h2>
+    <li><a href = "https://www.canva.com/design/DAGGJKLYOzE/RSga-wOGQ5EvSnqJ7EBy0g/edit?utm_content=DAGGJKLYOzE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link Apresentação</a></li>
     <h2>Videos:</h2>
-    <li><a href = "">ScreenCast Lo Fi</a></li>
-    <li><a href = "">ScreenCast Testes automatizados</a></li>
-    <li><a href = "">ScreenCast Azure</a></li>
-    <li><a href = "">ScreenCast CI/CD</a></li>
+    <li><a href = "https://youtu.be/q2QQB9ebY14">ScreenCast Lo Fi</a></li>
+    <li><a href = "https://youtu.be/NA8YYmMfT-4">ScreenCast Testes automatizados</a></li>
+    <li><a href = "https://www.youtube.com/watch?v=5I2CHOZSugY">ScreenCast Azure</a></li>
+    <li><a href = "https://youtu.be/kU-9rmy91YY">ScreenCast CI/CD</a></li>
     <h2>Diagrama:</h2>
-    <li><a href="">Diagrama de atividades</a></li>
+    <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
     <h2>Bug Tracker: </h2>
         <img src="">
     <h2>Quadro Jira: </h2>
