@@ -89,9 +89,11 @@
     <h2>Diagrama:</h2>
     <li><a href="https://www.canva.com/design/DAGBN2aJywo/PVQshni4un3jY-upetIfXg/edit?utm_content=DAGBN2aJywo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Diagrama de atividades</a></li>
     <h2>Bug Tracker: </h2>
-        <img src="">
-    <h2>Quadro Jira: </h2>
-        <img src ="https://github.com/mesa-6/BabysitEase/blob/main/prints/QuadroJira-Entrega-tres.PNG">
+        <img src="https://github.com/mesa-6/BabysitEase/blob/main/prints/Imagem%20do%20WhatsApp%20de%202024-06-03%20%C3%A0(s)%2018.30.59_83b92b60.jpg">
+        <img src="https://github.com/mesa-6/BabysitEase/blob/main/prints/Imagem%20do%20WhatsApp%20de%202024-06-03%20%C3%A0(s)%2018.31.19_ce07619d.jpg">
+    
+<h2>Quadro Jira: </h2>
+    <img src ="https://github.com/mesa-6/BabysitEase/blob/main/prints/QuadroJira-Entrega-tres.PNG">
         
 </ul>
 </details>
