@@ -1,7 +1,7 @@
 // Cenário 1
 Given('que tenho um perfil de usuário', () => {
     cy.visit('/register')
-    cy.cadastrar('TesteEnviarMensagem',
+    cy.cadastrar('testeenviarmensagem',
     '1',
     'tem@cesar.school',
     '1',
@@ -13,9 +13,7 @@ Given('que tenho um perfil de usuário', () => {
     '12345178',
     '113')
     cy.wait(2000);
-    cy.login('TesteEnviarMensagem', 
-    '1' )
-    cy.visit('/');
+    cy.login('testeenviarmensagem', '1');
     
   });
   
