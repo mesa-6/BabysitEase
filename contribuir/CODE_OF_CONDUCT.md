@@ -36,7 +36,7 @@ Este Código de Conduta se aplica a todos os espaços da comunidade, e também s
 
 ## Aplicação
 
-Casos de comportamento abusivo, assediador ou de outra forma inaceitável podem ser reportados aos líderes da comunidade responsáveis pela aplicação em [contato para denúncias].
+Casos de comportamento abusivo, assediador ou de outra forma inaceitável podem ser reportados aos líderes da comunidade responsáveis pela aplicação.
 
 Todas as reclamações serão revisadas e investigadas prontamente e de maneira justa.
 
