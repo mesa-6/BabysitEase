@@ -1,34 +1,34 @@
-# Código de Conduta do Pacto do Contribuidor
+# Código de Conduta do BabysitEase
 
 ## Nosso Compromisso
 
-Nós, como membros, contribuintes e líderes, nos comprometemos a tornar a participação em nossa comunidade uma experiência livre de assédio para todos, independentemente da idade, do tamanho do corpo, de deficiências visíveis ou invisíveis, etnia, características sexuais, identidade e expressão de gênero, nível de experiência, educação, status socioeconômico, nacionalidade, aparência pessoal, raça, religião, ou identidade e orientação sexual.
+No BabysitEase, como membros, contribuintes e líderes, estamos comprometidos a garantir que a participação em nossa comunidade seja uma experiência livre de assédio para todos, independentemente de idade, tamanho do corpo, deficiência visível ou invisível, etnia, características sexuais, identidade e expressão de gênero, nível de experiência, educação, status socioeconômico, nacionalidade, aparência pessoal, raça, religião, ou identidade e orientação sexual.
 
-Nós nos comprometemos a agir e interagir de maneiras que contribuam para uma comunidade aberta, acolhedora, diversa, inclusiva e saudável.
+Estamos empenhados em agir e interagir de maneiras que promovam uma comunidade aberta, acolhedora, diversa, inclusiva e saudável.
 
 ## Nossos Padrões
 
-Exemplos de comportamentos que contribuem para um ambiente positivo em nossa comunidade incluem:
+Comportamentos que promovem um ambiente positivo em nossa comunidade incluem:
 
-- Demonstrando empatia e gentileza em relação às outras pessoas
-- Respeitando opiniões, pontos de vista e experiências diferentes
-- Dando e aceitando graciosamente feedback construtivo
-- Aceitando responsabilidade e pedindo desculpas às pessoas afetadas por nossos erros, e aprendendo com a experiência
-- Focando no que é melhor não apenas para nós como indivíduos, mas para toda a comunidade
+- Demonstrar empatia e gentileza com todos
+- Respeitar diferentes opiniões, pontos de vista e experiências
+- Dar e aceitar feedback construtivo de maneira graciosa
+- Assumir responsabilidades e pedir desculpas aos afetados por nossos erros, aprendendo com a experiência
+- Focar no bem-estar de toda a comunidade, e não apenas no individual
 
-Exemplos de comportamentos inaceitáveis incluem:
+Comportamentos inaceitáveis incluem:
 
-- Uso de linguagem ou imagens sexualizadas e atenção ou avanços sexuais de qualquer tipo
-- Provocação, insultos ou comentários depreciativos, e ataques pessoais ou políticos
+- Uso de linguagem ou imagens sexualizadas e avanços sexuais indesejados
+- Provocações, insultos ou comentários depreciativos, e ataques pessoais ou políticos
 - Assédio público ou privado
-- Divulgação de informações privadas de outras pessoas, como endereço físico ou de e-mail, sem permissão explícita delas
-- Outros comportamentos que poderiam ser considerados inadequados em um ambiente profissional
+- Divulgação de informações privadas de outros sem permissão explícita
+- Outros comportamentos inadequados em um ambiente profissional
 
 ## Responsabilidades de Aplicação
 
-Os líderes da comunidade são responsáveis por esclarecer e aplicar nossos padrões de comportamento aceitável e tomarão medidas corretivas apropriadas e justas em resposta a qualquer comportamento que considerem inadequado, ameaçador, ofensivo ou prejudicial.
+Os líderes da comunidade são responsáveis por esclarecer e aplicar nossos padrões de comportamento aceitável e tomarão medidas corretivas apropriadas em resposta a qualquer comportamento inadequado, ameaçador, ofensivo ou prejudicial.
 
-Os líderes da comunidade têm o direito e a responsabilidade de remover, editar ou rejeitar comentários, commits, código, edições de wiki, problemas e outras contribuições que não estejam alinhadas com este Código de Conduta, e comunicarão os motivos das decisões de moderação quando apropriado.
+Eles têm o direito e a responsabilidade de remover, editar ou rejeitar comentários, commits, código, edições de wiki, problemas e outras contribuições que não estejam alinhadas com este Código de Conduta, e comunicarão os motivos das decisões de moderação quando apropriado.
 
 ## Abrangência
 
