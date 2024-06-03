@@ -82,7 +82,7 @@
     <h2>Link Apresentação</h2>
     <li><a href = "https://www.canva.com/design/DAGGJKLYOzE/RSga-wOGQ5EvSnqJ7EBy0g/edit?utm_content=DAGGJKLYOzE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link Apresentação</a></li>
     <h2>Videos:</h2>
-    <li><a href = "https://www.youtube.com/watch?v=8W_q5pE455Y">ScreenCast Lo Fi</a></li>
+    <li><a href = "https://youtu.be/q2QQB9ebY14">ScreenCast Lo Fi</a></li>
     <li><a href = "https://youtu.be/NA8YYmMfT-4">ScreenCast Testes automatizados</a></li>
     <li><a href = "https://www.youtube.com/watch?v=5I2CHOZSugY">ScreenCast Azure</a></li>
     <li><a href = "https://youtu.be/kU-9rmy91YY">ScreenCast CI/CD</a></li>
